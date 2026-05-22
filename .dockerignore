@@ -29,6 +29,3 @@ LICENSE
 Dockerfile
 docker-compose.yml
 .dockerignore
-
-cv/
-scripts/

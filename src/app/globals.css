@@ -46,69 +46,42 @@
   }
 }
 
-/* Animated gradient background blobs */
-@keyframes bg-move-1 {
-  0%, 100% { transform: translate3d(-20%, -10%, 0) scale(1); }
-  33%      { transform: translate3d(15%, 10%, 0) scale(1.15); }
-  66%      { transform: translate3d(-5%, 18%, 0) scale(0.95); }
-}
-@keyframes bg-move-2 {
-  0%, 100% { transform: translate3d(20%, 10%, 0) scale(1.1); }
-  50%      { transform: translate3d(-15%, -10%, 0) scale(0.9); }
-}
-@keyframes bg-move-3 {
-  0%, 100% { transform: translate3d(-15%, 20%, 0) scale(1); }
-  50%      { transform: translate3d(20%, -15%, 0) scale(1.2); }
-}
-@keyframes bg-move-4 {
-  0%, 100% { transform: translate3d(10%, -20%, 0) scale(0.95); }
-  50%      { transform: translate3d(-20%, 15%, 0) scale(1.1); }
-}
-@keyframes bg-move-5 {
-  0%, 100% { transform: translate3d(0%, 25%, 0) scale(1.05); }
-  50%      { transform: translate3d(0%, -25%, 0) scale(0.95); }
+/* Background: twinkling stars + shooting stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.9); }
+  50%      { opacity: 1; transform: scale(1.3); }
 }
 
-.bg-aurora {
+@keyframes shoot {
+  0%   { transform: translate3d(-10vw, -10vh, 0); opacity: 0; }
+  6%   { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translate3d(120vw, 80vh, 0); opacity: 0; }
+}
+
+.shooting-star {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(168, 85, 247, 0.5) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
   border-radius: 9999px;
-  mix-blend-mode: screen;
-  width: 55vmax;
-  height: 55vmax;
-  top: calc(50% - 27.5vmax);
-  left: calc(50% - 27.5vmax);
-  filter: blur(60px);
-  opacity: 0.38;
-  will-change: transform;
+  transform-origin: left center;
+  rotate: 25deg;
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.55);
+  animation: shoot linear infinite;
+  will-change: transform, opacity;
+  opacity: 0;
 }
-.bg-aurora-1 {
-  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.55) 0, rgba(139, 92, 246, 0) 60%);
-  animation: bg-move-1 22s ease-in-out infinite;
-}
-.bg-aurora-2 {
-  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.55) 0, rgba(168, 85, 247, 0) 60%);
-  animation: bg-move-2 28s ease-in-out infinite;
-}
-.bg-aurora-3 {
-  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.55) 0, rgba(124, 58, 237, 0) 60%);
-  animation: bg-move-3 26s ease-in-out infinite;
-}
-.bg-aurora-4 {
-  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.45) 0, rgba(99, 102, 241, 0) 60%);
-  animation: bg-move-4 30s ease-in-out infinite;
-}
-.bg-aurora-5 {
-  background: radial-gradient(circle at center, rgba(192, 132, 252, 0.35) 0, rgba(192, 132, 252, 0) 60%);
-  animation: bg-move-5 24s ease-in-out infinite;
-}
-.bg-aurora-cursor {
-  width: 36vmax;
-  height: 36vmax;
-  top: calc(50% - 18vmax);
-  left: calc(50% - 18vmax);
-  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.35) 0, rgba(167, 139, 250, 0) 60%);
-  opacity: 0.45;
-}
+.shooting-star-1 { top: 14vh; animation-duration: 6s;   animation-delay: 0s; }
+.shooting-star-2 { top: 42vh; animation-duration: 9s;   animation-delay: 3s; }
+.shooting-star-3 { top: 68vh; animation-duration: 7.5s; animation-delay: 6s; }
 
 @layer utilities {
   .text-balance {

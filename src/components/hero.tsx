@@ -10,19 +10,8 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center px-6 pt-28"
+      className="relative mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center px-6 pt-28"
     >
-      {/* Focal hero glow (sits on top of the global aurora) */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div
-          className="absolute left-1/2 top-[12%] h-[640px] w-[640px] -translate-x-1/2 rounded-full opacity-[0.55] blur-3xl animate-aurora"
-          style={{
-            background:
-              "radial-gradient(closest-side, rgba(168,85,247,0.55), rgba(168,85,247,0) 70%)",
-          }}
-        />
-      </div>
-
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}

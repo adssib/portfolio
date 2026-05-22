@@ -65,25 +65,9 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        aurora: {
-          "0%, 100%": { transform: "translate3d(-10%, -10%, 0) scale(1)" },
-          "50%": { transform: "translate3d(10%, 5%, 0) scale(1.15)" },
-        },
-        "aurora-alt": {
-          "0%, 100%": { transform: "translate3d(10%, 10%, 0) scale(1.1)" },
-          "50%": { transform: "translate3d(-10%, -5%, 0) scale(0.95)" },
-        },
-        drift: {
-          "0%, 100%": { transform: "translate3d(0%, 0%, 0) scale(1.05)" },
-          "33%": { transform: "translate3d(8%, -6%, 0) scale(0.95)" },
-          "66%": { transform: "translate3d(-6%, 8%, 0) scale(1.1)" },
-        },
       },
       animation: {
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
-        aurora: "aurora 18s ease-in-out infinite",
-        "aurora-alt": "aurora-alt 22s ease-in-out infinite",
-        drift: "drift 28s ease-in-out infinite",
       },
     },
   },
