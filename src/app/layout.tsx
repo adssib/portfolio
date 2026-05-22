@@ -43,9 +43,8 @@ export const metadata: Metadata = {
       "Production AI systems and full-stack apps. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
     creator: "@adssib",
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  // icons + Open Graph image are auto-wired from
+  //   src/app/icon.tsx, src/app/apple-icon.tsx, src/app/opengraph-image.tsx
 };
 
 export default function RootLayout({
