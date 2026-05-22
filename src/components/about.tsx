@@ -10,22 +10,19 @@ const stats = [
 
 export function About() {
   return (
-    <Section id="about" eyebrow="01 — About" title="A pragmatic builder">
+    <Section id="about" eyebrow="01 / About" title="A pragmatic builder">
       <div className="grid gap-10 md:grid-cols-5">
-        <div className="md:col-span-3 space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+        <div className="md:col-span-3 space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
           <p>
-            I&apos;m a final-year Software Engineering student at Concordia,
-            currently interning at Ericsson. My focus is on shipping AI systems
-            end-to-end — from data pipelines and fine-tuning, through APIs and
-            infra, to the UI a user actually clicks on.
+            Software Engineering student at Concordia, interning at Ericsson. I
+            ship AI systems end-to-end: data pipelines, fine-tuning, APIs, and
+            the UI that ties it all together.
           </p>
           <p>
-            I like problems where the legacy is messier than the spec. Reverse
-            engineering an undocumented VCS to migrate two decades of source
-            code. Replacing a brittle Selenium scraper with direct Grafana API
-            calls to cut report times by a third. Wiring a QLoRA fine-tuning run
-            into a Next.js app so anyone can query their database in plain
-            English.
+            I like problems where the legacy is messier than the spec.
+            Reverse-engineering an undocumented VCS. Replacing brittle Selenium
+            scrapers with direct API calls. Wiring a QLoRA fine-tuning run into
+            a Next.js app so anyone can query their database in plain English.
           </p>
         </div>
         <div className="md:col-span-2 grid grid-cols-1 gap-3">

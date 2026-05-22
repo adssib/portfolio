@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { Download, MapPin, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,27 +12,13 @@ export function Hero() {
       id="top"
       className="relative isolate mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center px-6 pt-28"
     >
-      {/* Aurora glow */}
+      {/* Focal hero glow (sits on top of the global aurora) */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div
-          className="absolute left-1/2 top-[18%] h-[520px] w-[520px] -translate-x-1/2 rounded-full opacity-60 blur-3xl animate-aurora"
+          className="absolute left-1/2 top-[12%] h-[640px] w-[640px] -translate-x-1/2 rounded-full opacity-[0.55] blur-3xl animate-aurora"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(139,92,246,0.55), rgba(139,92,246,0) 70%)",
-          }}
-        />
-        <div
-          className="absolute right-[-10%] top-[40%] h-[420px] w-[420px] rounded-full opacity-50 blur-3xl animate-aurora-alt"
-          style={{
-            background:
-              "radial-gradient(closest-side, rgba(6,182,212,0.45), rgba(6,182,212,0) 70%)",
-          }}
-        />
-        <div
-          className="absolute left-[-12%] top-[55%] h-[360px] w-[360px] rounded-full opacity-40 blur-3xl animate-aurora"
-          style={{
-            background:
-              "radial-gradient(closest-side, rgba(139,92,246,0.35), rgba(139,92,246,0) 70%)",
+              "radial-gradient(closest-side, rgba(168,85,247,0.55), rgba(168,85,247,0) 70%)",
           }}
         />
       </div>
@@ -71,9 +57,14 @@ export function Hero() {
             size="lg"
             className="rounded-full bg-white text-black hover:bg-white/90"
           >
-            <Link href="#projects" className="group">
-              View projects
-              <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
+            <Link
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <Download className="transition-transform group-hover:translate-y-0.5" />
+              View CV
             </Link>
           </Button>
           <Button

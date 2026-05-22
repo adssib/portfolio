@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ExternalLink, Database } from "lucide-react";
+import { Database, Construction } from "lucide-react";
 
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
@@ -23,10 +23,17 @@ export function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="03 — Projects"
+      eyebrow="03 / Projects"
       title="Featured work"
     >
-      <article className="glass glass-hover overflow-hidden rounded-2xl">
+      <article className="glass glass-hover relative overflow-hidden rounded-2xl">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-4 top-4 z-10 hidden items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/[0.06] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-amber-300/90 backdrop-blur md:inline-flex"
+        >
+          <Construction className="h-3 w-3" />
+          Under construction
+        </div>
         <div className="grid md:grid-cols-5">
           {/* Screenshot placeholder */}
           <div className="relative md:col-span-3 md:border-r md:border-white/10">
@@ -147,32 +154,25 @@ export function Projects() {
               ))}
             </div>
 
-            <div className="mt-2 flex flex-wrap gap-2">
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className="rounded-full border-white/15 bg-white/[0.02] hover:bg-white/5"
-              >
-                <Link
-                  href="https://github.com/adssib"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <GithubIcon className="h-4 w-4" />
-                  Code
-                </Link>
-              </Button>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <Button
                 asChild
                 size="sm"
                 className="rounded-full bg-white text-black hover:bg-white/90"
               >
-                <Link href="#" target="_blank" rel="noreferrer">
-                  Live demo
-                  <ExternalLink className="h-4 w-4" />
+                <Link
+                  href="https://github.com/adssib/AskDB"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <GithubIcon className="h-4 w-4" />
+                  View on GitHub
                 </Link>
               </Button>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/[0.06] px-3 py-1 text-[11px] font-medium text-amber-300/90 md:hidden">
+                <Construction className="h-3 w-3" />
+                Under construction
+              </span>
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ const links = [
 
 export function Contact() {
   return (
-    <Section id="contact" eyebrow="06 — Contact" title="">
+    <Section id="contact" eyebrow="06 / Contact" title="">
       <div className="flex flex-col items-center text-center">
         <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
           Let&apos;s build something
@@ -37,7 +37,7 @@ export function Contact() {
           <span className="gradient-text">worth building.</span>
         </h2>
         <p className="mt-6 max-w-xl text-balance text-muted-foreground md:text-lg">
-          I&apos;m always open to interesting conversations — AI infra, full-stack
+          I&apos;m always open to interesting conversations: AI infra, full-stack
           systems, or just an introduction.
         </p>
 

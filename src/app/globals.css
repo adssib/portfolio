@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    /* shadcn tokens, dark-mode-only palette */
-    --background: 0 0% 4%;          /* near-black #0a0a0a */
+    /* shadcn tokens, dark-mode-only palette (slightly purple-tinted near-black) */
+    --background: 265 18% 4%;
     --foreground: 0 0% 96%;
-    --card: 0 0% 6%;
+    --card: 265 14% 6%;
     --card-foreground: 0 0% 96%;
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 96%;
@@ -44,6 +44,70 @@
     background: rgba(139, 92, 246, 0.35);
     color: #fff;
   }
+}
+
+/* Animated gradient background blobs */
+@keyframes bg-move-1 {
+  0%, 100% { transform: translate3d(-20%, -10%, 0) scale(1); }
+  33%      { transform: translate3d(15%, 10%, 0) scale(1.15); }
+  66%      { transform: translate3d(-5%, 18%, 0) scale(0.95); }
+}
+@keyframes bg-move-2 {
+  0%, 100% { transform: translate3d(20%, 10%, 0) scale(1.1); }
+  50%      { transform: translate3d(-15%, -10%, 0) scale(0.9); }
+}
+@keyframes bg-move-3 {
+  0%, 100% { transform: translate3d(-15%, 20%, 0) scale(1); }
+  50%      { transform: translate3d(20%, -15%, 0) scale(1.2); }
+}
+@keyframes bg-move-4 {
+  0%, 100% { transform: translate3d(10%, -20%, 0) scale(0.95); }
+  50%      { transform: translate3d(-20%, 15%, 0) scale(1.1); }
+}
+@keyframes bg-move-5 {
+  0%, 100% { transform: translate3d(0%, 25%, 0) scale(1.05); }
+  50%      { transform: translate3d(0%, -25%, 0) scale(0.95); }
+}
+
+.bg-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  mix-blend-mode: screen;
+  width: 60vmax;
+  height: 60vmax;
+  top: calc(50% - 30vmax);
+  left: calc(50% - 30vmax);
+  filter: blur(40px);
+  opacity: 0.85;
+  will-change: transform;
+}
+.bg-aurora-1 {
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.85) 0, rgba(139, 92, 246, 0) 55%);
+  animation: bg-move-1 22s ease-in-out infinite;
+}
+.bg-aurora-2 {
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.85) 0, rgba(168, 85, 247, 0) 55%);
+  animation: bg-move-2 28s ease-in-out infinite;
+}
+.bg-aurora-3 {
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.85) 0, rgba(124, 58, 237, 0) 55%);
+  animation: bg-move-3 26s ease-in-out infinite;
+}
+.bg-aurora-4 {
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.75) 0, rgba(99, 102, 241, 0) 55%);
+  animation: bg-move-4 30s ease-in-out infinite;
+}
+.bg-aurora-5 {
+  background: radial-gradient(circle at center, rgba(192, 132, 252, 0.65) 0, rgba(192, 132, 252, 0) 55%);
+  animation: bg-move-5 24s ease-in-out infinite;
+}
+.bg-aurora-cursor {
+  width: 40vmax;
+  height: 40vmax;
+  top: calc(50% - 20vmax);
+  left: calc(50% - 20vmax);
+  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.55) 0, rgba(167, 139, 250, 0) 55%);
+  opacity: 0.65;
 }
 
 @layer utilities {

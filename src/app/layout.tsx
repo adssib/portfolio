@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Background } from "@/components/background";
 import "./globals.css";
 
 const SITE_URL = "https://adib-akkari.vercel.app";
@@ -8,7 +9,7 @@ const SITE_URL = "https://adib-akkari.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Adib Akkari — Software Engineer building AI systems end-to-end",
+    default: "Adib Akkari · Software Engineer building AI systems end-to-end",
     template: "%s · Adib Akkari",
   },
   description:
@@ -31,13 +32,13 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: SITE_URL,
     siteName: "Adib Akkari",
-    title: "Adib Akkari — Software Engineer building AI systems end-to-end",
+    title: "Adib Akkari · Software Engineer building AI systems end-to-end",
     description:
       "Production AI systems and full-stack apps. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adib Akkari — Software Engineer building AI systems end-to-end",
+    title: "Adib Akkari · Software Engineer building AI systems end-to-end",
     description:
       "Production AI systems and full-stack apps. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
     creator: "@adssib",
@@ -59,6 +60,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
+        <Background />
         <div className="noise" aria-hidden />
         {children}
       </body>

@@ -16,6 +16,27 @@ export function GithubIcon(props: IconProps) {
   );
 }
 
+export function PowerShellIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M3 4h17.5a1 1 0 0 1 .98 1.2l-2.6 13.6A2 2 0 0 1 16.9 20H3a1 1 0 0 1-.98-1.2L4.6 5.2A2 2 0 0 1 6.6 4H3z"
+        fill="#012456"
+      />
+      <path
+        d="M8.1 8.7a.9.9 0 0 1 1.4-1.15l4.6 4.5a.9.9 0 0 1 0 1.3l-4.6 4.5a.9.9 0 1 1-1.26-1.27l3.96-3.88-3.96-3.87a.9.9 0 0 1-.14-.13z"
+        fill="#fff"
+      />
+      <rect x="11.5" y="16.5" width="4.5" height="1.6" rx="0.6" fill="#fff" />
+    </svg>
+  );
+}
+
 export function LinkedinIcon(props: IconProps) {
   return (
     <svg
