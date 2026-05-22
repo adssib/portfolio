@@ -10,7 +10,8 @@ RUN npm ci --no-audit --no-fund
 # ---- builder: produce a Next.js standalone build ----
 FROM node:20-alpine AS builder
 WORKDIR /app
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    BUILD_TARGET=docker
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build

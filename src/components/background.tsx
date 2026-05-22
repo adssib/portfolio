@@ -76,12 +76,18 @@ export function Background() {
         )}
       </div>
 
-      {/* Vignette to keep content readable */}
+      {/* Readability layers: dark wash + vignette */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "rgba(7, 5, 14, 0.55)",
+        }}
+      />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at top, rgba(10,6,18,0) 0%, rgba(10,6,18,0.35) 55%, rgba(7,5,18,0.75) 100%)",
+            "radial-gradient(ellipse at center, rgba(7,5,14,0) 0%, rgba(7,5,14,0.35) 70%, rgba(5,3,12,0.85) 100%)",
         }}
       />
     </div>
