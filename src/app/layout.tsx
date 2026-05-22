@@ -4,7 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import { Background } from "@/components/background";
 import "./globals.css";
 
-const SITE_URL = "https://adib-akkari.vercel.app";
+const SITE_URL = "https://adib-akkari.netlify.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
