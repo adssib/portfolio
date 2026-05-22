@@ -27,10 +27,6 @@ npm install
 npm run dev
 ```
 
-## CV
-
-The "View CV" button in the hero links to `/cv.pdf`. Drop your PDF at `public/cv.pdf` and Next.js serves it statically. No build step.
-
 ## Project structure
 
 ```
@@ -59,24 +55,6 @@ The "View CV" button in the hero links to `/cv.pdf`. Drop your PDF at `public/cv
    │  └─ ui/                 # shadcn primitives: button, card, badge
    └─ lib/utils.ts
 ```
-
-## Editing content
-
-All content lives in its respective component under `src/components/`. No CMS, edit the file, the dev server hot-reloads. For Docker, rebuild with `docker compose up -d --build`.
-
-## Deploy on Netlify
-
-Stock Next.js 14 app, the official Netlify Next.js Runtime handles everything.
-
-1. Push the repo to GitHub.
-2. **Netlify dashboard → Add new site → Import an existing project**, pick this repo.
-3. Build settings (auto-detected):
-   - **Base directory:** *blank*
-   - **Build command:** `npm run build`
-   - **Publish directory:** *blank* (the Next.js Runtime sets it)
-4. Hit Deploy.
-
-Future pushes to `master` auto-deploy. Custom domain: **Site configuration → Domains → Add custom domain**, then update `SITE_URL` in `src/app/layout.tsx` so Open Graph absolute paths resolve correctly.
 
 ## Notes
 
