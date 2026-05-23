@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Database, Construction } from "lucide-react";
+import { Database, Construction, Rocket, ArrowUpRight } from "lucide-react";
 
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
@@ -177,6 +177,55 @@ export function Projects() {
           </div>
         </div>
       </article>
+
+      {/* Up-next teaser card balances the section while AskDB is in progress */}
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <Link
+          href="https://github.com/adssib"
+          target="_blank"
+          rel="noreferrer"
+          className="glass glass-hover group flex flex-col justify-between gap-4 rounded-2xl p-6"
+        >
+          <div className="flex items-center justify-between">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-300">
+              <Rocket className="h-4 w-4" />
+            </span>
+            <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold tracking-tight">
+              More projects, shipping soon
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Side experiments in eval pipelines, agent tooling, and retrieval.
+              Track them on GitHub.
+            </p>
+          </div>
+        </Link>
+
+        <Link
+          href="https://github.com/adssib?tab=repositories"
+          target="_blank"
+          rel="noreferrer"
+          className="glass glass-hover group flex flex-col justify-between gap-4 rounded-2xl p-6"
+        >
+          <div className="flex items-center justify-between">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-300">
+              <GithubIcon className="h-4 w-4 text-violet-300" />
+            </span>
+            <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold tracking-tight">
+              All repositories
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Browse the full archive of class projects, scripts, and works in
+              progress on <span className="font-mono">github.com/adssib</span>.
+            </p>
+          </div>
+        </Link>
+      </div>
     </Section>
   );
 }

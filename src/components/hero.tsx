@@ -10,20 +10,22 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center px-6 pt-28"
+      className="relative mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center px-5 pt-24 sm:px-6 sm:pt-28"
     >
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-6 sm:gap-8"
       >
-        <div className="inline-flex w-fit items-center gap-2 rounded-full glass px-3 py-1.5 text-xs text-muted-foreground">
-          <Sparkles className="h-3.5 w-3.5 text-violet-300" />
-          <span>Available for new grad SWE / ML roles · Spring 2027</span>
+        <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full glass px-3 py-1.5 text-[11px] text-muted-foreground sm:text-xs">
+          <Sparkles className="h-3.5 w-3.5 shrink-0 text-violet-300" />
+          <span className="truncate">
+            Available for new grad SWE / ML roles · Spring 2027
+          </span>
         </div>
 
-        <h1 className="text-balance text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
+        <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           Adib Akkari.
           <br />
           <span className="gradient-text">Software engineer</span> building{" "}
@@ -40,17 +42,18 @@ export function Hero() {
           natural-language-to-SQL engine.
         </p>
 
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-white text-black hover:bg-white/90"
+            className="w-full rounded-full bg-white text-black hover:bg-white/90 sm:w-auto"
           >
             <Link
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
+              aria-label="View CV (opens PDF in new tab)"
             >
               <Download className="transition-transform group-hover:translate-y-0.5" />
               View CV
@@ -60,7 +63,7 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full border-white/15 bg-white/[0.02] hover:bg-white/5"
+            className="w-full rounded-full border-white/15 bg-white/[0.02] hover:bg-white/5 sm:w-auto"
           >
             <Link href="#contact">Get in touch</Link>
           </Button>

@@ -31,7 +31,10 @@ export function About() {
               key={s.label}
               className="glass glass-hover rounded-xl px-5 py-4"
             >
-              <div className="text-2xl font-semibold tracking-tight md:text-3xl">
+              <div
+                className="text-2xl font-semibold tracking-tight md:text-3xl"
+                style={{ fontVariantNumeric: "tabular-nums" }}
+              >
                 <span className="gradient-text">{s.value}</span>
               </div>
               <div className="mt-1 text-xs text-muted-foreground">

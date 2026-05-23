@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Skip-to-content link, visible on focus only */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: hsl(265 30% 10%);
+  color: white;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  border-radius: 9999px;
+  font-size: 14px;
+  transform: translateY(-200%);
+  transition: transform 180ms ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
+
+/* Respect user's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .shooting-star { display: none !important; }
+}
+
 @layer base {
   :root {
     /* shadcn tokens, dark-mode-only palette (slightly purple-tinted near-black) */
@@ -43,6 +74,33 @@
   ::selection {
     background: rgba(139, 92, 246, 0.35);
     color: #fff;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid rgba(167, 139, 250, 0.9);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Custom slim scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.25);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+    background-clip: padding-box;
+    border: 2px solid transparent;
   }
 }
 

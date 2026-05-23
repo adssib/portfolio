@@ -13,15 +13,16 @@ const links = [
 export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-40">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <div className="glass flex h-12 w-full items-center justify-between rounded-full px-4">
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
+        <div className="glass flex h-12 w-full items-center justify-between rounded-full px-3 sm:px-4">
           <Link
             href="#top"
+            aria-label="Back to top, Adib Akkari"
             className="font-mono text-sm font-medium tracking-tight"
           >
             adib<span className="text-muted-foreground">.akkari</span>
           </Link>
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -34,7 +35,8 @@ export function Nav() {
           </nav>
           <Link
             href="#contact"
-            className="md:hidden rounded-full bg-white/5 px-3 py-1.5 text-xs"
+            aria-label="Jump to contact"
+            className="md:hidden inline-flex h-9 items-center rounded-full bg-white/5 px-3 text-xs"
           >
             Contact
           </Link>

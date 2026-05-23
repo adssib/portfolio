@@ -20,7 +20,7 @@ export function Section({ id, eyebrow, title, className, children }: SectionProp
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "relative mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-24 md:py-32",
+        "relative mx-auto w-full max-w-5xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 md:py-28 lg:py-32",
         className
       )}
     >

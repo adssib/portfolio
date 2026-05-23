@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Background } from "@/components/background";
+import { MotionProvider } from "@/components/motion-provider";
 import "./globals.css";
 
 const SITE_URL = "https://adib-akkari.netlify.app";
@@ -59,9 +60,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <Background />
         <div className="noise" aria-hidden />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
