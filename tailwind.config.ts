@@ -59,15 +59,28 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
+        display: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
       },
       keyframes: {
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        // Aceternity Spotlight: drifts in from off-screen and settles
+        spotlight: {
+          "0%": { opacity: "0", transform: "translate(-72%, -62%) scale(0.5)" },
+          "100%": { opacity: "1", transform: "translate(-50%, -40%) scale(1)" },
+        },
+        // Aceternity shimmer (hover sweeps)
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
+        spotlight: "spotlight 2s ease 0.2s 1 forwards",
+        shimmer: "shimmer 2.5s linear infinite",
       },
     },
   },

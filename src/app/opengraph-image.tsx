@@ -16,14 +16,13 @@ export default function OG() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background:
-            "linear-gradient(135deg, #0a0612 0%, #1a0b2e 45%, #060410 100%)",
-          color: "white",
+          background: "linear-gradient(135deg, #f5f5f3 0%, #e9e9e6 100%)",
+          color: "#121212",
           fontFamily: "sans-serif",
           position: "relative",
         }}
       >
-        {/* Soft violet glow top-left */}
+        {/* Soft monochrome glows */}
         <div
           style={{
             position: "absolute",
@@ -33,11 +32,10 @@ export default function OG() {
             height: 700,
             borderRadius: 700,
             background:
-              "radial-gradient(circle, rgba(139,92,246,0.42), rgba(139,92,246,0) 70%)",
+              "radial-gradient(circle, rgba(0,0,0,0.06), rgba(0,0,0,0) 70%)",
             display: "flex",
           }}
         />
-        {/* Soft cyan glow bottom-right */}
         <div
           style={{
             position: "absolute",
@@ -47,22 +45,22 @@ export default function OG() {
             height: 600,
             borderRadius: 600,
             background:
-              "radial-gradient(circle, rgba(124,58,237,0.4), rgba(124,58,237,0) 70%)",
+              "radial-gradient(circle, rgba(0,0,0,0.05), rgba(0,0,0,0) 70%)",
             display: "flex",
           }}
         />
 
-        {/* Decorative star dots */}
+        {/* Decorative grid dots */}
         {[
-          [120, 90, 3],
-          [220, 180, 2],
-          [980, 110, 4],
-          [1080, 220, 2],
-          [870, 60, 3],
-          [60, 380, 2],
-          [1120, 480, 3],
-          [180, 540, 2],
-          [950, 560, 2],
+          [120, 90, 4],
+          [220, 180, 3],
+          [980, 110, 5],
+          [1080, 220, 3],
+          [870, 60, 4],
+          [60, 380, 3],
+          [1120, 480, 4],
+          [180, 540, 3],
+          [950, 560, 3],
         ].map(([x, y, s], i) => (
           <div
             key={i}
@@ -72,9 +70,9 @@ export default function OG() {
               left: x,
               width: s,
               height: s,
-              background: "white",
+              background: "#121212",
               borderRadius: s,
-              opacity: 0.7,
+              opacity: 0.22,
               display: "flex",
             }}
           />
@@ -96,13 +94,11 @@ export default function OG() {
               width: 64,
               height: 64,
               borderRadius: 14,
-              background:
-                "linear-gradient(135deg, #1a0b2e 0%, #4c1d95 55%, #0a0612 100%)",
-              color: "white",
+              background: "#121212",
+              color: "#f5f5f3",
               fontSize: 24,
               fontWeight: 800,
               letterSpacing: "-0.06em",
-              boxShadow: "inset 0 0 0 1.5px rgba(255,255,255,0.18)",
             }}
           >
             A.A.
@@ -114,9 +110,9 @@ export default function OG() {
               gap: 12,
               padding: "10px 18px",
               borderRadius: 999,
-              background: "rgba(255,255,255,0.05)",
-              boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.12)",
-              color: "rgba(255,255,255,0.85)",
+              background: "rgba(0,0,0,0.03)",
+              boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.12)",
+              color: "rgba(0,0,0,0.7)",
               fontSize: 20,
             }}
           >
@@ -125,7 +121,7 @@ export default function OG() {
                 width: 8,
                 height: 8,
                 borderRadius: 8,
-                background: "#a78bfa",
+                background: "#121212",
                 display: "flex",
               }}
             />
@@ -150,14 +146,14 @@ export default function OG() {
             style={{
               fontSize: 40,
               lineHeight: 1.25,
-              color: "rgba(255,255,255,0.78)",
+              color: "rgba(0,0,0,0.55)",
               maxWidth: 1000,
               display: "flex",
               flexWrap: "wrap",
             }}
           >
             Software engineer building{" "}
-            <span style={{ color: "#c4b5fd", marginLeft: 10, marginRight: 10 }}>
+            <span style={{ color: "#121212", marginLeft: 10, marginRight: 10 }}>
               AI systems
             </span>{" "}
             end-to-end.
@@ -170,7 +166,7 @@ export default function OG() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            color: "rgba(255,255,255,0.55)",
+            color: "rgba(0,0,0,0.5)",
             fontSize: 22,
           }}
         >

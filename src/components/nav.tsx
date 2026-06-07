@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { ThemeToggle } from "@/components/theme-toggle";
+
 const links = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -22,24 +24,30 @@ export function Nav() {
           >
             adib<span className="text-muted-foreground">.akkari</span>
           </Link>
-          <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-          <Link
-            href="#contact"
-            aria-label="Jump to contact"
-            className="md:hidden inline-flex h-9 items-center rounded-full bg-white/5 px-3 text-xs"
-          >
-            Contact
-          </Link>
+          <div className="flex items-center gap-1">
+            <nav
+              aria-label="Primary"
+              className="hidden items-center gap-1 md:flex"
+            >
+              {links.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+            <Link
+              href="#contact"
+              aria-label="Jump to contact"
+              className="md:hidden inline-flex h-9 items-center rounded-full bg-foreground/5 px-3 text-xs"
+            >
+              Contact
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>

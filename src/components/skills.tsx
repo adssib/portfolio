@@ -28,6 +28,7 @@ import { FaAws } from "react-icons/fa6";
 import { Database, Sparkles, Brain } from "lucide-react";
 
 import { Section } from "@/components/section";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { PowerShellIcon } from "@/components/brand-icons";
 
 type Skill = {
@@ -97,7 +98,7 @@ export function Skills() {
     <Section id="skills" eyebrow="05 / Skills" title="Stack & tools">
       <div className="grid gap-4 md:grid-cols-2">
         {groups.map((g) => (
-          <div
+          <SpotlightCard
             key={g.label}
             className="glass glass-hover flex flex-col gap-4 rounded-2xl p-6"
           >
@@ -108,18 +109,18 @@ export function Skills() {
               {g.items.map(({ label, Icon, color }) => (
                 <span
                   key={label}
-                  className="group inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-sm transition-colors hover:border-white/25 hover:bg-white/[0.06]"
+                  className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.03] px-3 py-1.5 text-sm transition-colors hover:border-foreground/25 hover:bg-foreground/[0.06]"
                 >
                   <Icon
                     aria-hidden
-                    className="h-4 w-4 shrink-0 transition-transform group-hover:scale-110"
+                    className="h-4 w-4 shrink-0 opacity-80 grayscale transition-all duration-200 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
                     style={{ color }}
                   />
                   <span className="text-foreground/90">{label}</span>
                 </span>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </Section>

@@ -32,7 +32,7 @@ export function Section({ id, eyebrow, title, className, children }: SectionProp
             </span>
           )}
           {title && (
-            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+            <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
               {title}
             </h2>
           )}

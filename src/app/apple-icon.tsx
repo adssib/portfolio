@@ -13,14 +13,13 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background:
-            "linear-gradient(135deg, #1a0b2e 0%, #4c1d95 55%, #0a0612 100%)",
-          color: "white",
+          background: "#121212",
+          color: "#f5f5f3",
           fontSize: 72,
           fontWeight: 800,
           letterSpacing: "-0.06em",
           borderRadius: 36,
-          boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.18)",
+          boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.16)",
         }}
       >
         A.A.

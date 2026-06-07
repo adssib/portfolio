@@ -86,16 +86,16 @@ export function Certifications() {
           return (
             <li
               key={c.name}
-              className="glass overflow-hidden rounded-2xl border-white/10"
+              className="glass overflow-hidden rounded-2xl border-border"
             >
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}
                 aria-expanded={isOpen}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-white/[0.03]"
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-foreground/[0.03]"
               >
                 <div className="min-w-0">
-                  <div className="text-base font-medium tracking-tight md:text-lg">
+                  <div className="font-display text-base font-medium tracking-tight md:text-lg">
                     {c.name}
                   </div>
                   <div className="mt-0.5 truncate text-sm text-muted-foreground">
@@ -125,11 +125,11 @@ export function Certifications() {
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="border-t border-white/10 px-6 py-5">
+                    <div className="border-t border-border px-6 py-5">
                       <ol className="space-y-3">
                         {c.courses.map((course, idx) => (
                           <li key={course.title} className="flex gap-4">
-                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] font-mono text-[11px] text-violet-300/90">
+                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-foreground/10 bg-foreground/[0.04] font-mono text-[11px] text-foreground/80">
                               {String(idx + 1).padStart(2, "0")}
                             </span>
                             <div>
