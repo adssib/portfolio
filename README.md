@@ -1,14 +1,27 @@
 # Adib Akkari · Portfolio
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9091909e-b7ce-457d-be0c-f2fa8ef83256/deploy-status)](https://app.netlify.com/projects/adib-akkari/deploys)
-[![Live](https://img.shields.io/badge/Live-adib--akkari.netlify.app-7c3aed?logo=netlify&logoColor=white)](https://adib-akkari.netlify.app)
+[![Deploy to GitHub Pages](https://github.com/adssib/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/adssib/portfolio/actions/workflows/deploy.yml)
+[![Live](https://img.shields.io/badge/Live-adssib.github.io%2Fportfolio-111111?logo=github&logoColor=white)](https://adssib.github.io/portfolio/)
 
-Personal portfolio site. Dark, glassy, single-page scroll, animated starfield background.
+Personal portfolio site. Minimalist, monochrome, single-page scroll, with an
+interactive cursor-reactive dot-grid background, an encrypted/decrypt text
+effect on the name, and a light/dark theme toggle.
 
-Built with **Next.js 14 (App Router)** · **TypeScript** · **Tailwind CSS** · **shadcn/ui** · **Framer Motion** · **react-icons** · **Geist**.
-
+Built with **Next.js 14 (App Router)** · **TypeScript** · **Tailwind CSS** ·
+**shadcn/ui** · **Framer Motion** · **react-icons** · **Geist**, plus a set of
+**Aceternity-inspired** components (decrypt text, spotlight, moving-border
+button, card spotlight, text-generate, magnetic buttons).
 
 ---
+
+## Local dev
+
+```bash
+npm install
+npm run dev
+```
+
+Then open <http://localhost:3000>.
 
 ## One-command run (Docker)
 
@@ -16,48 +29,67 @@ Built with **Next.js 14 (App Router)** · **TypeScript** · **Tailwind CSS** · 
 docker compose up -d --build
 ```
 
-Then open <http://localhost:3000>. To stop: `docker compose down`.
+Open <http://localhost:3000>. To stop: `docker compose down`. The image is
+multi-stage off `node:20-alpine`, uses Next.js `standalone` output (~180 MB,
+non-root, port 3000).
 
-Image is multi-stage, built off `node:20-alpine`, uses Next.js `standalone` output → final image around ~180 MB. Runs as non-root, exposes port 3000.
+## Deploy — GitHub Pages
 
-## Local dev (no Docker)
+The site is a fully static export served at
+**<https://adssib.github.io/portfolio/>**.
 
-```bash
-npm install
-npm run dev
-```
+- Pushes to **`master`** trigger `.github/workflows/deploy.yml`, which builds a
+  static export and publishes it to GitHub Pages (Pages source = GitHub Actions).
+- Build the export locally the same way CI does:
+
+  ```bash
+  BUILD_TARGET=static npm run build   # → ./out
+  ```
+
+- Because it's served from the `/portfolio` project path, `next.config.mjs`
+  sets `basePath: "/portfolio"` for the static build. Moving to a custom domain
+  or the `adssib.github.io` root? Set `PAGES_BASE_PATH=""`.
 
 ## Project structure
 
 ```
 .
-├─ Dockerfile                # multi-stage build, standalone Next.js output
-├─ docker-compose.yml        # `docker compose up` → site on :3000
-├─ .dockerignore
-├─ public/cv.pdf             # served by the "View CV" button (add your own)
+├─ .github/workflows/deploy.yml  # static export → GitHub Pages
+├─ next.config.mjs               # BUILD_TARGET: docker | static (Pages) | dev
+├─ Dockerfile                    # multi-stage, standalone Next.js output
+├─ docker-compose.yml
+├─ scripts/shot.mjs              # Playwright screenshot helper (UI checks)
+├─ public/cv.pdf                 # served by the "View CV" button
 └─ src/
    ├─ app/
-   │  ├─ layout.tsx          # Geist fonts, metadata + Open Graph
-   │  ├─ page.tsx            # single-page composition
-   │  └─ globals.css         # tokens, twinkle + shooting-star keyframes
+   │  ├─ layout.tsx              # Geist fonts, metadata, no-flash theme init
+   │  ├─ page.tsx                # single-page composition
+   │  ├─ globals.css             # mono tokens (light + .dark), utilities
+   │  ├─ icon.tsx · apple-icon.tsx · opengraph-image.tsx
    ├─ components/
-   │  ├─ background.tsx      # starfield + shooting stars
-   │  ├─ nav.tsx
-   │  ├─ hero.tsx
-   │  ├─ about.tsx
-   │  ├─ experience.tsx      # vertical timeline, DevOps & Testing subgroups
-   │  ├─ projects.tsx        # AskDB card (under-construction badge)
-   │  ├─ certifications.tsx  # expandable cards with sub-courses
-   │  ├─ skills.tsx          # brand-icon chip grid
-   │  ├─ contact.tsx
-   │  ├─ section.tsx         # shared wrapper with fade-in-up
-   │  ├─ brand-icons.tsx     # inline SVGs (GitHub, LinkedIn, PowerShell)
-   │  └─ ui/                 # shadcn primitives: button, card, badge
+   │  ├─ background.tsx          # interactive cursor-reactive dot-grid
+   │  ├─ theme-toggle.tsx        # light/dark switch (persisted)
+   │  ├─ nav.tsx · hero.tsx · about.tsx
+   │  ├─ experience.tsx          # vertical timeline
+   │  ├─ projects.tsx            # AskDB card
+   │  ├─ certifications.tsx      # expandable cards
+   │  ├─ skills.tsx              # brand-icon chip grid (grayscale → color)
+   │  ├─ contact.tsx · section.tsx · brand-icons.tsx
+   │  └─ ui/                     # button, card, badge, decrypt-text,
+   │                             # spotlight, moving-border-button,
+   │                             # spotlight-card, text-generate, magnetic
    └─ lib/utils.ts
 ```
 
 ## Notes
 
-- Dark-mode only. No theme toggle by design.
-- Background is a fixed full-viewport starfield (~90 twinkling dots + 3 shooting stars). Sits behind everything with `pointer-events: none`. Cheap on CPU/GPU.
+- **Light by default, with a dark-mode toggle.** The theme is set before paint
+  (inline script in `layout.tsx`) to avoid a flash, and persisted to
+  `localStorage`.
+- The background is a fixed, full-viewport canvas dot-grid that brightens around
+  the cursor. It's masked out of the top nav strip and respects
+  `prefers-reduced-motion` (renders static).
+- Accessibility: reduced-motion support throughout, skip-to-content link,
+  visible focus rings, and the decrypt text exposes the real string via
+  `aria-label`.
 - Sections fade in on scroll once, no re-trigger.
