@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Download, MapPin, Sparkles } from "lucide-react";
 
 import { DecryptText } from "@/components/ui/decrypt-text";
-import { Spotlight } from "@/components/ui/spotlight";
 import { MovingBorderButton } from "@/components/ui/moving-border-button";
 import { Magnetic } from "@/components/ui/magnetic";
 
@@ -15,10 +14,6 @@ export function Hero() {
       id="top"
       className="relative mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center overflow-hidden px-5 pt-24 sm:px-6 sm:pt-28"
     >
-      {/* Kept to the upper-right and very faint in light mode so it never
-          smudges the header/logo; comes alive in dark mode. */}
-      <Spotlight className="-right-1/4 -top-1/3 text-foreground/[0.07] dark:text-foreground/80" />
-
       {/* Soft scrim of the page color behind the headline so the background
           dots never compete with the text. Subtle in dark mode. */}
       <div
