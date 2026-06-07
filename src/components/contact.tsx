@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
 
 import { Section } from "@/components/section";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 
 const links = [
@@ -31,7 +32,7 @@ export function Contact() {
   return (
     <Section id="contact" eyebrow="06 / Contact" title="">
       <div className="flex flex-col items-center text-center">
-        <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+        <h2 className="font-display text-balance text-4xl font-semibold tracking-tight md:text-6xl">
           Let&apos;s build something
           <br />
           <span className="gradient-text">worth building.</span>
@@ -43,7 +44,8 @@ export function Contact() {
 
         <div className="mt-10 grid w-full max-w-2xl gap-3 sm:grid-cols-3">
           {links.map((l) => (
-            <Link
+            <SpotlightCard
+              as={Link}
               key={l.label}
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
@@ -62,7 +64,7 @@ export function Contact() {
                   {l.value}
                 </div>
               </div>
-            </Link>
+            </SpotlightCard>
           ))}
         </div>
       </div>

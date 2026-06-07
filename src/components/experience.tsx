@@ -2,6 +2,7 @@
 
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 type Group = { heading: string; bullets: string[] };
 
@@ -72,7 +73,7 @@ export function Experience() {
       <div className="relative">
         <div
           aria-hidden
-          className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-violet-500/40 via-white/10 to-cyan-500/30 md:left-[9px]"
+          className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-foreground/30 via-foreground/10 to-foreground/20 md:left-[9px]"
         />
         <ol className="space-y-8">
           {roles.map((role) => (
@@ -85,15 +86,18 @@ export function Experience() {
                   className={
                     "h-2 w-2 rounded-full md:h-2.5 md:w-2.5 " +
                     (role.current
-                      ? "bg-violet-400 shadow-[0_0_0_4px_rgba(139,92,246,0.18)]"
-                      : "bg-white/40")
+                      ? "bg-foreground shadow-[0_0_0_4px_hsl(var(--foreground)/0.15)]"
+                      : "bg-foreground/40")
                   }
                 />
               </span>
-              <article className="glass glass-hover rounded-2xl p-6 md:p-7">
+              <SpotlightCard
+                as="article"
+                className="glass glass-hover rounded-2xl p-6 md:p-7"
+              >
                 <header className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold tracking-tight md:text-xl">
+                    <h3 className="font-display text-lg font-semibold tracking-tight md:text-xl">
                       {role.title}{" "}
                       <span className="text-muted-foreground">
                         @ {role.company}
@@ -112,7 +116,7 @@ export function Experience() {
                   {role.groups.map((group) => (
                     <div key={group.heading || "default"}>
                       {group.heading && (
-                        <div className="mb-2 font-mono text-[11px] uppercase tracking-[0.18em] text-violet-300/80">
+                        <div className="mb-2 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70">
                           {group.heading}
                         </div>
                       )}
@@ -124,7 +128,7 @@ export function Experience() {
                           >
                             <span
                               aria-hidden
-                              className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-white/40"
+                              className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-foreground/40"
                             />
                             {b}
                           </li>
@@ -139,13 +143,13 @@ export function Experience() {
                     <Badge
                       key={t}
                       variant="outline"
-                      className="border-white/10 bg-white/[0.03] text-[11px] font-normal text-muted-foreground"
+                      className="border-foreground/10 bg-foreground/[0.03] text-[11px] font-normal text-muted-foreground"
                     >
                       {t}
                     </Badge>
                   ))}
                 </div>
-              </article>
+              </SpotlightCard>
             </li>
           ))}
         </ol>
