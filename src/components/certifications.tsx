@@ -5,71 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Section } from "@/components/section";
-
-type Cert = {
-  name: string;
-  issuer: string;
-  date: string;
-  courses: { title: string; subtitle?: string }[];
-};
-
-const certs: Cert[] = [
-  {
-    name: "Deep Learning Specialization",
-    issuer: "DeepLearning.AI · Coursera · Andrew Ng",
-    date: "Jan 2026",
-    courses: [
-      {
-        title: "Neural Networks and Deep Learning",
-        subtitle: "Forward/back-prop, activations, foundations of DNNs.",
-      },
-      {
-        title: "Improving Deep Neural Networks",
-        subtitle:
-          "Hyperparameter tuning, regularization, optimization (Adam, batch norm).",
-      },
-      {
-        title: "Structuring Machine Learning Projects",
-        subtitle: "Error analysis, train/dev/test strategy, transfer learning.",
-      },
-      {
-        title: "Convolutional Neural Networks",
-        subtitle: "Conv layers, ResNets, object detection, neural style transfer.",
-      },
-      {
-        title: "Sequence Models",
-        subtitle:
-          "RNNs, LSTMs, attention, transformers, word embeddings.",
-      },
-    ],
-  },
-  {
-    name: "Anthropic Developer Certifications",
-    issuer: "Anthropic · 4 modules",
-    date: "Apr 2026",
-    courses: [
-      {
-        title: "Claude Code",
-        subtitle:
-          "Agentic CLI workflows, project context, slash commands, hooks.",
-      },
-      {
-        title: "Subagents",
-        subtitle: "Delegated agents, parallelism, isolation, tool scoping.",
-      },
-      {
-        title: "Claude Skills",
-        subtitle:
-          "Authoring reusable skills, structured outputs, prompt patterns.",
-      },
-      {
-        title: "Model Context Protocol (MCP)",
-        subtitle:
-          "Building servers, exposing tools/resources, client integration.",
-      },
-    ],
-  },
-];
+import certifications from "@/content/certifications.json";
 
 export function Certifications() {
   const [open, setOpen] = useState<number | null>(0);
@@ -77,11 +13,11 @@ export function Certifications() {
   return (
     <Section
       id="certifications"
-      eyebrow="04 / Certifications"
-      title="Continued learning"
+      eyebrow={certifications.eyebrow}
+      title={certifications.title}
     >
       <ul className="flex flex-col gap-3">
-        {certs.map((c, i) => {
+        {certifications.certs.map((c, i) => {
           const isOpen = open === i;
           return (
             <li
@@ -129,7 +65,7 @@ export function Certifications() {
                       <ol className="space-y-3">
                         {c.courses.map((course, idx) => (
                           <li key={course.title} className="flex gap-4">
-                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-foreground/10 bg-foreground/[0.04] font-mono text-[11px] text-foreground/80">
+                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-foreground/10 bg-foreground/[0.04] font-mono text-[11px] text-brand">
                               {String(idx + 1).padStart(2, "0")}
                             </span>
                             <div>

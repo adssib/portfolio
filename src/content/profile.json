@@ -1,0 +1,18 @@
+{
+  "name": "Adib Akkari.",
+  "role": "Software Engineer",
+  "headlineSuffix": "building **AI systems** end-to-end.",
+  "availability": "Available for new grad SWE / ML roles · Spring 2027",
+  "summary": "I build production AI systems and full-stack apps. Currently interning at **Ericsson** on a cloud-native IAM platform serving **130M+ users**. Previously rescued 20+ years of source code at Novatek through a custom VCS migration. Recently fine-tuned Llama 3 8B with QLoRA to build AskDB, a natural-language-to-SQL engine.",
+  "location": "Montréal, QC",
+  "education": "B.Eng Software Engineering · Concordia University · 2022–2027",
+  "cv": "/cv.pdf",
+  "cta": { "primary": "View CV", "secondary": "Get in touch" },
+  "links": {
+    "email": "adibakkari@gmail.com",
+    "github": "github.com/adssib",
+    "githubUrl": "https://github.com/adssib",
+    "linkedin": "linkedin.com/in/adib-akkari",
+    "linkedinUrl": "https://linkedin.com/in/adib-akkari"
+  }
+}

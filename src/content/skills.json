@@ -1,0 +1,57 @@
+{
+  "eyebrow": "05 / Skills",
+  "title": "Stack & tools",
+  "groups": [
+    {
+      "label": "Languages",
+      "items": [
+        { "label": "Python", "icon": "python", "color": "#3776AB" },
+        { "label": "Java", "icon": "java", "color": "#ED8B00" },
+        { "label": "TypeScript", "icon": "typescript", "color": "#3178C6" },
+        { "label": "Bash", "icon": "bash", "color": "#4EAA25" },
+        { "label": "PowerShell", "icon": "powershell", "color": "#5391FE" },
+        { "label": "SQL", "icon": "sql", "color": "#A78BFA" }
+      ]
+    },
+    {
+      "label": "AI / ML",
+      "items": [
+        { "label": "PyTorch", "icon": "pytorch", "color": "#EE4C2C" },
+        { "label": "Hugging Face", "icon": "huggingface", "color": "#FFD21E" },
+        { "label": "LoRA / QLoRA", "icon": "lora", "color": "#C084FC" },
+        { "label": "LLM fine-tuning", "icon": "llm", "color": "#A78BFA" }
+      ]
+    },
+    {
+      "label": "Testing",
+      "items": [
+        { "label": "JMeter", "icon": "jmeter", "color": "#D22128" },
+        { "label": "Selenium", "icon": "selenium", "color": "#43B02A" },
+        { "label": "Grafana", "icon": "grafana", "color": "#F46800" },
+        { "label": "JUnit", "icon": "junit", "color": "#25A162" }
+      ]
+    },
+    {
+      "label": "Cloud / DevOps",
+      "items": [
+        { "label": "AWS", "icon": "aws", "color": "#FF9900" },
+        { "label": "Docker", "icon": "docker", "color": "#2496ED" },
+        { "label": "Kubernetes", "icon": "kubernetes", "color": "#326CE5" },
+        { "label": "Helm", "icon": "helm", "color": "#7CB6FF" },
+        { "label": "Jenkins", "icon": "jenkins", "color": "#D24939" },
+        { "label": "JFrog", "icon": "jfrog", "color": "#41BF47" },
+        { "label": "GitLab CI", "icon": "gitlabci", "color": "#FC6D26" }
+      ]
+    },
+    {
+      "label": "Databases",
+      "items": [
+        { "label": "MySQL", "icon": "mysql", "color": "#4479A1" },
+        { "label": "MongoDB", "icon": "mongodb", "color": "#47A248" },
+        { "label": "Cassandra", "icon": "cassandra", "color": "#1287B1" },
+        { "label": "Neo4j", "icon": "neo4j", "color": "#4581C3" },
+        { "label": "Redis", "icon": "redis", "color": "#FF4438" }
+      ]
+    }
+  ]
+}
