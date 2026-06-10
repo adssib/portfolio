@@ -1,4 +1,5 @@
 import { Nav } from "@/components/nav";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { SocialRail } from "@/components/social-rail";
 import { Terminal } from "@/components/terminal";
 import { Hero } from "@/components/hero";
@@ -12,6 +13,7 @@ import { Contact } from "@/components/contact";
 export default function Home() {
   return (
     <main id="main" className="relative z-10">
+      <ScrollProgress />
       <Nav />
       <SocialRail />
       <Hero />

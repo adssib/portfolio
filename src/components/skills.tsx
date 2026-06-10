@@ -2,6 +2,7 @@
 
 import { Section } from "@/components/section";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { Reveal } from "@/components/ui/reveal";
 import { skillIcon } from "@/lib/skill-icons";
 import skills from "@/content/skills.json";
 
@@ -9,10 +10,10 @@ export function Skills() {
   return (
     <Section id="skills" eyebrow={skills.eyebrow} title={skills.title}>
       <div className="grid gap-4 md:grid-cols-2">
-        {skills.groups.map((g) => (
+        {skills.groups.map((g, i) => (
+          <Reveal key={g.label} delay={i * 0.08} className="h-full">
           <SpotlightCard
-            key={g.label}
-            className="glass glass-hover flex flex-col gap-4 rounded-2xl p-6"
+            className="glass glass-hover flex h-full flex-col gap-4 rounded-2xl p-6"
           >
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand">
               {g.label}
@@ -36,6 +37,7 @@ export function Skills() {
               })}
             </div>
           </SpotlightCard>
+          </Reveal>
         ))}
       </div>
     </Section>

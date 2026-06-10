@@ -3,6 +3,7 @@
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { Reveal } from "@/components/ui/reveal";
 import experience from "@/content/experience.json";
 
 export function Experience() {
@@ -14,7 +15,7 @@ export function Experience() {
           className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-foreground/30 via-foreground/10 to-foreground/20 md:left-[9px]"
         />
         <ol className="space-y-8">
-          {experience.roles.map((role) => (
+          {experience.roles.map((role, i) => (
             <li key={role.company} className="relative pl-10 md:pl-12">
               <span
                 aria-hidden
@@ -29,6 +30,7 @@ export function Experience() {
                   }
                 />
               </span>
+              <Reveal delay={i * 0.08}>
               <SpotlightCard
                 as="article"
                 className="glass glass-hover rounded-2xl p-6 md:p-7"
@@ -88,6 +90,7 @@ export function Experience() {
                   ))}
                 </div>
               </SpotlightCard>
+              </Reveal>
             </li>
           ))}
         </ol>
