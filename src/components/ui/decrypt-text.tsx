@@ -118,9 +118,12 @@ export function DecryptText({
       <span className="invisible" aria-hidden>
         {text}
       </span>
+      {/* overflow-hidden clips wide scramble glyphs to the word's box so they
+          can't spill into the next word. (On the absolute layer only, so the
+          element's baseline is unaffected.) */}
       <span
         className={cn(
-          "absolute inset-0 whitespace-pre",
+          "absolute inset-0 overflow-hidden whitespace-pre",
           !done && "decrypt-scrambling"
         )}
         aria-hidden

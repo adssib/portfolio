@@ -125,6 +125,15 @@ export function Background() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
+      {/* Soft accent glows in the corners — theme-aware via --brand. Very faint
+          in light mode (so the off-white stays clean), fuller in dark mode. */}
+      <div
+        className="absolute inset-0 opacity-50 dark:opacity-100"
+        style={{
+          background:
+            "radial-gradient(65% 55% at 10% 2%, hsl(var(--brand) / 0.22) 0%, transparent 62%), radial-gradient(60% 52% at 92% 100%, hsl(var(--brand) / 0.18) 0%, transparent 62%)",
+        }}
+      />
       {/* Static CSS grid lines, very faint, under the canvas dots */}
       <div
         className="absolute inset-0 opacity-[0.5]"

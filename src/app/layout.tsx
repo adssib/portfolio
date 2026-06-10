@@ -56,16 +56,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // Light monochrome is the v2.0 default. To flip the whole site to the
-      // dark monochrome variant, append ` dark` to the className below.
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      // Dark monochrome is the default (rendered on the server). The inline
+      // script below switches to light only if the visitor explicitly chose it.
+      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
-        {/* Set the theme class before paint to avoid a flash of the wrong theme. */}
+        {/* Respect a saved light choice before paint (default stays dark). */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
+            __html: `(function(){try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}})();`,
           }}
         />
         <a href="#main" className="skip-link">
