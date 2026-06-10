@@ -102,7 +102,7 @@ export function Skills() {
             key={g.label}
             className="glass glass-hover flex flex-col gap-4 rounded-2xl p-6"
           >
-            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand">
               {g.label}
             </div>
             <div className="flex flex-wrap gap-2">

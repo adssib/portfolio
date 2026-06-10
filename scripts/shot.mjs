@@ -7,7 +7,7 @@ mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch();
 
-async function capture(theme, mouse, tag) {
+async function capture(theme) {
   const ctx = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     deviceScaleFactor: 2,
@@ -20,18 +20,28 @@ async function capture(theme, mouse, tag) {
   const page = await ctx.newPage();
   await page.goto(URL, { waitUntil: "networkidle" });
   await page.waitForTimeout(2200);
-  await page.mouse.move(mouse.x, mouse.y);
-  await page.waitForTimeout(600);
+  await page.mouse.move(900, 520);
+  await page.waitForTimeout(400);
 
-  await page.screenshot({ path: `${OUT}/${theme}-${tag}-header.png`, clip: { x: 0, y: 0, width: 1440, height: 160 } });
-  await page.screenshot({ path: `${OUT}/${theme}-${tag}-hero.png`, clip: { x: 0, y: 0, width: 1440, height: 900 } });
+  // hero (nav accent, badge spark, moving-border CTA)
+  await page.screenshot({
+    path: `${OUT}/${theme}-hero.png`,
+    clip: { x: 0, y: 0, width: 1440, height: 900 },
+  });
+
+  // section shots where the accent now shows
+  for (const id of ["skills"]) {
+    await page.evaluate((sel) => {
+      document.querySelector(sel)?.scrollIntoView({ block: "start" });
+    }, `#${id}`);
+    await page.waitForTimeout(900);
+    await page.screenshot({ path: `${OUT}/${theme}-${id}.png` });
+  }
+
   await ctx.close();
 }
 
-// center-resting cursor
-await capture("dark", { x: 720, y: 460 }, "center");
-// cursor parked right next to the logo
-await capture("dark", { x: 170, y: 32 }, "logo");
-await capture("light", { x: 170, y: 32 }, "logo");
+await capture("light");
+await capture("dark");
 await browser.close();
 console.log("done");

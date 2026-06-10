@@ -86,7 +86,7 @@ export function Experience() {
                   className={
                     "h-2 w-2 rounded-full md:h-2.5 md:w-2.5 " +
                     (role.current
-                      ? "bg-foreground shadow-[0_0_0_4px_hsl(var(--foreground)/0.15)]"
+                      ? "bg-brand shadow-[0_0_0_4px_hsl(var(--brand)/0.22)]"
                       : "bg-foreground/40")
                   }
                 />
@@ -98,7 +98,7 @@ export function Experience() {
                 <header className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
                   <div>
                     <h3 className="font-display text-lg font-semibold tracking-tight md:text-xl">
-                      {role.title}{" "}
+                      <span className="text-brand">{role.title}</span>{" "}
                       <span className="text-muted-foreground">
                         @ {role.company}
                       </span>

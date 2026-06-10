@@ -27,7 +27,7 @@ export function Section({ id, eyebrow, title, className, children }: SectionProp
       {(eyebrow || title) && (
         <div className="mb-12 flex flex-col gap-2">
           {eyebrow && (
-            <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-brand">
               {eyebrow}
             </span>
           )}

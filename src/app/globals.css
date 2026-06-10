@@ -58,6 +58,10 @@
     --ring: 0 0% 7%;
     --radius: 0.75rem;
 
+    /* Accent: a softer, muted blue in light mode (violet in dark, see .dark). */
+    --brand: 214 52% 54%;          /* #5587c4 calm steel blue     */
+    --brand-foreground: 0 0% 100%; /* text on a solid brand fill  */
+
     /* Surface helpers consumed by the monochrome utilities below */
     --line: 0 0% 0%;               /* hairlines / grid             */
     --line-strength: 0.08;
@@ -86,6 +90,10 @@
     --input: 0 0% 100% / 0.14;
     --ring: 0 0% 90%;
 
+    /* Violet accent in dark mode */
+    --brand: 255 100% 72%;         /* #8b7cff violet              */
+    --brand-foreground: 0 0% 100%;
+
     --line: 0 0% 100%;
     --line-strength: 0.07;
     --glass-bg: 0 0% 100% / 0.03;
@@ -108,13 +116,13 @@
   }
 
   ::selection {
-    background: hsl(var(--foreground));
-    color: hsl(var(--background));
+    background: hsl(var(--brand));
+    color: hsl(var(--brand-foreground));
   }
 
   /* Visible keyboard focus everywhere */
   :focus-visible {
-    outline: 2px solid hsl(var(--foreground));
+    outline: 2px solid hsl(var(--brand));
     outline-offset: 2px;
     border-radius: 6px;
   }
@@ -150,12 +158,12 @@
     letter-spacing: -0.025em;
   }
 
-  /* Monochrome "gradient" text: ink → mid-gray. Stays grayscale in both modes. */
+  /* Accent gradient text: brand → softer brand. Theme-aware via --brand. */
   .gradient-text {
     background: linear-gradient(
-      180deg,
-      hsl(var(--foreground)) 0%,
-      hsl(var(--foreground) / 0.55) 100%
+      120deg,
+      hsl(var(--brand)) 0%,
+      hsl(var(--brand) / 0.7) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -224,28 +232,18 @@
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
-      hsl(var(--foreground) / 0.05) 60deg,
-      hsl(var(--foreground)) 110deg,
-      hsl(var(--foreground) / 0.05) 160deg,
+      hsl(var(--brand) / 0.05) 60deg,
+      hsl(var(--brand)) 110deg,
+      hsl(var(--brand) / 0.05) 160deg,
       transparent 220deg
     );
     animation: border-spin 4s linear infinite;
   }
-  .dark .moving-border-wrap::before {
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      hsl(0 0% 100% / 0.05) 60deg,
-      hsl(0 0% 100%) 110deg,
-      hsl(0 0% 100% / 0.05) 160deg,
-      transparent 220deg
-    );
-  }
 
-  /* Decrypt-text flicker: a glyph briefly desaturates/dims as it scrambles */
+  /* Decrypt-text: scrambling glyphs glow in the accent, then lock to ink. */
   .decrypt-scrambling {
-    color: hsl(var(--muted-foreground));
-    opacity: 0.85;
+    color: hsl(var(--brand));
+    opacity: 0.95;
   }
 
   /* Card spotlight: radial glow follows the cursor (vars set in JS) */
@@ -262,7 +260,7 @@
     transition: opacity 280ms ease;
     background: radial-gradient(
       240px circle at var(--mx, 50%) var(--my, 50%),
-      hsl(var(--foreground) / 0.09),
+      hsl(var(--brand) / 0.14),
       transparent 70%
     );
   }

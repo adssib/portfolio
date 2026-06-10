@@ -108,7 +108,7 @@ export function Projects() {
               <Database className="h-3.5 w-3.5" />
               April 2026
             </div>
-            <h3 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+            <h3 className="gradient-text font-display text-2xl font-semibold tracking-tight md:text-3xl">
               AskDB
             </h3>
             <p className="text-sm text-muted-foreground md:text-[0.95rem]">
@@ -190,7 +190,7 @@ export function Projects() {
             <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </div>
           <div>
-            <h3 className="font-display text-lg font-semibold tracking-tight">
+            <h3 className="font-display text-lg font-semibold tracking-tight text-brand">
               More projects, shipping soon
             </h3>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -214,7 +214,7 @@ export function Projects() {
             <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </div>
           <div>
-            <h3 className="font-display text-lg font-semibold tracking-tight">
+            <h3 className="font-display text-lg font-semibold tracking-tight text-brand">
               All repositories
             </h3>
             <p className="mt-1 text-sm text-muted-foreground">

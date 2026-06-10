@@ -32,7 +32,7 @@ export function Hero() {
         className="relative z-10 flex flex-col gap-6 sm:gap-8"
       >
         <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full glass px-3 py-1.5 text-[11px] text-muted-foreground sm:text-xs">
-          <Sparkles className="h-3.5 w-3.5 shrink-0 text-foreground" />
+          <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand" />
           <span className="truncate">
             Available for new grad SWE / ML roles · Spring 2027
           </span>

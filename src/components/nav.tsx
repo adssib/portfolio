@@ -22,7 +22,7 @@ export function Nav() {
             aria-label="Back to top, Adib Akkari"
             className="font-mono text-sm font-medium tracking-tight"
           >
-            adib<span className="text-muted-foreground">.akkari</span>
+            adib<span className="text-brand">.akkari</span>
           </Link>
           <div className="flex items-center gap-1">
             <nav
@@ -33,7 +33,7 @@ export function Nav() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
+                  className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-brand/10 hover:text-brand"
                 >
                   {l.label}
                 </Link>
