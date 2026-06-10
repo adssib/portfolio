@@ -34,6 +34,8 @@ type DecryptTextProps = {
   startDelay?: number;
   /** keep an occasional re-run going after the decode */
   glitch?: boolean;
+  /** gate the decode — flip to true to begin (e.g. when scrolled into view) */
+  start?: boolean;
 };
 
 export function DecryptText({
@@ -45,6 +47,7 @@ export function DecryptText({
   startDelay = 0,
   glitch = true,
   mono = true,
+  start = true,
 }: DecryptTextProps) {
   // SSR + first client render show the real text → no hydration mismatch, SEO-safe.
   const [display, setDisplay] = useState(text);
@@ -52,6 +55,13 @@ export function DecryptText({
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
+    // Not started yet (gated until scrolled into view): show real text, wait.
+    if (!start) {
+      setDisplay(text);
+      setDone(true);
+      return;
+    }
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setDisplay(text);
       setDone(true);
@@ -109,7 +119,7 @@ export function DecryptText({
       timers.current.forEach(clearTimeout);
       timers.current = [];
     };
-  }, [text, charStep, refresh, startDelay, glitch]);
+  }, [text, charStep, refresh, startDelay, glitch, start]);
 
   return (
     <Tag
