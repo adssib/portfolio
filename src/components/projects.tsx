@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentType, SVGProps } from "react";
 import Link from "next/link";
 import { Database, Construction, Rocket, ArrowUpRight } from "lucide-react";
 
@@ -9,34 +10,30 @@ import { Button } from "@/components/ui/button";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GithubIcon } from "@/components/brand-icons";
+import projects from "@/content/projects.json";
 
-const tech = [
-  "Python",
-  "PyTorch",
-  "Llama 3 8B",
-  "QLoRA",
-  "Hugging Face",
-  "Flask",
-  "Next.js",
-  "TypeScript",
-];
+const TEASER_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
+  rocket: Rocket,
+  github: GithubIcon,
+};
 
 const constructionBadge =
   "inline-flex items-center gap-1.5 rounded-full border border-dashed border-foreground/25 bg-foreground/[0.04] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground";
 
 export function Projects() {
+  const f = projects.featured;
   return (
-    <Section id="projects" eyebrow="03 / Projects" title="Featured work">
+    <Section id="projects" eyebrow={projects.eyebrow} title={projects.title}>
       <SpotlightCard className="glass glass-hover relative overflow-hidden rounded-2xl">
         <div
           aria-hidden
           className={`pointer-events-none absolute right-4 top-4 z-10 hidden md:inline-flex ${constructionBadge}`}
         >
           <Construction className="h-3 w-3" />
-          Under construction
+          {f.status}
         </div>
         <div className="grid md:grid-cols-5">
-          {/* Screenshot placeholder — a dark terminal mockup */}
+          {/* Screenshot placeholder — a dark terminal mockup (decorative) */}
           <div className="relative md:col-span-3 md:border-r md:border-border">
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <div
@@ -106,38 +103,26 @@ export function Projects() {
           <div className="flex flex-col gap-5 p-6 md:col-span-2 md:p-8">
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
               <Database className="h-3.5 w-3.5" />
-              April 2026
+              {f.date}
             </div>
             <h3 className="gradient-text font-display text-2xl font-semibold tracking-tight md:text-3xl">
-              AskDB
+              {f.name}
             </h3>
             <p className="text-sm text-muted-foreground md:text-[0.95rem]">
-              A natural-language-to-SQL engine. Users provide a DDL schema and
-              query their database in plain English. Built on a fine-tuned
-              Llama 3 8B with QLoRA, trained on a unified pipeline of 134K
-              examples drawn from 5 sources.
+              {f.description}
             </p>
 
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="relative pl-5">
-                <span className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-foreground/40" />
-                Unified 134K NL-to-SQL examples across 5 datasets into one
-                training corpus.
-              </li>
-              <li className="relative pl-5">
-                <span className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-foreground/40" />
-                Fine-tuned Llama 3 8B with QLoRA (4-bit NF4, LoRA rank 16) on a
-                single GPU.
-              </li>
-              <li className="relative pl-5">
-                <span className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-foreground/40" />
-                Flask inference API + Next.js frontend with schema upload and
-                query history.
-              </li>
+              {f.bullets.map((b) => (
+                <li key={b} className="relative pl-5">
+                  <span className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-foreground/40" />
+                  {b}
+                </li>
+              ))}
             </ul>
 
             <div className="mt-2 flex flex-wrap gap-1.5">
-              {tech.map((t) => (
+              {f.tech.map((t) => (
                 <Badge
                   key={t}
                   variant="outline"
@@ -155,11 +140,7 @@ export function Projects() {
                   size="sm"
                   className="rounded-full bg-foreground text-background hover:bg-foreground/90"
                 >
-                  <Link
-                    href="https://github.com/adssib/AskDB"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <Link href={f.repo} target="_blank" rel="noreferrer">
                     <GithubIcon className="h-4 w-4" />
                     View on GitHub
                   </Link>
@@ -167,62 +148,43 @@ export function Projects() {
               </Magnetic>
               <span className={`md:hidden ${constructionBadge}`}>
                 <Construction className="h-3 w-3" />
-                Under construction
+                {f.status}
               </span>
             </div>
           </div>
         </div>
       </SpotlightCard>
 
-      {/* Up-next teaser cards balance the section while AskDB is in progress */}
+      {/* Up-next teaser cards */}
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <SpotlightCard
-          as={Link}
-          href="https://github.com/adssib"
-          target="_blank"
-          rel="noreferrer"
-          className="glass glass-hover group flex flex-col justify-between gap-4 rounded-2xl p-6"
-        >
-          <div className="flex items-center justify-between">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground">
-              <Rocket className="h-4 w-4" />
-            </span>
-            <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </div>
-          <div>
-            <h3 className="font-display text-lg font-semibold tracking-tight text-brand">
-              More projects, shipping soon
-            </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Side experiments in eval pipelines, agent tooling, and retrieval.
-              Track them on GitHub.
-            </p>
-          </div>
-        </SpotlightCard>
-
-        <SpotlightCard
-          as={Link}
-          href="https://github.com/adssib?tab=repositories"
-          target="_blank"
-          rel="noreferrer"
-          className="glass glass-hover group flex flex-col justify-between gap-4 rounded-2xl p-6"
-        >
-          <div className="flex items-center justify-between">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground">
-              <GithubIcon className="h-4 w-4" />
-            </span>
-            <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </div>
-          <div>
-            <h3 className="font-display text-lg font-semibold tracking-tight text-brand">
-              All repositories
-            </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Browse the full archive of class projects, scripts, and works in
-              progress on <span className="font-mono">github.com/adssib</span>.
-            </p>
-          </div>
-        </SpotlightCard>
+        {projects.teasers.map((teaser) => {
+          const Icon = TEASER_ICONS[teaser.icon] ?? Rocket;
+          return (
+            <SpotlightCard
+              as={Link}
+              key={teaser.title}
+              href={teaser.href}
+              target="_blank"
+              rel="noreferrer"
+              className="glass glass-hover group flex flex-col justify-between gap-4 rounded-2xl p-6"
+            >
+              <div className="flex items-center justify-between">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-semibold tracking-tight text-brand">
+                  {teaser.title}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {teaser.description}
+                </p>
+              </div>
+            </SpotlightCard>
+          );
+        })}
       </div>
     </Section>
   );

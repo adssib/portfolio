@@ -1,0 +1,31 @@
+{
+  "eyebrow": "03 / Projects",
+  "title": "Featured work",
+  "featured": {
+    "date": "April 2026",
+    "name": "AskDB",
+    "status": "Under construction",
+    "description": "A natural-language-to-SQL engine. Users provide a DDL schema and query their database in plain English. Built on a fine-tuned Llama 3 8B with QLoRA, trained on a unified pipeline of 134K examples drawn from 5 sources.",
+    "bullets": [
+      "Unified 134K NL-to-SQL examples across 5 datasets into one training corpus.",
+      "Fine-tuned Llama 3 8B with QLoRA (4-bit NF4, LoRA rank 16) on a single GPU.",
+      "Flask inference API + Next.js frontend with schema upload and query history."
+    ],
+    "tech": ["Python", "PyTorch", "Llama 3 8B", "QLoRA", "Hugging Face", "Flask", "Next.js", "TypeScript"],
+    "repo": "https://github.com/adssib/AskDB"
+  },
+  "teasers": [
+    {
+      "icon": "rocket",
+      "title": "More projects, shipping soon",
+      "description": "Side experiments in eval pipelines, agent tooling, and retrieval. Track them on GitHub.",
+      "href": "https://github.com/adssib"
+    },
+    {
+      "icon": "github",
+      "title": "All repositories",
+      "description": "Browse the full archive of class projects, scripts, and works in progress on github.com/adssib.",
+      "href": "https://github.com/adssib?tab=repositories"
+    }
+  ]
+}

@@ -57,6 +57,7 @@
     --input: 0 0% 0% / 0.12;
     --ring: 0 0% 7%;
     --radius: 0.75rem;
+    --font-jetbrains-mono: "JetBrains Mono";
 
     /* Accent: a softer, muted blue in light mode (violet in dark, see .dark). */
     --brand: 214 52% 54%;          /* #5587c4 calm steel blue     */
@@ -154,8 +155,8 @@
   }
 
   .font-display {
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    font-family: var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, monospace;
+    letter-spacing: -0.03em;
   }
 
   /* Accent gradient text: brand → softer brand. Theme-aware via --brand. */
@@ -271,4 +272,29 @@
 
 @keyframes border-spin {
   to { transform: rotate(360deg); }
+}
+
+/* Terminal block cursor */
+@keyframes term-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+.term-cursor {
+  animation: term-blink 1.05s step-end infinite;
+}
+
+/* Terminal output line fade-in */
+@keyframes term-line-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.term-line-in {
+  animation: term-line-in 160ms ease-out both;
+}
+
+/* Slim terminal scrollbar */
+.term-scroll::-webkit-scrollbar { width: 8px; }
+.term-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
 }

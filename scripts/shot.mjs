@@ -30,7 +30,7 @@ async function capture(theme) {
   });
 
   // section shots where the accent now shows
-  for (const id of ["skills"]) {
+  for (const id of ["about", "experience"]) {
     await page.evaluate((sel) => {
       document.querySelector(sel)?.scrollIntoView({ block: "start" });
     }, `#${id}`);

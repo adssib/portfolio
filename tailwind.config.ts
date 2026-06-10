@@ -61,9 +61,25 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
-        display: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        // Site-wide monospace. JetBrains Mono leads every stack; Geist is fallback.
+        sans: [
+          "var(--font-jetbrains-mono)",
+          "var(--font-geist-mono)",
+          "ui-monospace",
+          "monospace",
+        ],
+        mono: [
+          "var(--font-jetbrains-mono)",
+          "var(--font-geist-mono)",
+          "ui-monospace",
+          "monospace",
+        ],
+        display: [
+          "var(--font-jetbrains-mono)",
+          "var(--font-geist-mono)",
+          "ui-monospace",
+          "monospace",
+        ],
       },
       keyframes: {
         "fade-in-up": {

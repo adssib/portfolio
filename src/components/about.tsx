@@ -3,23 +3,19 @@
 import { Section } from "@/components/section";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { TextGenerate } from "@/components/ui/text-generate";
-
-const stats = [
-  { value: "130M+", label: "Users served by IAM platform" },
-  { value: "700K+", label: "Commits migrated with full history" },
-  { value: "20+ yrs", label: "Of source code rescued" },
-];
+import about from "@/content/about.json";
 
 export function About() {
   return (
-    <Section id="about" eyebrow="01 / About" title="A pragmatic builder">
+    <Section id="about" eyebrow={about.eyebrow} title={about.title}>
       <div className="grid gap-10 md:grid-cols-5">
         <div className="md:col-span-3 space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-          <TextGenerate text="Software Engineering student at Concordia, interning at Ericsson. I ship AI systems end-to-end: data pipelines, fine-tuning, APIs, and the UI that ties it all together." />
-          <TextGenerate text="I like problems where the legacy is messier than the spec. Reverse-engineering an undocumented VCS. Replacing brittle Selenium scrapers with direct API calls. Wiring a QLoRA fine-tuning run into a Next.js app so anyone can query their database in plain English." />
+          {about.paragraphs.map((p, i) => (
+            <TextGenerate key={i} text={p} />
+          ))}
         </div>
         <div className="md:col-span-2 grid grid-cols-1 gap-3">
-          {stats.map((s) => (
+          {about.stats.map((s) => (
             <SpotlightCard
               key={s.label}
               className="glass glass-hover rounded-xl px-5 py-4"

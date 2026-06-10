@@ -1,0 +1,13 @@
+{
+  "eyebrow": "06 / Contact",
+  "headingTop": "Let's build something",
+  "headingAccent": "worth building.",
+  "blurb": "I'm always open to interesting conversations: AI infra, full-stack systems, or just an introduction.",
+  "links": [
+    { "label": "Email", "value": "adibakkari@gmail.com", "href": "mailto:adibakkari@gmail.com", "icon": "email" },
+    { "label": "GitHub", "value": "github.com/adssib", "href": "https://github.com/adssib", "icon": "github" },
+    { "label": "LinkedIn", "value": "linkedin.com/in/adib-akkari", "href": "https://linkedin.com/in/adib-akkari", "icon": "linkedin" }
+  ],
+  "footerName": "Adib Akkari. Montréal, QC.",
+  "footerBuilt": "Built with Next.js · Tailwind · Framer Motion"
+}

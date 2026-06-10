@@ -1,0 +1,83 @@
+{
+  "prompt": { "user": "adib", "host": "portfolio" },
+  "launcher": { "name": "adib", "ext": ".sh", "hint": "psst… try my terminal →" },
+  "welcome": {
+    "title": "adib.sh",
+    "note": "— interactive portfolio terminal",
+    "hint": "type help to explore, or whoami to start."
+  },
+  "whoami": {
+    "name": "Adib Akkari",
+    "role": "Software Engineer",
+    "tail": "building AI systems end-to-end."
+  },
+  "about": [
+    "Software Engineering student at Concordia, interning at Ericsson.",
+    "I ship AI systems end-to-end: data pipelines, fine-tuning, APIs, and the UI that ties it together. I like problems where the legacy is messier than the spec."
+  ],
+  "experience": [
+    {
+      "company": "Ericsson",
+      "meta": "· SWE Intern · Jan 2026 → Aug 2026",
+      "summary": "Cloud-native IAM platform (auth for 130M+ users); 20+ CI/CD pipelines; cut report time ~33% via direct Grafana API."
+    },
+    {
+      "company": "Novatek International",
+      "meta": "· SWE Intern · Jan 2024 → Jan 2026",
+      "summary": "Rescued 20+ yrs of source; migrated 700K+ commits by reverse-engineering an undocumented VCS."
+    }
+  ],
+  "skills": [
+    { "k": "lang", "v": "Python · Java · TypeScript · Bash · SQL" },
+    { "k": "ai/ml", "v": "PyTorch · Hugging Face · LoRA/QLoRA · fine-tuning" },
+    { "k": "cloud", "v": "AWS · Docker · Kubernetes · Helm · Jenkins · GitLab CI" },
+    { "k": "data", "v": "MySQL · MongoDB · Cassandra · Neo4j · Redis" }
+  ],
+  "projects": [
+    {
+      "name": "AskDB",
+      "tagline": "— natural-language-to-SQL engine",
+      "lines": [
+        "Fine-tuned Llama 3 8B w/ QLoRA on 134K examples; Flask API + Next.js UI.",
+        "→ github.com/adssib/AskDB"
+      ]
+    }
+  ],
+  "education": {
+    "degree": "B.Eng, Software Engineering",
+    "school": "Concordia University",
+    "meta": "· 2022–2027 · Montréal, QC"
+  },
+  "certs": [
+    { "name": "Deep Learning Specialization", "issuer": "· DeepLearning.AI (Andrew Ng)" },
+    { "name": "Anthropic Developer Certifications", "issuer": "· 4 modules" }
+  ],
+  "contact": [
+    { "k": "email", "v": "adibakkari@gmail.com" },
+    { "k": "github", "v": "github.com/adssib" },
+    { "k": "linkedin", "v": "linkedin.com/in/adib-akkari" }
+  ],
+  "neofetch": {
+    "art": " █████╗  █████╗\n██╔══██╗██╔══██╗\n███████║███████║\n██╔══██║██╔══██║\n██║  ██║██║  ██║\n╚═╝  ╚═╝╚═╝  ╚═╝",
+    "info": [
+      ["os", "Arch Linux x86_64"],
+      ["host", "Framework Laptop (custom build)"],
+      ["role", "Software Engineer · AI systems"],
+      ["edu", "B.Eng Software Eng · Concordia (2022–2027)"],
+      ["now", "SWE Intern @ Ericsson"],
+      ["stack", "Python · PyTorch · Next.js · K8s"],
+      ["loc", "Montréal, QC"],
+      ["link", "github.com/adssib"]
+    ]
+  },
+  "eggs": {
+    "sudoUsage": "usage: sudo <command> — though nice try 😏",
+    "rmRemoving": "removing portfolio… experience… AskDB… coffee… ☕",
+    "rmPsych": "psych 😄",
+    "rmPsychTail": "— nothing was deleted. it's a read-only flex zone.",
+    "rmSafe": "everything here is load-bearing.",
+    "hireTitle": "$ ./hire-adib.sh",
+    "hireBody": "Excellent choice. Run resume for the CV, or contact to reach out — I reply fast. ☕",
+    "coffee": "      ( (\n       ) )\n    ........\n    |      |]   brewing… fueled by caffeine & curiosity\n    \\      /\n     '----'"
+  }
+}

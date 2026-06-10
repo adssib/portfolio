@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+// Site-wide monospace — JetBrains Mono, self-hosted via @fontsource (no CDN).
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/600.css";
+import "@fontsource/jetbrains-mono/700.css";
 import { Background } from "@/components/background";
 import { MotionProvider } from "@/components/motion-provider";
 import "./globals.css";

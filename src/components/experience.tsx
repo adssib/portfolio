@@ -3,80 +3,18 @@
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
-
-type Group = { heading: string; bullets: string[] };
-
-type Role = {
-  company: string;
-  title: string;
-  period: string;
-  location: string;
-  current?: boolean;
-  groups: Group[];
-  tags: string[];
-};
-
-const roles: Role[] = [
-  {
-    company: "Ericsson",
-    title: "Software Developer Intern",
-    period: "Jan 2026 → Aug 2026",
-    location: "Montréal, QC",
-    current: true,
-    groups: [
-      {
-        heading: "DevOps & Infrastructure",
-        bullets: [
-          "Owned daily reliability of 20+ release-critical CI/CD pipelines, driving cross-team RCA and eliminating false positives through pipeline enhancements.",
-          "Documented failure patterns to reduce mean resolution time across QA and LSV teams.",
-          "Cut performance and stability report generation time by up to 33% by replacing Selenium UI extraction with direct Grafana API calls.",
-        ],
-      },
-      {
-        heading: "Software Development & Testing",
-        bullets: [
-          "Shipped features across a cloud-native IAM platform handling auth for 130M+ users, with unit, component, performance and functional coverage.",
-          "Benchmarked 15+ OAuth APIs and Kafka event pipelines using JMeter with controlled pod isolation (HPA limiting, synthetic data, scaled dependencies).",
-          "Built internal AI agent skills automating performance testing, report generation, and knowledge-sharing workflows across QA/LSV teams.",
-        ],
-      },
-    ],
-    tags: ["Java", "Kubernetes", "Helm", "JMeter", "Grafana", "Kafka", "Jenkins"],
-  },
-  {
-    company: "Novatek International",
-    title: "Software Developer Intern",
-    period: "Jan 2024 → Jan 2026",
-    location: "Montréal, QC",
-    groups: [
-      {
-        heading: "",
-        bullets: [
-          "Led end-to-end planning and delivery of a mission-critical VCS migration involving IT, QA, and senior VPs.",
-          "Rescued 20+ years of source code and 200,000+ files from an unstable legacy VCS.",
-          "Engineered an internal migration tool transferring 700,000+ commits with full history, tags, and ACLs by reverse-engineering an undocumented system.",
-          "Deployed VisualSVN into CI/CD and built an SVN-to-GitLab CLI tool enabling the company's transition to Git.",
-        ],
-      },
-    ],
-    tags: ["Python", "Bash", "PowerShell", "SVN", "GitLab CI", "VisualSVN"],
-  },
-];
+import experience from "@/content/experience.json";
 
 export function Experience() {
   return (
-    <Section
-      id="experience"
-      eyebrow="02 / Experience"
-      title="Where I've shipped"
-    >
+    <Section id="experience" eyebrow={experience.eyebrow} title={experience.title}>
       <div className="relative">
         <div
           aria-hidden
           className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-foreground/30 via-foreground/10 to-foreground/20 md:left-[9px]"
         />
         <ol className="space-y-8">
-          {roles.map((role) => (
+          {experience.roles.map((role) => (
             <li key={role.company} className="relative pl-10 md:pl-12">
               <span
                 aria-hidden

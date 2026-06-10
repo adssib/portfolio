@@ -1,0 +1,29 @@
+{
+  "eyebrow": "04 / Certifications",
+  "title": "Continued learning",
+  "certs": [
+    {
+      "name": "Deep Learning Specialization",
+      "issuer": "DeepLearning.AI · Coursera · Andrew Ng",
+      "date": "Jan 2026",
+      "courses": [
+        { "title": "Neural Networks and Deep Learning", "subtitle": "Forward/back-prop, activations, foundations of DNNs." },
+        { "title": "Improving Deep Neural Networks", "subtitle": "Hyperparameter tuning, regularization, optimization (Adam, batch norm)." },
+        { "title": "Structuring Machine Learning Projects", "subtitle": "Error analysis, train/dev/test strategy, transfer learning." },
+        { "title": "Convolutional Neural Networks", "subtitle": "Conv layers, ResNets, object detection, neural style transfer." },
+        { "title": "Sequence Models", "subtitle": "RNNs, LSTMs, attention, transformers, word embeddings." }
+      ]
+    },
+    {
+      "name": "Anthropic Developer Certifications",
+      "issuer": "Anthropic · 4 modules",
+      "date": "Apr 2026",
+      "courses": [
+        { "title": "Claude Code", "subtitle": "Agentic CLI workflows, project context, slash commands, hooks." },
+        { "title": "Subagents", "subtitle": "Delegated agents, parallelism, isolation, tool scoping." },
+        { "title": "Claude Skills", "subtitle": "Authoring reusable skills, structured outputs, prompt patterns." },
+        { "title": "Model Context Protocol (MCP)", "subtitle": "Building servers, exposing tools/resources, client integration." }
+      ]
+    }
+  ]
+}

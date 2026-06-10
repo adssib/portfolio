@@ -7,6 +7,8 @@ import { Download, MapPin, Sparkles } from "lucide-react";
 import { DecryptText } from "@/components/ui/decrypt-text";
 import { MovingBorderButton } from "@/components/ui/moving-border-button";
 import { Magnetic } from "@/components/ui/magnetic";
+import { RichText } from "@/components/ui/rich-text";
+import profile from "@/content/profile.json";
 
 export function Hero() {
   return (
@@ -33,42 +35,36 @@ export function Hero() {
       >
         <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full glass px-3 py-1.5 text-[11px] text-muted-foreground sm:text-xs">
           <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand" />
-          <span className="truncate">
-            Available for new grad SWE / ML roles · Spring 2027
-          </span>
+          <span className="truncate">{profile.availability}</span>
         </div>
 
         <h1 className="font-display text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          <DecryptText text="Adib Akkari." startDelay={120} />
+          <DecryptText text={profile.name} startDelay={120} />
           <br />
           <DecryptText
             className="text-foreground"
-            text="Software Engineer"
+            text={profile.role}
             startDelay={420}
           />{" "}
-          building <span className="text-muted-foreground">AI systems</span>{" "}
-          end-to-end.
+          <RichText
+            text={profile.headlineSuffix}
+            markClass="text-muted-foreground"
+          />
         </h1>
 
         <p className="max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-          I build production AI systems and full-stack apps. Currently interning
-          at <span className="text-foreground">Ericsson</span> on a cloud-native
-          IAM platform serving{" "}
-          <span className="text-foreground">130M+ users</span>. Previously
-          rescued 20+ years of source code at Novatek through a custom VCS
-          migration. Recently fine-tuned Llama 3 8B with QLoRA to build AskDB, a
-          natural-language-to-SQL engine.
+          <RichText text={profile.summary} markClass="text-foreground" />
         </p>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <Magnetic className="w-full sm:w-auto">
             <MovingBorderButton
-              href="/cv.pdf"
+              href={profile.cv}
               external
               ariaLabel="View CV (opens PDF in new tab)"
             >
               <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-              View CV
+              {profile.cta.primary}
             </MovingBorderButton>
           </Magnetic>
 
@@ -77,7 +73,7 @@ export function Hero() {
               href="#contact"
               className="inline-flex h-11 w-full items-center justify-center rounded-full border border-foreground/15 bg-transparent px-7 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04] sm:w-auto"
             >
-              Get in touch
+              {profile.cta.secondary}
             </Link>
           </Magnetic>
         </div>
@@ -85,12 +81,10 @@ export function Hero() {
         <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-2">
             <MapPin className="h-4 w-4" />
-            Montréal, QC
+            {profile.location}
           </span>
           <span className="hidden h-1 w-1 rounded-full bg-foreground/20 md:inline-block" />
-          <span>
-            B.Eng Software Engineering · Concordia University · 2022–2027
-          </span>
+          <span>{profile.education}</span>
         </div>
       </motion.div>
     </section>
