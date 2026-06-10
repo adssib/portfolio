@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 
 /**
  * Encrypted / decrypt text effect (adapted from Aceternity UI).
- * Resolves one word at a time, left to right ("train" cadence): every word
- * stays scrambled until its turn, then locks to the real text while the
- * remaining words keep churning. The glyph churn is deliberately slow so each
- * change is readable, not a blur. After it settles, an occasional, calm
+ * Decodes left-to-right one character at a time, like an infection spreading:
+ * characters behind the "front" are locked to the real text, the rest churn
+ * through random cipher glyphs (and keep cycling until the front reaches them).
+ * Deliberately slow so each step reads. After it settles, an occasional calm
  * re-run keeps it alive.
  *
  * Accessibility: the real string is exposed via aria-label and the animated
@@ -20,23 +20,19 @@ const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>/?{}[]=+-";
 
 const randGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
 
-const scrambleWord = (word: string) =>
-  word
-    .split("")
-    .map(() => randGlyph())
-    .join("");
-
 type DecryptTextProps = {
   text: string;
   className?: string;
   as?: React.ElementType;
-  /** ms each word stays scrambling before it locks (train cadence) */
-  wordDelay?: number;
-  /** ms between glyph changes while scrambling — higher = slower/calmer */
+  /** ms the decode "front" takes to advance one character (lower = faster) */
+  charStep?: number;
+  /** render in monospace so cipher glyphs line up exactly (no slicing/bleed) */
+  mono?: boolean;
+  /** ms between cipher-glyph changes for not-yet-decoded characters */
   refresh?: number;
-  /** delay before the reveal starts; glyphs scramble during the wait (ms) */
+  /** delay before the decode starts; glyphs churn during the wait (ms) */
   startDelay?: number;
-  /** keep an occasional re-run going after the reveal */
+  /** keep an occasional re-run going after the decode */
   glitch?: boolean;
 };
 
@@ -44,10 +40,11 @@ export function DecryptText({
   text,
   className,
   as: Tag = "span",
-  wordDelay = 420,
-  refresh = 120,
+  charStep = 180,
+  refresh = 55,
   startDelay = 0,
   glitch = true,
+  mono = true,
 }: DecryptTextProps) {
   // SSR + first client render show the real text → no hydration mismatch, SEO-safe.
   const [display, setDisplay] = useState(text);
@@ -61,31 +58,33 @@ export function DecryptText({
       return;
     }
 
-    const words = text.split(" ");
     let active = true;
     const push = (id: number) => timers.current.push(id);
 
-    const render = (lockedWords: number) =>
-      setDisplay(
-        words
-          .map((w, i) => (i < lockedWords ? w : scrambleWord(w)))
-          .join(" ")
-      );
+    // Render with the decode front at `front`: chars before it are real, the
+    // rest are random cipher glyphs (spaces always stay spaces).
+    const render = (front: number) => {
+      let out = "";
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        out += c === " " ? " " : i < front ? c : randGlyph();
+      }
+      setDisplay(out);
+    };
 
-    // Lock one word every `wordDelay`, churning the rest every `refresh`.
     const runReveal = (after?: () => void) => {
       const start = performance.now();
       setDone(false);
       const step = () => {
         if (!active) return;
-        const locked = Math.floor((performance.now() - start) / wordDelay);
-        if (locked >= words.length) {
+        const front = Math.floor((performance.now() - start) / charStep);
+        if (front >= text.length) {
           setDisplay(text);
           setDone(true);
           after?.();
           return;
         }
-        render(locked);
+        render(front);
         push(window.setTimeout(step, refresh));
       };
       step();
@@ -110,20 +109,22 @@ export function DecryptText({
       timers.current.forEach(clearTimeout);
       timers.current = [];
     };
-  }, [text, wordDelay, refresh, startDelay, glitch]);
+  }, [text, charStep, refresh, startDelay, glitch]);
 
   return (
-    <Tag className={cn("relative inline-block", className)} aria-label={text}>
+    <Tag
+      className={cn("relative inline-block", mono && "font-mono", className)}
+      aria-label={text}
+    >
       {/* Invisible real text reserves the final width so nothing reflows. */}
       <span className="invisible" aria-hidden>
         {text}
       </span>
-      {/* overflow-hidden clips wide scramble glyphs to the word's box so they
-          can't spill into the next word. (On the absolute layer only, so the
-          element's baseline is unaffected.) */}
+      {/* In monospace every glyph is the same width, so the cipher always lines
+          up exactly with the real text — no slicing, no bleed into the next word. */}
       <span
         className={cn(
-          "absolute inset-0 overflow-hidden whitespace-pre",
+          "absolute inset-0 whitespace-pre",
           !done && "decrypt-scrambling"
         )}
         aria-hidden
