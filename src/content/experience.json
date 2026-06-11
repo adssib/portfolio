@@ -4,7 +4,7 @@
   "roles": [
     {
       "company": "Ericsson",
-      "title": "Software Developer Intern",
+      "title": "Software Developer in Test Intern",
       "period": "Jan 2026 → Aug 2026",
       "location": "Montréal, QC",
       "current": true,
@@ -12,26 +12,27 @@
         {
           "heading": "DevOps & Infrastructure",
           "bullets": [
-            "Owned daily reliability of 20+ release-critical CI/CD pipelines, driving cross-team RCA and eliminating false positives through pipeline enhancements.",
-            "Documented failure patterns to reduce mean resolution time across QA and LSV teams.",
-            "Cut performance and stability report generation time by up to 33% by replacing Selenium UI extraction with direct Grafana API calls."
+            "Owned triage of 20+ release-critical CI/CD pipelines (Jenkins, Groovy, Python, Kubernetes, Helm), protecting the monthly customer upgrade image of an IAM platform serving 130M+ subscribers across 150+ integrated systems.",
+            "Cut performance-test report generation time by ~60% by replacing Selenium UI scraping with direct Grafana REST API calls in Python.",
+            "Removed a redundant ~2-hour DB schema-diff pipeline by folding it into an existing upgrade stage, preserving schema-drift detection.",
+            "Resolved customer-escalated and pipeline-blocking infrastructure issues — Kubernetes resource deadlocks, time-sync failures, rolling-upgrade CPU spikes — through systematic root-cause analysis."
           ]
         },
         {
-          "heading": "Software Development & Testing",
+          "heading": "Performance, Load & Stability Testing",
           "bullets": [
-            "Shipped features across a cloud-native IAM platform handling auth for 130M+ users, with unit, component, performance and functional coverage.",
-            "Benchmarked 15+ OAuth APIs and Kafka event pipelines using JMeter with controlled pod isolation (HPA limiting, synthetic data, scaled dependencies).",
-            "Built internal AI agent skills automating performance testing, report generation, and knowledge-sharing workflows across QA/LSV teams."
+            "Owned monthly stability and regression testing via 48-hour load runs, flagging 10% release-over-release regressions and routing them to microservice owners.",
+            "Benchmarked 20+ OAuth APIs and Kafka event pipelines (JMeter, Prometheus, Grafana) under controlled pod isolation: HPA capping, synthetic data, scaled dependencies.",
+            "Built internal CLI automation codifying performance- and stability-testing procedures and Jenkins workflows into reusable skill modules."
           ]
         }
       ],
-      "tags": ["Java", "Kubernetes", "Helm", "JMeter", "Grafana", "Kafka", "Jenkins"]
+      "tags": ["Python", "Kubernetes", "Helm", "Jenkins", "Groovy", "JMeter", "Prometheus", "Grafana", "Kafka"]
     },
     {
       "company": "Novatek International",
       "title": "Software Developer Intern",
-      "period": "Jan 2024 → Jan 2026",
+      "period": "Jan 2024 → Aug 2025",
       "location": "Montréal, QC",
       "current": false,
       "groups": [

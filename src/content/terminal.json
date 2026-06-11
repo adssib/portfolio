@@ -18,12 +18,12 @@
   "experience": [
     {
       "company": "Ericsson",
-      "meta": "· SWE Intern · Jan 2026 → Aug 2026",
-      "summary": "Cloud-native IAM platform (auth for 130M+ users); 20+ CI/CD pipelines; cut report time ~33% via direct Grafana API."
+      "meta": "· SDET Intern · Jan 2026 → Aug 2026",
+      "summary": "Cloud-native IAM platform (auth for 130M+ subscribers); 20+ CI/CD pipelines; cut report time ~60% via direct Grafana API."
     },
     {
       "company": "Novatek International",
-      "meta": "· SWE Intern · Jan 2024 → Jan 2026",
+      "meta": "· SWE Intern · Jan 2024 → Aug 2025",
       "summary": "Rescued 20+ yrs of source; migrated 700K+ commits by reverse-engineering an undocumented VCS."
     }
   ],
@@ -35,11 +35,19 @@
   ],
   "projects": [
     {
-      "name": "AskDB",
-      "tagline": "— natural-language-to-SQL engine",
+      "name": "get-equivalently-better-with-less-precision",
+      "tagline": "— PEFT research, from scratch",
       "lines": [
-        "Fine-tuned Llama 3 8B w/ QLoRA on 134K examples; Flask API + Next.js UI.",
-        "→ github.com/adssib/AskDB"
+        "Reimplemented LoRA & QLoRA in PyTorch; benchmarked on a single RTX 3090.",
+        "→ github.com/Omare04/get-equivalently-better-with-less-precision"
+      ]
+    },
+    {
+      "name": "PlayLocal",
+      "tagline": "— pickup-sports platform (capstone)",
+      "lines": [
+        "Spring Boot + Next.js; led backend & release engineering across 108 commits.",
+        "→ playlocal-capstone.netlify.app"
       ]
     }
   ],
@@ -72,7 +80,7 @@
   },
   "eggs": {
     "sudoUsage": "usage: sudo <command> — though nice try 😏",
-    "rmRemoving": "removing portfolio… experience… AskDB… coffee… ☕",
+    "rmRemoving": "removing portfolio… experience… playlocal… coffee… ☕",
     "rmPsych": "psych 😄",
     "rmPsychTail": "— nothing was deleted. it's a read-only flex zone.",
     "rmSafe": "everything here is load-bearing.",

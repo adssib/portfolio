@@ -3,7 +3,7 @@
   "role": "Software Engineer",
   "headlineSuffix": "building **AI systems** end-to-end.",
   "availability": "Available for new grad SWE / ML roles · Spring 2027",
-  "summary": "I build production AI systems and full-stack apps. Currently interning at **Ericsson** on a cloud-native IAM platform serving **130M+ users**. Previously rescued 20+ years of source code at Novatek through a custom VCS migration. Recently fine-tuned Llama 3 8B with QLoRA to build AskDB, a natural-language-to-SQL engine.",
+  "summary": "I build production AI systems and full-stack apps. Currently interning at **Ericsson** on a cloud-native IAM platform serving **130M+ subscribers** across 150+ integrated systems. Previously rescued 20+ years of source code at Novatek through a custom VCS migration. Recently reproduced LoRA & QLoRA from scratch and benchmarked them on a single GPU.",
   "location": "Montréal, QC",
   "education": "B.Eng Software Engineering · Concordia University · 2022–2027",
   "cv": "/cv.pdf",

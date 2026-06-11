@@ -3,7 +3,7 @@
   "title": "A pragmatic builder",
   "paragraphs": [
     "Software Engineering student at Concordia, interning at Ericsson. I ship AI systems end-to-end: data pipelines, fine-tuning, APIs, and the UI that ties it all together.",
-    "I like problems where the legacy is messier than the spec. Reverse-engineering an undocumented VCS. Replacing brittle Selenium scrapers with direct API calls. Wiring a QLoRA fine-tuning run into a Next.js app so anyone can query their database in plain English."
+    "I like problems where the legacy is messier than the spec. Reverse-engineering an undocumented VCS. Replacing brittle Selenium scrapers with direct API calls. Reimplementing LoRA from scratch because I wanted to check the paper's numbers myself."
   ],
   "stats": [
     { "value": "130M+", "label": "Users served by IAM platform" },
