@@ -28,7 +28,7 @@ export function Skills() {
                   >
                     <Icon
                       aria-hidden
-                      className="h-4 w-4 shrink-0 opacity-80 grayscale transition-all duration-200 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
+                      className="h-4 w-4 shrink-0 opacity-80 saturate-[0.45] transition-all duration-200 group-hover:scale-110 group-hover:opacity-100 group-hover:saturate-100"
                       style={{ color: item.color }}
                     />
                     <span className="text-foreground/90">{item.label}</span>

@@ -1,19 +1,42 @@
 {
   "eyebrow": "03 / Projects",
   "title": "Featured work",
-  "featured": {
-    "date": "April 2026",
-    "name": "AskDB",
-    "status": "Under construction",
-    "description": "A natural-language-to-SQL engine. Users provide a DDL schema and query their database in plain English. Built on a fine-tuned Llama 3 8B with QLoRA, trained on a unified pipeline of 134K examples drawn from 5 sources.",
-    "bullets": [
-      "Unified 134K NL-to-SQL examples across 5 datasets into one training corpus.",
-      "Fine-tuned Llama 3 8B with QLoRA (4-bit NF4, LoRA rank 16) on a single GPU.",
-      "Flask inference API + Next.js frontend with schema upload and query history."
-    ],
-    "tech": ["Python", "PyTorch", "Llama 3 8B", "QLoRA", "Hugging Face", "Flask", "Next.js", "TypeScript"],
-    "repo": "https://github.com/adssib/AskDB"
-  },
+  "spotlights": [
+    {
+      "date": "Nov 2025",
+      "name": "Get equivalently better with less precision",
+      "status": "Research",
+      "tagline": "PEFT methods — LoRA & QLoRA — reproduced from scratch · COMP 433",
+      "description": "Two-person deep-learning research project: instead of trusting the papers' numbers, we reimplemented parameter-efficient fine-tuning methods from scratch and benchmarked them on a single RTX 3090.",
+      "bullets": [
+        "Implemented LoRA adapters by hand — modifying Q/K/V projections in PyTorch — and QLoRA (4-bit NF4) for single-GPU fine-tuning of GPT-Neo and Qwen2.5.",
+        "Benchmarked accuracy, F1, and VRAM across SST-2, SQuAD v1.1, Wikitext-2, and AlpacaEval — rank-8 LoRA cut GPT-2 perplexity from 54.3 to 31.6.",
+        "Full research writeup: proposal, progress report, and final report with training-loss analysis."
+      ],
+      "tech": ["PyTorch", "Hugging Face PEFT", "bitsandbytes", "QLoRA", "Qwen2.5"],
+      "links": [
+        { "type": "github", "label": "View on GitHub", "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision" },
+        { "type": "pdf", "label": "Read the report", "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision/blob/main/FinalReport_QLoRA.pdf" }
+      ]
+    },
+    {
+      "date": "2025–2026",
+      "name": "PlayLocal",
+      "status": "Live",
+      "tagline": "Location-based platform for organizing local pickup sports",
+      "description": "Find a game nearby, see who's in, and actually show up. Team capstone built production-shaped: quality gates, coverage tracking, and a real deploy pipeline. I led backend and release engineering across 108 commits.",
+      "bullets": [
+        "Spring Boot backend: auth profiles, Flyway DB migrations, transactional email (Brevo), and CI test configuration.",
+        "Reviewed and merged feature work from an AI assistant with knowledge-grounded, user-aware answers to weather forecasts for upcoming games.",
+        "Production pipeline: SonarCloud quality gate + Codecov, deployed on Netlify and Render with Neon Postgres."
+      ],
+      "tech": ["Java", "Spring Boot", "Next.js", "TypeScript", "PostgreSQL", "Netlify", "Render"],
+      "links": [
+        { "type": "live", "label": "Visit the live site", "href": "https://playlocal-capstone.netlify.app/" },
+        { "type": "github", "label": "View on GitHub", "href": "https://github.com/TeamCappin/PlayLocal" }
+      ]
+    }
+  ],
   "teasers": [
     {
       "icon": "rocket",

@@ -23,11 +23,12 @@
       ]
     },
     {
-      "label": "Testing",
+      "label": "Testing & Observability",
       "items": [
         { "label": "JMeter", "icon": "jmeter", "color": "#D22128" },
         { "label": "Selenium", "icon": "selenium", "color": "#43B02A" },
         { "label": "Grafana", "icon": "grafana", "color": "#F46800" },
+        { "label": "Prometheus", "icon": "prometheus", "color": "#E6522C" },
         { "label": "JUnit", "icon": "junit", "color": "#25A162" }
       ]
     },
