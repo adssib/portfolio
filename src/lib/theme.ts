@@ -43,8 +43,9 @@ export function toggleTheme(origin?: { x: number; y: number }): boolean {
           ],
         },
         {
-          duration: 600,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          // Long and ease-in-out so the sweep itself reads, not just the result
+          duration: 1300,
+          easing: "cubic-bezier(0.45, 0, 0.25, 1)",
           pseudoElement: "::view-transition-new(root)",
         }
       );
