@@ -32,6 +32,12 @@ export function toggleTheme(origin?: { x: number; y: number }): boolean {
     Math.max(y, window.innerHeight - y)
   );
 
+  // The CSS pre-clips ::view-transition-new(root) to a 0px circle at this
+  // point, so the new theme can't flash fullscreen on the frames before the
+  // animation below attaches.
+  root.style.setProperty("--wipe-x", `${x}px`);
+  root.style.setProperty("--wipe-y", `${y}px`);
+
   doc
     .startViewTransition(apply)
     .ready.then(() => {
