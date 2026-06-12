@@ -275,11 +275,16 @@
 }
 
 /* Theme switch circle wipe: the JS animates a clip-path on the new snapshot
-   (src/lib/theme.ts), so the default cross-fade must not fight it. */
+   (src/lib/theme.ts), so the default cross-fade must not fight it. The new
+   snapshot starts fully clipped (0px circle at the toggle position) so the
+   new theme can't flash fullscreen before the JS animation attaches. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  clip-path: circle(0px at var(--wipe-x, 50%) var(--wipe-y, 50%));
 }
 
 /* Terminal block cursor */
