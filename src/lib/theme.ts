@@ -52,6 +52,9 @@ export function toggleTheme(origin?: { x: number; y: number }): boolean {
           // Long and ease-in-out so the sweep itself reads, not just the result
           duration: 1300,
           easing: "cubic-bezier(0.45, 0, 0.25, 1)",
+          // Hold the final frame: without this the clip snaps back to the 0px
+          // CSS value when the animation ends, flashing the old theme.
+          fill: "forwards",
           pseudoElement: "::view-transition-new(root)",
         }
       );
