@@ -5,7 +5,7 @@
  * Honors prefers-reduced-motion with an instant jump.
  */
 
-// Matches the sections' scroll-mt-24 (96px): 64px fixed header + breathing room.
+// 64px fixed header + breathing room.
 const HEADER_OFFSET = 96;
 
 export function scrollToHash(href: string) {
@@ -17,10 +17,18 @@ export function scrollToHash(href: string) {
   // instantly so the reader doesn't land on mid-scramble cipher text.
   window.dispatchEvent(new CustomEvent("portfolio:jump", { detail: id }));
 
+  // Sections carry large top padding (py-16…py-32), so anchoring to the
+  // section edge strands the reader in empty space. Anchor to the heading
+  // block (eyebrow + title) instead, so it lands right under the nav.
+  const heading = el.querySelector("h2");
+  const anchor = (heading?.parentElement ?? el) as HTMLElement;
+
   const destination = () =>
     Math.max(
       0,
-      Math.round(el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET)
+      Math.round(
+        anchor.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
+      )
     );
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
