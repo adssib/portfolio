@@ -274,6 +274,14 @@
   to { transform: rotate(360deg); }
 }
 
+/* Theme switch circle wipe: the JS animates a clip-path on the new snapshot
+   (src/lib/theme.ts), so the default cross-fade must not fight it. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* Terminal block cursor */
 @keyframes term-blink {
   0%, 50% { opacity: 1; }

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Maximize2, Minimize2, X, TerminalSquare } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { toggleTheme } from "@/lib/theme";
 import t from "@/content/terminal.json";
 
 /* ────────────────────────────────────────────────────────────────────────
@@ -59,13 +60,14 @@ const COMMANDS = [
   "rm",
   "hire",
   "coffee",
+  "theme",
   "history",
   "exit",
 ];
 
 type RunResult = {
   output?: React.ReactNode;
-  action?: "clear" | "open-cv" | "close";
+  action?: "clear" | "open-cv" | "close" | "theme";
 };
 
 function neofetch(): React.ReactNode {
@@ -122,6 +124,7 @@ function runCommand(raw: string): RunResult {
                 ["resume", "open my CV"],
                 ["social", "links"],
                 ["neofetch", "the flex"],
+                ["theme", "flip dark/light"],
                 ["clear", "wipe screen"],
               ].map(([name, desc]) => (
                 <Row key={name}>
@@ -132,7 +135,7 @@ function runCommand(raw: string): RunResult {
             </div>
             <Row>
               <Dim className="mt-1 block">
-                tip: ↑/↓ history · Tab to autocomplete · Esc to minimize
+                tip: ↑/↓ history · Tab to autocomplete · ` toggles me · Esc to minimize
               </Dim>
             </Row>
           </div>
@@ -367,6 +370,10 @@ function runCommand(raw: string): RunResult {
           <pre className="text-[hsl(var(--brand))]">{t.eggs.coffee}</pre>
         ),
       };
+    case "theme":
+    case "dark":
+    case "light":
+      return { action: "theme" };
     case "history":
       return {
         output: (
@@ -457,6 +464,25 @@ export function Terminal() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mode, close]);
 
+  // Quake-style hotkey: ` toggles the terminal from anywhere. The terminal's
+  // own input is the only editable element on the page, and no command needs a
+  // literal backtick, so the toggle is allowed even while it has focus.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "`" || e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      const editable =
+        el &&
+        (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable);
+      if (editable && el !== inputRef.current) return;
+      e.preventDefault();
+      if (mode === "closed") open();
+      else close();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mode, open, close]);
+
   const submit = () => {
     const value = input;
     const trimmed = value.trim();
@@ -485,6 +511,17 @@ export function Terminal() {
     if (action === "open-cv") {
       if (output) push(output);
       window.open("/cv.pdf", "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (action === "theme") {
+      const isDark = toggleTheme();
+      push(
+        <Row>
+          <Dim>switched to </Dim>
+          <A>{isDark ? "dark" : "light"}</A>
+          <Dim>{isDark ? " mode — easy on the eyes 🌙" : " mode — bold choice ☀️"}</Dim>
+        </Row>
+      );
       return;
     }
     if (output) push(output);
