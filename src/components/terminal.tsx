@@ -111,7 +111,7 @@ function runCommand(raw: string): RunResult {
             <Row>
               <Dim>Available commands — try one:</Dim>
             </Row>
-            <div className="mt-1 grid grid-cols-2 gap-x-6 sm:grid-cols-3">
+            <div className="mt-1 flex flex-col gap-0.5">
               {[
                 ["whoami", "the short version"],
                 ["about", "who I am"],
@@ -127,15 +127,15 @@ function runCommand(raw: string): RunResult {
                 ["theme", "flip dark/light"],
                 ["clear", "wipe screen"],
               ].map(([name, desc]) => (
-                <Row key={name}>
-                  <A>{name.padEnd(11)}</A>
+                <div key={name} className="flex leading-relaxed">
+                  <A className="w-28 shrink-0">{name}</A>
                   <Dim>{desc}</Dim>
-                </Row>
+                </div>
               ))}
             </div>
             <Row>
               <Dim className="mt-1 block">
-                tip: ↑/↓ history · Tab to autocomplete · ` toggles me · Esc to minimize
+                tip: ↑/↓ history · Tab autocomplete · ` toggle · Esc minimize
               </Dim>
             </Row>
           </div>
