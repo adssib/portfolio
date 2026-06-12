@@ -13,6 +13,10 @@ export function scrollToHash(href: string) {
   const el = document.getElementById(id);
   if (!el) return;
 
+  // Tell the target section it's being jumped to: its heading decode completes
+  // instantly so the reader doesn't land on mid-scramble cipher text.
+  window.dispatchEvent(new CustomEvent("portfolio:jump", { detail: id }));
+
   const destination = () =>
     Math.max(
       0,
