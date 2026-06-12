@@ -8,6 +8,7 @@ import { DecryptText } from "@/components/ui/decrypt-text";
 import { MovingBorderButton } from "@/components/ui/moving-border-button";
 import { Magnetic } from "@/components/ui/magnetic";
 import { RichText } from "@/components/ui/rich-text";
+import { scrollToHash } from "@/lib/scroll";
 import profile from "@/content/profile.json";
 
 export function Hero() {
@@ -71,6 +72,10 @@ export function Hero() {
           <Magnetic className="w-full sm:w-auto">
             <Link
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToHash("#contact");
+              }}
               className="inline-flex h-11 w-full items-center justify-center rounded-full border border-foreground/15 bg-transparent px-7 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04] sm:w-auto"
             >
               {profile.cta.secondary}

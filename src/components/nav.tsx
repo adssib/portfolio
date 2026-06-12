@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import { scrollToHash } from "@/lib/scroll";
 
 const links = [
   { href: "#about", label: "About" },
@@ -61,7 +62,11 @@ export function Nav() {
             href="#top"
             aria-label="Back to top, Adib Akkari"
             className="font-mono text-sm font-medium tracking-tight"
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setOpen(false);
+              scrollToHash("#top");
+            }}
           >
             adib<span className="text-brand">.akkari</span>
           </Link>
@@ -77,6 +82,10 @@ export function Nav() {
                     key={l.href}
                     href={l.href}
                     aria-current={isActive ? "true" : undefined}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToHash(l.href);
+                    }}
                     className={cn(
                       "rounded-full px-3 py-1.5 text-sm transition-colors",
                       isActive
@@ -122,7 +131,11 @@ export function Nav() {
                   <Link
                     key={l.href}
                     href={l.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpen(false);
+                      scrollToHash(l.href);
+                    }}
                     aria-current={isActive ? "true" : undefined}
                     className={cn(
                       "rounded-xl px-4 py-3 font-mono text-sm transition-colors",
