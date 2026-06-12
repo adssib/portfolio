@@ -15,7 +15,7 @@ const SITE_URL = "https://adssib.github.io/portfolio";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Adib Akkari · Software Engineer d",
+    default: "Adib Akkari · Software Engineer",
     template: "%s · Adib Akkari",
   },
   description:

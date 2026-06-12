@@ -1,6 +1,6 @@
 {
   "prompt": { "user": "adib", "host": "portfolio" },
-  "launcher": { "name": "adib", "ext": ".sh", "hint": "psst… try my terminal →" },
+  "launcher": { "name": "adib", "ext": ".sh", "hint": "psst… press ` or click →" },
   "welcome": {
     "title": "adib.sh",
     "note": "— interactive portfolio terminal",

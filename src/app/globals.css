@@ -274,6 +274,14 @@
   to { transform: rotate(360deg); }
 }
 
+/* Theme switch circle wipe: the JS animates a clip-path on the new snapshot
+   (src/lib/theme.ts), so the default cross-fade must not fight it. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* Terminal block cursor */
 @keyframes term-blink {
   0%, 50% { opacity: 1; }
@@ -292,9 +300,9 @@
   animation: term-line-in 160ms ease-out both;
 }
 
-/* Slim terminal scrollbar */
+/* Slim terminal scrollbar (theme-aware) */
 .term-scroll::-webkit-scrollbar { width: 8px; }
 .term-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.16);
+  background: hsl(var(--foreground) / 0.18);
   border-radius: 9999px;
 }

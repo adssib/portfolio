@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { DecryptText } from "@/components/ui/decrypt-text";
@@ -20,6 +20,17 @@ export function Section({ id, eyebrow, title, className, children }: SectionProp
   // reader actually reaches it.
   const ref = useRef<HTMLElement>(null);
   const entered = useInView(ref, { once: true, margin: "0px 0px 50% 0px" });
+
+  // Nav jumps land in under a second — too fast for the slow decode. When this
+  // section is the jump target (see scrollToHash), show the title instantly.
+  const [instant, setInstant] = useState(false);
+  useEffect(() => {
+    const onJump = (e: Event) => {
+      if ((e as CustomEvent<string>).detail === id) setInstant(true);
+    };
+    window.addEventListener("portfolio:jump", onJump);
+    return () => window.removeEventListener("portfolio:jump", onJump);
+  }, [id]);
 
   return (
     <motion.section
@@ -45,7 +56,8 @@ export function Section({ id, eyebrow, title, className, children }: SectionProp
             <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
               <DecryptText
                 text={title}
-                start={entered}
+                start={entered || instant}
+                instant={instant}
                 glitch={false}
                 className="text-foreground"
               />

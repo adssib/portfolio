@@ -1,8 +1,9 @@
 "use client";
 
 import type { ComponentType, SVGProps } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
-import { Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight, Copy, Check } from "lucide-react";
 
 import { Section } from "@/components/section";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
@@ -14,6 +15,43 @@ const ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   github: GithubIcon,
   linkedin: LinkedinIcon,
 };
+
+/** Copies `value` without following the card's link; flashes a check + label. */
+function CopyButton({ value }: { value: string }) {
+  const [copied, setCopied] = useState(false);
+  const timer = useRef<number>();
+
+  const copy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      window.clearTimeout(timer.current);
+      timer.current = window.setTimeout(() => setCopied(false), 1800);
+    } catch {}
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={copied ? "Copied" : `Copy ${value}`}
+      className="inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
+    >
+      {copied ? (
+        <>
+          <Check className="h-3.5 w-3.5 text-brand" />
+          <span className="font-mono text-[10px] uppercase tracking-wide text-brand">
+            copied
+          </span>
+        </>
+      ) : (
+        <Copy className="h-3.5 w-3.5" />
+      )}
+    </button>
+  );
+}
 
 export function Contact() {
   return (
@@ -42,7 +80,10 @@ export function Contact() {
               >
                 <div className="flex w-full items-center justify-between">
                   <Icon className="h-5 w-5 text-foreground" />
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <div className="flex items-center gap-1">
+                    {l.icon === "email" && <CopyButton value={l.value} />}
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </div>
                 </div>
                 <div>
                   <div className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Maximize2, Minimize2, X, TerminalSquare } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { toggleTheme } from "@/lib/theme";
 import t from "@/content/terminal.json";
 
 /* ────────────────────────────────────────────────────────────────────────
@@ -25,10 +26,10 @@ const A = ({ children, className }: SpanProps) => (
   <span className={cn("text-[hsl(var(--brand))]", className)}>{children}</span>
 );
 const Dim = ({ children, className }: SpanProps) => (
-  <span className={cn("text-zinc-500", className)}>{children}</span>
+  <span className={cn("text-muted-foreground", className)}>{children}</span>
 );
 const W = ({ children, className }: SpanProps) => (
-  <span className={cn("text-zinc-100", className)}>{children}</span>
+  <span className={cn("text-foreground", className)}>{children}</span>
 );
 
 function Row({ children }: { children: React.ReactNode }) {
@@ -59,13 +60,14 @@ const COMMANDS = [
   "rm",
   "hire",
   "coffee",
+  "theme",
   "history",
   "exit",
 ];
 
 type RunResult = {
   output?: React.ReactNode;
-  action?: "clear" | "open-cv" | "close";
+  action?: "clear" | "open-cv" | "close" | "theme";
 };
 
 function neofetch(): React.ReactNode {
@@ -109,7 +111,7 @@ function runCommand(raw: string): RunResult {
             <Row>
               <Dim>Available commands — try one:</Dim>
             </Row>
-            <div className="mt-1 grid grid-cols-2 gap-x-6 sm:grid-cols-3">
+            <div className="mt-1 flex flex-col gap-0.5">
               {[
                 ["whoami", "the short version"],
                 ["about", "who I am"],
@@ -122,17 +124,18 @@ function runCommand(raw: string): RunResult {
                 ["resume", "open my CV"],
                 ["social", "links"],
                 ["neofetch", "the flex"],
+                ["theme", "flip dark/light"],
                 ["clear", "wipe screen"],
               ].map(([name, desc]) => (
-                <Row key={name}>
-                  <A>{name.padEnd(11)}</A>
+                <div key={name} className="flex leading-relaxed">
+                  <A className="w-28 shrink-0">{name}</A>
                   <Dim>{desc}</Dim>
-                </Row>
+                </div>
               ))}
             </div>
             <Row>
               <Dim className="mt-1 block">
-                tip: ↑/↓ history · Tab to autocomplete · Esc to minimize
+                tip: ↑/↓ history · Tab autocomplete · ` toggle · Esc minimize
               </Dim>
             </Row>
           </div>
@@ -367,6 +370,10 @@ function runCommand(raw: string): RunResult {
           <pre className="text-[hsl(var(--brand))]">{t.eggs.coffee}</pre>
         ),
       };
+    case "theme":
+    case "dark":
+    case "light":
+      return { action: "theme" };
     case "history":
       return {
         output: (
@@ -457,6 +464,25 @@ export function Terminal() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mode, close]);
 
+  // Quake-style hotkey: ` toggles the terminal from anywhere. The terminal's
+  // own input is the only editable element on the page, and no command needs a
+  // literal backtick, so the toggle is allowed even while it has focus.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "`" || e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      const editable =
+        el &&
+        (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable);
+      if (editable && el !== inputRef.current) return;
+      e.preventDefault();
+      if (mode === "closed") open();
+      else close();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mode, open, close]);
+
   const submit = () => {
     const value = input;
     const trimmed = value.trim();
@@ -485,6 +511,17 @@ export function Terminal() {
     if (action === "open-cv") {
       if (output) push(output);
       window.open("/cv.pdf", "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (action === "theme") {
+      const isDark = toggleTheme();
+      push(
+        <Row>
+          <Dim>switched to </Dim>
+          <A>{isDark ? "dark" : "light"}</A>
+          <Dim>{isDark ? " mode — easy on the eyes 🌙" : " mode — bold choice ☀️"}</Dim>
+        </Row>
+      );
       return;
     }
     if (output) push(output);
@@ -615,14 +652,14 @@ export function Terminal() {
               exit={{ opacity: 0, y: 16, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 320, damping: 30 }}
               className={cn(
-                "fixed z-50 flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0b0b0d] font-mono text-[13px] text-zinc-200 shadow-2xl",
+                "fixed z-50 flex flex-col overflow-hidden rounded-xl border border-border bg-card font-mono text-[13px] text-card-foreground shadow-2xl",
                 isFull
                   ? "inset-3 md:inset-10"
                   : "bottom-5 right-5 h-[min(70vh,540px)] w-[min(440px,92vw)]"
               )}
             >
               {/* title bar */}
-              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-3 py-2">
+              <div className="flex items-center justify-between border-b border-border bg-foreground/[0.03] px-3 py-2">
                 <div className="flex items-center gap-1.5">
                   <button
                     type="button"
@@ -643,15 +680,15 @@ export function Terminal() {
                     className="h-3 w-3 rounded-full bg-[#28c840]"
                   />
                 </div>
-                <span className="select-none text-xs text-zinc-500">
+                <span className="select-none text-xs text-muted-foreground">
                   {PROMPT_USER}@{PROMPT_HOST}: ~/adib.sh
                 </span>
-                <div className="flex items-center gap-1 text-zinc-500">
+                <div className="flex items-center gap-1 text-muted-foreground">
                   <button
                     type="button"
                     aria-label={isFull ? "Exit fullscreen" : "Fullscreen"}
                     onClick={() => setMode(isFull ? "compact" : "full")}
-                    className="rounded p-1 hover:bg-white/10 hover:text-zinc-200"
+                    className="rounded p-1 hover:bg-foreground/10 hover:text-foreground"
                   >
                     {isFull ? (
                       <Minimize2 className="h-3.5 w-3.5" />
@@ -663,7 +700,7 @@ export function Terminal() {
                     type="button"
                     aria-label="Close terminal"
                     onClick={close}
-                    className="rounded p-1 hover:bg-white/10 hover:text-zinc-200"
+                    className="rounded p-1 hover:bg-foreground/10 hover:text-foreground"
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>

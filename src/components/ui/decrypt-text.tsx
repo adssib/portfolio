@@ -36,6 +36,8 @@ type DecryptTextProps = {
   glitch?: boolean;
   /** gate the decode — flip to true to begin (e.g. when scrolled into view) */
   start?: boolean;
+  /** skip the animation and show the real text immediately (e.g. nav jumps) */
+  instant?: boolean;
 };
 
 export function DecryptText({
@@ -48,6 +50,7 @@ export function DecryptText({
   glitch = true,
   mono = true,
   start = true,
+  instant = false,
 }: DecryptTextProps) {
   // SSR + first client render show the real text → no hydration mismatch, SEO-safe.
   const [display, setDisplay] = useState(text);
@@ -55,6 +58,14 @@ export function DecryptText({
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
+    // Jumped to directly: land on the real text, no churn (also recovers a
+    // decode that was interrupted mid-flight for any reason).
+    if (instant) {
+      setDisplay(text);
+      setDone(true);
+      return;
+    }
+
     // Not started yet (gated until scrolled into view): show real text, wait.
     if (!start) {
       setDisplay(text);
@@ -119,7 +130,7 @@ export function DecryptText({
       timers.current.forEach(clearTimeout);
       timers.current = [];
     };
-  }, [text, charStep, refresh, startDelay, glitch, start]);
+  }, [text, charStep, refresh, startDelay, glitch, start, instant]);
 
   return (
     <Tag
