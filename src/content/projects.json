@@ -3,6 +3,37 @@
   "title": "Featured work",
   "spotlights": [
     {
+      "date": "Jun 2026",
+      "name": "system-design-maker",
+      "status": "Live",
+      "tagline": "Zero-backend system-design tool — custom DSL, live request flow",
+      "description": "Design a system in a small DSL and watch it render as an architecture diagram, then play requests flowing through it in real time — services, queues, and datastores as text, animated end-to-end. Entirely client-side, no backend.",
+      "bullets": [
+        "Custom DSL parsed in the browser into an interactive architecture diagram — define services, queues, and datastores as text and get a live graph.",
+        "Animates requests flowing edge-to-edge through the design in real time, so you see how a system behaves rather than just drawing boxes.",
+        "Zero-backend and fully static — deployed on GitHub Pages, instant to load and share."
+      ],
+      "tech": ["TypeScript", "React", "Vite"],
+      "links": [
+        { "type": "live", "label": "Open the demo", "href": "https://adssib.github.io/system-design-maker/" },
+        { "type": "github", "label": "View on GitHub", "href": "https://github.com/adssib/system-design-maker" }
+      ]
+    },
+    {
+      "date": "Jun 2026",
+      "name": "InfraChat",
+      "status": "Building",
+      "tagline": "Distributed hybrid-RAG over Kubernetes & Docker docs",
+      "description": "A retrieval-augmented chat system that answers Kubernetes and Docker questions straight from the official docs — hybrid retrieval (vector + keyword) fused with RRF, then grounded generation with source links. Built as a modular monolith whose boundaries map 1:1 onto a microservices-on-Kubernetes target.",
+      "bullets": [
+        "Hybrid retrieval: local bge-small embeddings in Qdrant + BM25 keyword search, fused with Reciprocal Rank Fusion; every answer cites the doc chunks it came from.",
+        "Runs fully local and free — embedded Qdrant, CPU embeddings, and a local Ollama model (or Groq's free tier); retrieval still returns sources even when generation is offline.",
+        "Roadmap splits the modules into services on Kubernetes — Orchestrator, Retrieval, Reranker, and an LLM gateway, with a Redis cache, ElasticSearch, and Helm packaging."
+      ],
+      "tech": ["Python", "FastAPI", "Qdrant", "Hybrid RAG", "Kubernetes", "Helm"],
+      "links": []
+    },
+    {
       "date": "Nov 2025",
       "name": "Get equivalently better with less precision",
       "status": "Research",
