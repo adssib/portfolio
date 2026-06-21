@@ -24,14 +24,22 @@ export function SpotlightCard<T extends React.ElementType = "div">({
   ...rest
 }: SpotlightCardProps<T>) {
   const ref = useRef<HTMLElement>(null);
+  const frame = useRef<number | null>(null);
   const Tag = (as || "div") as React.ElementType;
 
+  // Throttle to one layout read + write per animation frame (avoids reflow
+  // thrash from firing getBoundingClientRect on every mousemove event).
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    if (frame.current !== null) return;
+    const { clientX, clientY } = e;
+    frame.current = requestAnimationFrame(() => {
+      frame.current = null;
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${clientX - rect.left}px`);
+      el.style.setProperty("--my", `${clientY - rect.top}px`);
+    });
   };
 
   return (
