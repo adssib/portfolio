@@ -1,7 +1,7 @@
 import { Nav } from "@/components/nav";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { SocialRail } from "@/components/social-rail";
-import { Terminal } from "@/components/terminal";
+import { TerminalLoader } from "@/components/terminal-loader";
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
 import { Experience } from "@/components/experience";
@@ -23,7 +23,7 @@ export default function Home() {
       <Certifications />
       <Skills />
       <Contact />
-      <Terminal />
+      <TerminalLoader />
     </main>
   );
 }

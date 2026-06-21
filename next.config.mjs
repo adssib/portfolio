@@ -18,6 +18,10 @@ const nextConfig = {
   // Required for static export; harmless otherwise (no next/image in use).
   images: { unoptimized: true },
   basePath: basePath || undefined,
+  experimental: {
+    // Tree-shake icon barrels so only the glyphs actually used get bundled.
+    optimizePackageImports: ["react-icons/si", "react-icons/fa6", "lucide-react"],
+  },
 };
 
 export default nextConfig;
