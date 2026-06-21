@@ -40,6 +40,7 @@
         { "label": "Kubernetes", "icon": "kubernetes", "color": "#326CE5" },
         { "label": "Helm", "icon": "helm", "color": "#7CB6FF" },
         { "label": "Jenkins", "icon": "jenkins", "color": "#D24939" },
+        { "label": "Groovy", "icon": "groovy", "color": "#4298B8" },
         { "label": "JFrog", "icon": "jfrog", "color": "#41BF47" },
         { "label": "GitLab CI", "icon": "gitlabci", "color": "#FC6D26" }
       ]

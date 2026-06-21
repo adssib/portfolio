@@ -12,9 +12,10 @@
         {
           "heading": "DevOps & Infrastructure",
           "bullets": [
-            "Owned triage of 20+ release-critical CI/CD pipelines (Jenkins, Groovy, Python, Kubernetes, Helm), protecting the monthly customer upgrade image of an IAM platform serving 130M+ subscribers across 150+ integrated systems.",
+            "Owned release stability and incident triage across 25+ CI/CD pipelines and 20 microservices (Jenkins, Groovy, Python, Kubernetes, Helm), protecting the monthly customer upgrade image of an IAM platform serving 130M+ subscribers across 150+ integrated systems.",
             "Cut performance-test report generation time by ~60% by replacing Selenium UI scraping with direct Grafana REST API calls in Python.",
-            "Removed a redundant ~2-hour DB schema-diff pipeline by folding it into an existing upgrade stage, preserving schema-drift detection.",
+            "Cut manual release-reporting time ~80% with a multi-agent system that aggregates observability data from Grafana, Kubernetes, Jenkins, and logs into automated stability reports and visualizations.",
+            "Cut release-validation time ~97% by eliminating a redundant validation pipeline and consolidating its checks into the main release workflow.",
             "Resolved customer-escalated and pipeline-blocking infrastructure issues — Kubernetes resource deadlocks, time-sync failures, rolling-upgrade CPU spikes — through systematic root-cause analysis."
           ]
         },
@@ -31,7 +32,7 @@
     },
     {
       "company": "Novatek International",
-      "title": "Software Developer Intern",
+      "title": "Backend Developer Intern",
       "period": "Jan 2024 → Aug 2025",
       "location": "Montréal, QC",
       "current": false,
@@ -39,14 +40,14 @@
         {
           "heading": "",
           "bullets": [
-            "Led end-to-end planning and delivery of a mission-critical VCS migration involving IT, QA, and senior VPs.",
-            "Rescued 20+ years of source code and 200,000+ files from an unstable legacy VCS.",
-            "Engineered an internal migration tool transferring 700,000+ commits with full history, tags, and ACLs by reverse-engineering an undocumented system.",
-            "Deployed VisualSVN into CI/CD and built an SVN-to-GitLab CLI tool enabling the company's transition to Git."
+            "Led end-to-end planning and delivery of a mission-critical migration of a legacy enterprise VCS to Git, involving IT, QA, and senior VPs.",
+            "Rescued 20+ years of production source code — 200,000+ files across hundreds of repositories — from an unstable legacy VCS.",
+            "Built migration pipelines against the system's proprietary SDK to extract repository structure, history, tags, and permissions, with integrity validation ensuring lossless transfer of 700,000+ commits at scale.",
+            "Integrated the migrated repositories into Azure CI/CD pipelines, enabling automated build and deployment for the newly transferred codebase."
           ]
         }
       ],
-      "tags": ["Python", "Bash", "PowerShell", "SVN", "GitLab CI", "VisualSVN"]
+      "tags": ["Python", "Bash", "PowerShell", "SVN", "Git", "Azure DevOps"]
     }
   ]
 }

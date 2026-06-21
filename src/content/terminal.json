@@ -19,21 +19,37 @@
     {
       "company": "Ericsson",
       "meta": "· SDET Intern · Jan 2026 → Aug 2026",
-      "summary": "Cloud-native IAM platform (auth for 130M+ subscribers); 20+ CI/CD pipelines; cut report time ~60% via direct Grafana API."
+      "summary": "Cloud-native IAM platform (auth for 130M+ subscribers); 25+ CI/CD pipelines, 20 microservices; cut report time ~60% via direct Grafana API; built a multi-agent release-reporting system."
     },
     {
       "company": "Novatek International",
       "meta": "· SWE Intern · Jan 2024 → Aug 2025",
-      "summary": "Rescued 20+ yrs of source; migrated 700K+ commits by reverse-engineering an undocumented VCS."
+      "summary": "Rescued 20+ yrs of source across hundreds of repos; migrated 700K+ commits to Git via a proprietary SDK, wired into Azure CI/CD."
     }
   ],
   "skills": [
     { "k": "lang", "v": "Python · Java · TypeScript · Bash · SQL" },
     { "k": "ai/ml", "v": "PyTorch · Hugging Face · LoRA/QLoRA · fine-tuning" },
-    { "k": "cloud", "v": "AWS · Docker · Kubernetes · Helm · Jenkins · GitLab CI" },
+    { "k": "cloud", "v": "AWS · Docker · Kubernetes · Helm · Jenkins · Groovy · GitLab CI" },
     { "k": "data", "v": "MySQL · MongoDB · Cassandra · Neo4j · Redis" }
   ],
   "projects": [
+    {
+      "name": "system-design-maker",
+      "tagline": "— zero-backend system-design tool",
+      "lines": [
+        "Custom DSL → live architecture diagrams with animated request flow; TypeScript/React/Vite.",
+        "→ adssib.github.io/system-design-maker"
+      ]
+    },
+    {
+      "name": "InfraChat",
+      "tagline": "— distributed hybrid-RAG (building)",
+      "lines": [
+        "Grounded K8s/Docker-docs Q&A: vector + BM25 retrieval, RRF fusion, local LLM.",
+        "→ modular monolith → microservices on Kubernetes (in progress)"
+      ]
+    },
     {
       "name": "get-equivalently-better-with-less-precision",
       "tagline": "— PEFT research, from scratch",
