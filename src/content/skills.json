@@ -7,6 +7,7 @@
       "items": [
         { "label": "Python", "icon": "python", "color": "#3776AB" },
         { "label": "Java", "icon": "java", "color": "#ED8B00" },
+        { "label": "Go", "icon": "go", "color": "#00ADD8" },
         { "label": "TypeScript", "icon": "typescript", "color": "#3178C6" },
         { "label": "Bash", "icon": "bash", "color": "#4EAA25" },
         { "label": "PowerShell", "icon": "powershell", "color": "#5391FE" },
@@ -40,6 +41,8 @@
         { "label": "Kubernetes", "icon": "kubernetes", "color": "#326CE5" },
         { "label": "Helm", "icon": "helm", "color": "#7CB6FF" },
         { "label": "Jenkins", "icon": "jenkins", "color": "#D24939" },
+        { "label": "Ansible", "icon": "ansible", "color": "#EE0000" },
+        { "label": "Kafka", "icon": "kafka", "color": "#8C9EFF" },
         { "label": "Groovy", "icon": "groovy", "color": "#4298B8" },
         { "label": "JFrog", "icon": "jfrog", "color": "#41BF47" },
         { "label": "GitLab CI", "icon": "gitlabci", "color": "#FC6D26" }

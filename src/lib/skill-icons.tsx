@@ -2,6 +2,7 @@ import type { ComponentType, SVGProps } from "react";
 import {
   SiPython,
   SiOpenjdk,
+  SiGo,
   SiTypescript,
   SiGnubash,
   SiPytorch,
@@ -15,6 +16,8 @@ import {
   SiKubernetes,
   SiHelm,
   SiJenkins,
+  SiAnsible,
+  SiApachekafka,
   SiApachegroovy,
   SiJfrog,
   SiGitlab,
@@ -39,6 +42,7 @@ type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 const ICONS: Record<string, IconComponent> = {
   python: SiPython,
   java: SiOpenjdk,
+  go: SiGo,
   typescript: SiTypescript,
   bash: SiGnubash,
   powershell: PowerShellIcon,
@@ -57,6 +61,8 @@ const ICONS: Record<string, IconComponent> = {
   kubernetes: SiKubernetes,
   helm: SiHelm,
   jenkins: SiJenkins,
+  ansible: SiAnsible,
+  kafka: SiApachekafka,
   groovy: SiApachegroovy,
   jfrog: SiJfrog,
   gitlabci: SiGitlab,

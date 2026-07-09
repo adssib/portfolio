@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Adib Akkari — Software Engineer building AI systems end-to-end";
+  "Adib Akkari — Software Engineer building reliable systems, from bare metal to AI";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -154,9 +154,9 @@ export default function OG() {
           >
             Software engineer building{" "}
             <span style={{ color: "#121212", marginLeft: 10, marginRight: 10 }}>
-              AI systems
+              reliable systems
             </span>{" "}
-            end-to-end.
+            — from bare metal to AI.
           </div>
         </div>
 

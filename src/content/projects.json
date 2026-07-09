@@ -4,6 +4,22 @@
   "spotlights": [
     {
       "date": "Jun 2026",
+      "name": "dlt — Distributed Load Tester",
+      "status": "Building",
+      "tagline": "Distributed HTTP load tester in Go — correct global tail latency",
+      "description": "A coordinator dispatches work to N horizontally-scaled workers over a custom JSON-over-TCP protocol; they hammer a deliberately-breakable target and their results merge into statistically correct global latency percentiles. Documented like production — every non-trivial decision has an ADR.",
+      "bullets": [
+        "Computes correct global p50/p95/p99 by shipping a serialized HDR histogram from each worker and merging distributions — because the mean of percentiles is not a percentile.",
+        "Custom JSON-over-TCP protocol between coordinator and workers: registration, a synchronized start barrier, progress streaming, and result collection.",
+        "Built test-first with the race detector on in CI, plus Prometheus metrics and Grafana dashboards to watch the target degrade under load."
+      ],
+      "tech": ["Go", "Docker", "Distributed Systems", "Prometheus"],
+      "links": [
+        { "type": "github", "label": "View on GitHub", "href": "https://github.com/adssib/dlt" }
+      ]
+    },
+    {
+      "date": "Jun 2026",
       "name": "system-design-maker",
       "status": "Live",
       "tagline": "Zero-backend system-design tool — custom DSL, live request flow",
@@ -21,17 +37,20 @@
     },
     {
       "date": "Jun 2026",
-      "name": "InfraChat",
-      "status": "Building",
-      "tagline": "Distributed hybrid-RAG over Kubernetes & Docker docs",
-      "description": "A retrieval-augmented chat system that answers Kubernetes and Docker questions straight from the official docs — hybrid retrieval (vector + keyword) fused with RRF, then grounded generation with source links. Built as a modular monolith whose boundaries map 1:1 onto a microservices-on-Kubernetes target.",
+      "name": "home-lab",
+      "status": "Live",
+      "tagline": "Self-hosted observability stack on a salvaged laptop — akkarilab.xyz",
+      "description": "Infrastructure-as-code for everything running on a home server behind akkarilab.xyz: a Prometheus + Grafana monitoring stack on a salvaged laptop, served publicly through an NGINX reverse proxy. The server pulls straight from the repo — no scattered configs, no copy-paste drift.",
       "bullets": [
-        "Hybrid retrieval: local bge-small embeddings in Qdrant + BM25 keyword search, fused with Reciprocal Rank Fusion; every answer cites the doc chunks it came from.",
-        "Runs fully local and free — embedded Qdrant, CPU embeddings, and a local Ollama model (or Groq's free tier); retrieval still returns sources even when generation is offline.",
-        "Roadmap splits the modules into services on Kubernetes — Orchestrator, Retrieval, Reranker, and an LLM gateway, with a Redis cache, ElasticSearch, and Helm packaging."
+        "Prometheus + Grafana + node-exporter in Docker Compose, with CPU / memory / disk / network dashboards reachable from anywhere.",
+        "NGINX reverse proxy fronts everything on one domain — static landing page, Grafana, and apps routed under akkarilab.xyz over HTTPS.",
+        "Everything lives in git and deploys by pull — configs, dashboards, and the landing page are versioned infrastructure, provisioned with Ansible."
       ],
-      "tech": ["Python", "FastAPI", "Qdrant", "Hybrid RAG", "Kubernetes", "Helm"],
-      "links": []
+      "tech": ["Docker", "Prometheus", "Grafana", "NGINX", "Ansible"],
+      "links": [
+        { "type": "live", "label": "Visit akkarilab.xyz", "href": "https://akkarilab.xyz" },
+        { "type": "github", "label": "View on GitHub", "href": "https://github.com/adssib/home-lab" }
+      ]
     },
     {
       "date": "Nov 2025",
@@ -55,7 +74,7 @@
       "name": "PlayLocal",
       "status": "Live",
       "tagline": "Location-based platform for organizing local pickup sports",
-      "description": "Find a game nearby, see who's in, and actually show up. Team capstone built production-shaped: quality gates, coverage tracking, and a real deploy pipeline. I led backend and release engineering across 108 commits.",
+      "description": "Find a game nearby, see who's in, and actually show up. 12-person team capstone that won Best Sports App at Concordia's Capstone Expo — built production-shaped: quality gates, coverage tracking, and a real deploy pipeline. I led the team through the full SDLC and owned backend and release engineering across 108 commits.",
       "bullets": [
         "Spring Boot backend: auth profiles, Flyway DB migrations, transactional email (Brevo), and CI test configuration.",
         "Reviewed and merged feature work from an AI assistant with knowledge-grounded, user-aware answers to weather forecasts for upcoming games.",

@@ -1,11 +1,11 @@
 {
   "name": "Adib Akkari.",
   "role": "Software Engineer",
-  "headlineSuffix": "building **AI systems** end-to-end.",
-  "availability": "Available for new grad SWE / ML roles · Spring 2027",
-  "summary": "I build production AI systems and full-stack apps. Currently interning at **Ericsson** on a cloud-native IAM platform serving **130M+ subscribers** across 150+ integrated systems. Previously rescued 20+ years of source code at Novatek through a custom VCS migration. Recently reproduced LoRA & QLoRA from scratch and benchmarked them on a single GPU.",
+  "headlineSuffix": "building **reliable systems** — from bare metal to AI.",
+  "availability": "Available for new grad SWE / ML roles · January 2027",
+  "summary": "I build distributed systems and the infrastructure around them. Currently interning at **Ericsson** on a cloud-native IAM platform serving **130M+ subscribers** across 150+ integrated systems. Previously rescued 20+ years of source code at Novatek through a custom VCS migration. Lately: a distributed load tester in Go and a self-hosted observability lab.",
   "location": "Montréal, QC",
-  "education": "B.Eng Software Engineering · Concordia University · 2022–2027",
+  "education": "B.Eng Software Engineering · Concordia University · 2022–2026",
   "cv": "/cv.pdf",
   "cta": { "primary": "View CV", "secondary": "Get in touch" },
   "links": {

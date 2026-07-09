@@ -4,35 +4,27 @@
   "roles": [
     {
       "company": "Ericsson",
-      "title": "Software Developer in Test Intern",
+      "title": "Software Developer Intern",
       "period": "Jan 2026 → Aug 2026",
       "location": "Montréal, QC",
       "current": true,
       "groups": [
         {
-          "heading": "DevOps & Infrastructure",
+          "heading": "",
           "bullets": [
-            "Owned release stability and incident triage across 25+ CI/CD pipelines and 20 microservices (Jenkins, Groovy, Python, Kubernetes, Helm), protecting the monthly customer upgrade image of an IAM platform serving 130M+ subscribers across 150+ integrated systems.",
-            "Cut performance-test report generation time by ~60% by replacing Selenium UI scraping with direct Grafana REST API calls in Python.",
-            "Cut manual release-reporting time ~80% with a multi-agent system that aggregates observability data from Grafana, Kubernetes, Jenkins, and logs into automated stability reports and visualizations.",
-            "Cut release-validation time ~97% by eliminating a redundant validation pipeline and consolidating its checks into the main release workflow.",
-            "Resolved customer-escalated and pipeline-blocking infrastructure issues — Kubernetes resource deadlocks, time-sync failures, rolling-upgrade CPU spikes — through systematic root-cause analysis."
-          ]
-        },
-        {
-          "heading": "Performance, Load & Stability Testing",
-          "bullets": [
-            "Owned monthly stability and regression testing via 48-hour load runs, flagging 10% release-over-release regressions and routing them to microservice owners.",
-            "Benchmarked 20+ OAuth APIs and Kafka event pipelines (JMeter, Prometheus, Grafana) under controlled pod isolation: HPA capping, synthetic data, scaled dependencies.",
-            "Built internal CLI automation codifying performance- and stability-testing procedures and Jenkins workflows into reusable skill modules."
+            "Cut release regression from ~6 hours to minutes by building a Newman pipeline that runs QA Postman collections automatically as part of the release process, on a cloud-native IAM platform serving 130M+ subscribers across 150+ integrated systems.",
+            "Drove the team's AI-native shift — owned the automation harness, ran PoCs for multi-agent pipelines with quality gates, and led engineering training to drive adoption.",
+            "Reduced release-validation time from 2 hours to 5 minutes by eliminating a redundant DB schema-diff pipeline and consolidating checks into the main upgrade workflow.",
+            "Reduced flaky failures across 3 customer-facing release pipelines and 20 microservices by diagnosing pod failures and hardening stages with stable retries, health checks, and extended timeouts.",
+            "Cut manual reporting ~80% by building an agentic pipeline that aggregates data from Grafana, Kubernetes, Jenkins, and logs into automated stability reports."
           ]
         }
       ],
-      "tags": ["Python", "Kubernetes", "Helm", "Jenkins", "Groovy", "JMeter", "Prometheus", "Grafana", "Kafka"]
+      "tags": ["Python", "Kubernetes", "Helm", "Jenkins", "Newman", "Prometheus", "Grafana", "Kafka"]
     },
     {
       "company": "Novatek International",
-      "title": "Backend Developer Intern",
+      "title": "Software Developer Intern",
       "period": "Jan 2024 → Aug 2025",
       "location": "Montréal, QC",
       "current": false,
@@ -42,7 +34,7 @@
           "bullets": [
             "Led end-to-end planning and delivery of a mission-critical migration of a legacy enterprise VCS to Git, involving IT, QA, and senior VPs.",
             "Rescued 20+ years of production source code — 200,000+ files across hundreds of repositories — from an unstable legacy VCS.",
-            "Built migration pipelines against the system's proprietary SDK to extract repository structure, history, tags, and permissions, with integrity validation ensuring lossless transfer of 700,000+ commits at scale.",
+            "Built migration pipelines against the system's proprietary SDK to extract repository structure, history, tags, and permissions, with full integrity validation — zero data loss across 700,000+ commits.",
             "Integrated the migrated repositories into Azure CI/CD pipelines, enabling automated build and deployment for the newly transferred codebase."
           ]
         }

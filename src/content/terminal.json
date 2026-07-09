@@ -9,17 +9,17 @@
   "whoami": {
     "name": "Adib Akkari",
     "role": "Software Engineer",
-    "tail": "building AI systems end-to-end."
+    "tail": "building reliable systems — from bare metal to AI."
   },
   "about": [
     "Software Engineering student at Concordia, interning at Ericsson.",
-    "I ship AI systems end-to-end: data pipelines, fine-tuning, APIs, and the UI that ties it together. I like problems where the legacy is messier than the spec."
+    "I build distributed systems and the infrastructure around them: load testing, observability, CI/CD, and AI tooling. I like problems where the legacy is messier than the spec."
   ],
   "experience": [
     {
       "company": "Ericsson",
-      "meta": "· SDET Intern · Jan 2026 → Aug 2026",
-      "summary": "Cloud-native IAM platform (auth for 130M+ subscribers); 25+ CI/CD pipelines, 20 microservices; cut report time ~60% via direct Grafana API; built a multi-agent release-reporting system."
+      "meta": "· SWE Intern · Jan 2026 → Aug 2026",
+      "summary": "Cloud-native IAM platform (auth for 130M+ subscribers); cut release regression ~6h → minutes with a Newman pipeline; release validation 2h → 5min; agentic stability reports (~80% less manual work)."
     },
     {
       "company": "Novatek International",
@@ -28,12 +28,20 @@
     }
   ],
   "skills": [
-    { "k": "lang", "v": "Python · Java · TypeScript · Bash · SQL" },
+    { "k": "lang", "v": "Python · Java · Go · Bash · SQL" },
     { "k": "ai/ml", "v": "PyTorch · Hugging Face · LoRA/QLoRA · fine-tuning" },
-    { "k": "cloud", "v": "AWS · Docker · Kubernetes · Helm · Jenkins · Groovy · GitLab CI" },
+    { "k": "cloud", "v": "AWS · Docker · Kubernetes · Helm · Jenkins · Ansible · Kafka" },
     { "k": "data", "v": "MySQL · MongoDB · Cassandra · Neo4j · Redis" }
   ],
   "projects": [
+    {
+      "name": "dlt",
+      "tagline": "— distributed load tester in Go (building)",
+      "lines": [
+        "Coordinator + N workers over JSON-over-TCP; merged HDR histograms → correct global p50/p95/p99.",
+        "→ github.com/adssib/dlt"
+      ]
+    },
     {
       "name": "system-design-maker",
       "tagline": "— zero-backend system-design tool",
@@ -43,11 +51,11 @@
       ]
     },
     {
-      "name": "InfraChat",
-      "tagline": "— distributed hybrid-RAG (building)",
+      "name": "home-lab",
+      "tagline": "— self-hosted observability stack",
       "lines": [
-        "Grounded K8s/Docker-docs Q&A: vector + BM25 retrieval, RRF fusion, local LLM.",
-        "→ modular monolith → microservices on Kubernetes (in progress)"
+        "Prometheus + Grafana on a salvaged laptop, behind an NGINX reverse proxy; infra-as-code.",
+        "→ akkarilab.xyz"
       ]
     },
     {
@@ -70,7 +78,7 @@
   "education": {
     "degree": "B.Eng, Software Engineering",
     "school": "Concordia University",
-    "meta": "· 2022–2027 · Montréal, QC"
+    "meta": "· 2022–2026 · Montréal, QC"
   },
   "certs": [
     { "name": "Deep Learning Specialization", "issuer": "· DeepLearning.AI (Andrew Ng)" },
@@ -86,10 +94,10 @@
     "info": [
       ["os", "Arch Linux x86_64"],
       ["host", "Framework Laptop (custom build)"],
-      ["role", "Software Engineer · AI systems"],
-      ["edu", "B.Eng Software Eng · Concordia (2022–2027)"],
+      ["role", "Software Engineer · distributed systems"],
+      ["edu", "B.Eng Software Eng · Concordia (2022–2026)"],
       ["now", "SWE Intern @ Ericsson"],
-      ["stack", "Python · PyTorch · Next.js · K8s"],
+      ["stack", "Go · Python · PyTorch · K8s"],
       ["loc", "Montréal, QC"],
       ["link", "github.com/adssib"]
     ]

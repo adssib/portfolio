@@ -2,8 +2,8 @@
   "eyebrow": "01 / About",
   "title": "A pragmatic builder",
   "paragraphs": [
-    "Software Engineering student at Concordia, interning at Ericsson. I ship AI systems end-to-end: data pipelines, fine-tuning, APIs, and the UI that ties it all together.",
-    "I like problems where the legacy is messier than the spec. Reverse-engineering an undocumented VCS. Replacing brittle Selenium scrapers with direct API calls. Reimplementing LoRA from scratch because I wanted to check the paper's numbers myself."
+    "Software Engineering student at Concordia, interning at Ericsson. I build distributed systems and the infrastructure around them — load testing, observability, CI/CD — plus the AI tooling that makes teams faster.",
+    "I like problems where the legacy is messier than the spec. Reverse-engineering an undocumented VCS. Merging per-worker histograms because averaged percentiles lie. Reimplementing LoRA from scratch because I wanted to check the paper's numbers myself."
   ],
   "stats": [
     { "value": "130M+", "label": "Users served by IAM platform" },

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s · Adib Akkari",
   },
   description:
-    "Software engineer based in Montréal building production AI systems and full-stack apps. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
+    "Software engineer based in Montréal building reliable systems — from bare metal to AI. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
   keywords: [
     "Adib Akkari",
     "Software Engineer",
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     siteName: "Adib Akkari",
     title: "Adib Akkari · Software Engineer ",
     description:
-      "Production AI systems and full-stack apps. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
+      "Reliable systems — from bare metal to AI. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Adib Akkari · Software Engineer ",
     description:
-      "Production AI systems and full-stack apps. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
+      "Reliable systems — from bare metal to AI. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
     creator: "@adssib",
   },
   // icons + Open Graph image are auto-wired from
