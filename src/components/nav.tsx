@@ -1,10 +1,11 @@
 import profile from "@/content/profile.json";
+import { asset } from "@/lib/asset";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
-  { href: "#top", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#work", label: "Work" },
+  { href: "#services", label: "Freelance" },
   { href: "#outside", label: "Outside" },
 ];
 
@@ -17,7 +18,7 @@ export function Nav() {
           <span className="text-accent">.</span>
         </a>
         <div className="flex items-center gap-1 sm:gap-2">
-          <ul className="mr-3 hidden items-center gap-6 text-[0.95rem] text-muted md:flex">
+          <ul className="mr-4 hidden items-center gap-6 text-[0.95rem] text-muted md:flex">
             {links.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="transition-colors hover:text-ink">
@@ -26,7 +27,16 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn-primary px-5 py-2 text-sm">
+          {/* Resume and contact stay visible on phones, where the section links hide */}
+          <a
+            href={asset(profile.cv)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-3 text-[0.95rem] text-muted transition-colors hover:text-ink sm:mr-4"
+          >
+            Resume
+          </a>
+          <a href="#contact" className="mr-2 text-[0.95rem] text-muted transition-colors hover:text-ink">
             Get in touch
           </a>
           <ThemeToggle />

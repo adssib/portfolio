@@ -25,19 +25,6 @@ export function Hero() {
           >
             {profile.tagline}
           </p>
-          <div className="rise mt-10 flex flex-wrap justify-center gap-3" style={{ animationDelay: "0.35s" }}>
-            <a href="#work" className="btn-primary px-8 py-3.5 text-base">
-              See the work
-            </a>
-            <a
-              href={asset(profile.cv)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost bg-bg/40 px-8 py-3.5 text-base backdrop-blur-sm"
-            >
-              Resume
-            </a>
-          </div>
         </div>
       </section>
 

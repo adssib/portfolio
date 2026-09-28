@@ -50,8 +50,8 @@
       ],
       "images": [
         {
-          "src": "/projects/sdm-demo.gif",
-          "alt": "Animated demo of requests flowing through a system diagram",
+          "src": "/projects/sdm-screenshot.webp",
+          "alt": "system-design-maker editor: a microservices system written as text on the left, drawn as a diagram on the right",
           "fit": "cover"
         }
       ],
