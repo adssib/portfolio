@@ -17,6 +17,11 @@
     --line: 26 34 51;
 
     --hero-photo-opacity: 0.8;
+
+    /* Soft light from the sides so the paper never reads as flat white */
+    --glow-amber: rgba(242, 166, 90, 0.32);
+    --glow-sky: rgba(111, 155, 220, 0.34);
+    --glow-green: rgba(143, 179, 106, 0.26);
   }
 
   .dark {
@@ -30,6 +35,10 @@
     --line: 243 233 220;
 
     --hero-photo-opacity: 0.6;
+
+    --glow-amber: rgba(242, 166, 90, 0.17);
+    --glow-sky: rgba(111, 155, 220, 0.24);
+    --glow-green: rgba(143, 179, 106, 0.13);
   }
 
   html {
@@ -41,6 +50,20 @@
     background: rgb(var(--bg));
     color: rgb(var(--ink));
     font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Colour glows pinned to the viewport edges: amber sunset on the left,
+     sky blue on the right, a little valley green low down. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    pointer-events: none;
+    background:
+      radial-gradient(55rem 45rem at -12% 18%, var(--glow-amber), transparent 65%),
+      radial-gradient(55rem 50rem at 112% 45%, var(--glow-sky), transparent 65%),
+      radial-gradient(45rem 35rem at 20% 110%, var(--glow-green), transparent 65%);
   }
 
   ::selection {
