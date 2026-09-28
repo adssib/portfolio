@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-// Site-wide monospace — JetBrains Mono, self-hosted via @fontsource (no CDN).
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/500.css";
-import "@fontsource/jetbrains-mono/600.css";
-import "@fontsource/jetbrains-mono/700.css";
-import { Background } from "@/components/background";
-import { MotionProvider } from "@/components/motion-provider";
+// Self-hosted variable fonts via @fontsource (no CDN).
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource-variable/instrument-sans";
+import "@fontsource-variable/instrument-sans/wght-italic.css";
 import "./globals.css";
 
 const SITE_URL = "https://adssib.github.io/portfolio";
+const DESCRIPTION =
+  "Adib Akkari, software engineer. Engineer by day, somewhere in nature by weekend. AI agents, reliable systems, and freelance work.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -18,36 +16,30 @@ export const metadata: Metadata = {
     default: "Adib Akkari · Software Engineer",
     template: "%s · Adib Akkari",
   },
-  description:
-    "Software engineer based in Montréal building reliable systems — from bare metal to AI. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
+  description: DESCRIPTION,
   keywords: [
     "Adib Akkari",
     "Software Engineer",
     "AI Engineer",
-    "Machine Learning",
-    "LLM Fine-tuning",
+    "Agentic AI",
+    "MCP",
+    "RAG",
     "QLoRA",
-    "Next.js",
-    "Montréal",
-    "Concordia",
+    "Freelance",
   ],
   authors: [{ name: "Adib Akkari" }],
   creator: "Adib Akkari",
   openGraph: {
     type: "website",
-    locale: "en_CA",
     url: SITE_URL,
     siteName: "Adib Akkari",
-    title: "Adib Akkari · Software Engineer ",
-    description:
-      "Reliable systems — from bare metal to AI. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
+    title: "Adib Akkari · Software Engineer",
+    description: "Engineer by day, somewhere in nature by weekend.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adib Akkari · Software Engineer ",
-    description:
-      "Reliable systems — from bare metal to AI. Currently at Ericsson on a cloud-native IAM platform serving 130M+ users.",
-    creator: "@adssib",
+    title: "Adib Akkari · Software Engineer",
+    description: "Engineer by day, somewhere in nature by weekend.",
   },
   // icons + Open Graph image are auto-wired from
   //   src/app/icon.tsx, src/app/apple-icon.tsx, src/app/opengraph-image.tsx
@@ -59,15 +51,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      // Dark monochrome is the default (rendered on the server). The inline
-      // script below switches to light only if the visitor explicitly chose it.
-      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className="font-sans antialiased">
-        {/* Respect a saved light choice before paint (default stays dark). */}
+        {/* Dusk is the default; switch to light before paint if chosen. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}})();`,
@@ -76,9 +62,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Background />
-        <div className="noise" aria-hidden />
-        <MotionProvider>{children}</MotionProvider>
+        {children}
       </body>
     </html>
   );

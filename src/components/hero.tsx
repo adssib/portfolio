@@ -1,97 +1,60 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { Download, MapPin, Sparkles } from "lucide-react";
-
-import { DecryptText } from "@/components/ui/decrypt-text";
-import { MovingBorderButton } from "@/components/ui/moving-border-button";
-import { Magnetic } from "@/components/ui/magnetic";
-import { RichText } from "@/components/ui/rich-text";
-import { scrollToHash } from "@/lib/scroll";
 import profile from "@/content/profile.json";
+import { asset } from "@/lib/asset";
+import { Em } from "@/components/section";
 
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="relative mx-auto flex min-h-[92vh] w-full max-w-5xl flex-col justify-center overflow-hidden px-5 pt-24 sm:px-6 sm:pt-28"
-    >
-      {/* Soft scrim of the page color behind the headline so the background
-          dots never compete with the text. Subtle in dark mode. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-100 dark:opacity-30"
-        style={{
-          background:
-            "radial-gradient(58% 46% at 34% 44%, hsl(var(--background)) 0%, hsl(var(--background) / 0.72) 44%, transparent 78%)",
-        }}
-      />
+    <>
+      <section id="top" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+        {/* Landscape blended into the page; it sits under the title and fades out at both ends */}
+        <img
+          src={asset(profile.heroPhoto.src)}
+          alt=""
+          aria-hidden
+          fetchPriority="high"
+          className="surface hero-photo absolute inset-x-0 bottom-0 -z-10 h-[78%] w-full object-cover object-[center_60%]"
+        />
 
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 flex flex-col gap-6 sm:gap-8"
-      >
-        <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full glass px-3 py-1.5 text-[11px] text-muted-foreground sm:text-xs">
-          <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand" />
-          <span className="truncate">{profile.availability}</span>
-        </div>
-
-        <h1 className="font-display text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          <DecryptText text={profile.name} startDelay={120} />
-          <br />
-          <DecryptText
-            className="text-foreground"
-            text={profile.role}
-            startDelay={420}
-          />{" "}
-          <RichText
-            text={profile.headlineSuffix}
-            markClass="text-muted-foreground"
-          />
-        </h1>
-
-        <p className="max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-          <RichText text={profile.summary} markClass="text-foreground" />
-        </p>
-
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <Magnetic className="w-full sm:w-auto">
-            <MovingBorderButton
-              href={profile.cv}
-              external
-              ariaLabel="View CV (opens PDF in new tab)"
+        <div className="mx-auto w-full max-w-page px-5 pt-36 text-center md:px-8 md:pt-44">
+          <h1 className="rise font-serif text-[clamp(3.25rem,9vw,7.5rem)] leading-[0.95] tracking-[-0.025em]">
+            <Em text={profile.title} />
+          </h1>
+          <p
+            className="rise mx-auto mt-7 max-w-xl text-[clamp(1.05rem,1.6vw,1.2rem)] text-muted"
+            style={{ animationDelay: "0.2s" }}
+          >
+            {profile.tagline}
+          </p>
+          <div className="rise mt-10 flex flex-wrap justify-center gap-3" style={{ animationDelay: "0.35s" }}>
+            <a href="#work" className="btn-primary px-8 py-3.5 text-base">
+              See the work
+            </a>
+            <a
+              href={asset(profile.cv)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost bg-bg/40 px-8 py-3.5 text-base backdrop-blur-sm"
             >
-              <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-              {profile.cta.primary}
-            </MovingBorderButton>
-          </Magnetic>
+              Resume
+            </a>
+          </div>
+        </div>
+      </section>
 
-          <Magnetic className="w-full sm:w-auto">
-            <Link
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToHash("#contact");
-              }}
-              className="inline-flex h-11 w-full items-center justify-center rounded-full border border-foreground/15 bg-transparent px-7 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04] sm:w-auto"
+      {/* Slow strip of where Adib is and what he's done */}
+      <div className="overflow-hidden border-y border-line/10 py-4" aria-label="Highlights">
+        <ul className="marquee flex w-max whitespace-nowrap">
+          {[...profile.marquee, ...profile.marquee].map((item, i) => (
+            <li
+              key={i}
+              aria-hidden={i >= profile.marquee.length}
+              className="px-8 text-xs font-medium uppercase tracking-[0.2em] text-muted"
             >
-              {profile.cta.secondary}
-            </Link>
-          </Magnetic>
-        </div>
-
-        <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <span className="inline-flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
-            {profile.location}
-          </span>
-          <span className="hidden h-1 w-1 rounded-full bg-foreground/20 md:inline-block" />
-          <span>{profile.education}</span>
-        </div>
-      </motion.div>
-    </section>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

@@ -1,144 +1,121 @@
-"use client";
+import { ArrowUpRight } from "lucide-react";
 
-import type { ComponentType, SVGProps } from "react";
-import Link from "next/link";
-import { Rocket, ArrowUpRight, Calendar, Globe, FileText } from "lucide-react";
+import work from "@/content/projects.json";
+import { asset } from "@/lib/asset";
+import { cn } from "@/lib/utils";
+import { Em, Section } from "@/components/section";
 
-import { Section } from "@/components/section";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { SpotlightCard } from "@/components/ui/spotlight-card";
-import { Magnetic } from "@/components/ui/magnetic";
-import { Reveal } from "@/components/ui/reveal";
-import { GithubIcon } from "@/components/brand-icons";
-import projects from "@/content/projects.json";
+type Image = { src: string; alt: string; fit: string; position?: string };
 
-const TEASER_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
-  rocket: Rocket,
-  github: GithubIcon,
-};
+function Shot({ img }: { img: Image }) {
+  // Charts keep their full frame on a white card; screenshots fill the tile.
+  const chart = img.fit === "contain";
+  return (
+    <div
+      className={cn(
+        "overflow-hidden rounded-md ring-1 ring-line/10",
+        chart ? "aspect-[2/1] bg-white p-2" : "aspect-[16/10]"
+      )}
+    >
+      <img
+        src={asset(img.src)}
+        alt={img.alt}
+        loading="lazy"
+        className={cn("h-full w-full", chart ? "object-contain" : "object-cover")}
+        style={img.position ? { objectPosition: img.position } : undefined}
+      />
+    </div>
+  );
+}
 
-const LINK_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
-  live: Globe,
-  github: GithubIcon,
-  pdf: FileText,
-};
+/** The startup is in stealth, so instead of a screenshot it gets an illustration
+ *  of what the product does: spot the breaking change, then draft the fix. */
+function StartupVisual() {
+  return (
+    <div
+      aria-hidden
+      className="rounded-md bg-surface p-5 font-mono text-xs leading-relaxed ring-1 ring-line/10"
+    >
+      <div className="flex items-center justify-between gap-3">
+        <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.18em] text-accent">
+          Breaking change
+        </p>
+        <p className="text-muted">GET /v2/orders/:id</p>
+      </div>
+      <div className="mt-3 space-y-1">
+        <p className="rounded bg-[#e5534b]/15 px-2 py-0.5 text-[#e5534b]">- &quot;total&quot;: 1999</p>
+        <p className="rounded bg-green/15 px-2 py-0.5 text-green">
+          + &quot;total&quot;: {"{"} &quot;amount&quot;: 1999, &quot;currency&quot;: &quot;usd&quot; {"}"}
+        </p>
+      </div>
+      <div className="mt-4 flex items-center justify-between gap-3 border-t border-line/10 pt-4">
+        <div className="min-w-0">
+          <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.18em] text-green">
+            Pull request drafted
+          </p>
+          <p className="mt-1 truncate font-sans text-sm font-medium text-ink">fix: read order total as an object</p>
+          <p className="text-muted">
+            <span className="text-green">+12</span> <span className="text-[#e5534b]">−4</span> · tests pass
+          </p>
+        </div>
+        <p className="shrink-0 rounded-full border border-accent/40 px-2.5 py-0.5 font-sans text-accent">
+          Needs review
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export function Projects() {
   return (
-    <Section id="projects" eyebrow={projects.eyebrow} title={projects.title}>
-      <div className="flex flex-col gap-4">
-        {projects.spotlights.map((p, idx) => (
-          <Reveal key={p.name} delay={idx * 0.08}>
-            <SpotlightCard className="glass glass-hover relative overflow-hidden rounded-2xl p-6 md:p-8">
-              <div className="flex flex-col gap-5">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {p.date}
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-brand">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" />
-                    {p.status}
-                  </span>
-                </div>
+    <Section id="work">
+      <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line/10 pb-8">
+        <h2 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] leading-none tracking-[-0.02em]">
+          {work.title}
+        </h2>
+        <p className="text-muted">{work.count}</p>
+      </div>
 
-                <div>
-                  <h3 className="gradient-text font-display text-2xl font-semibold tracking-tight md:text-3xl">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                    {p.tagline}
-                  </p>
-                </div>
-
-                <p className="max-w-3xl text-sm text-muted-foreground md:text-[0.95rem]">
-                  {p.description}
-                </p>
-
-                <ul className="max-w-3xl space-y-2 text-sm text-muted-foreground">
-                  {p.bullets.map((b) => (
-                    <li key={b} className="relative pl-5">
-                      <span className="absolute left-0 top-[0.55em] h-1 w-1 rounded-full bg-foreground/40" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {p.tech.map((t) => (
-                    <Badge
-                      key={t}
-                      variant="outline"
-                      className="border-foreground/10 bg-foreground/[0.03] text-[11px] font-normal text-muted-foreground"
-                    >
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="mt-1 flex flex-wrap items-center gap-2">
-                  {p.links.map((link, i) => {
-                    const Icon = LINK_ICONS[link.type] ?? Globe;
-                    return (
-                      <Magnetic key={link.href}>
-                        <Button
-                          asChild
-                          size="sm"
-                          variant={i === 0 ? "default" : "outline"}
-                          className={
-                            i === 0
-                              ? "rounded-full bg-foreground text-background hover:bg-foreground/90"
-                              : "rounded-full border-foreground/15"
-                          }
-                        >
-                          <Link href={link.href} target="_blank" rel="noreferrer">
-                            <Icon className="h-4 w-4" />
-                            {link.label}
-                          </Link>
-                        </Button>
-                      </Magnetic>
-                    );
-                  })}
-                </div>
+      {work.projects.map((p, i) => (
+        <article
+          key={p.name}
+          className={cn(
+            "grid items-center gap-8 border-b border-line/10 py-10 md:gap-12",
+            // Visuals take the smaller share and alternate sides, like a photo album
+            i % 2 === 1
+              ? "md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
+              : "md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]"
+          )}
+        >
+          <div className={cn(i % 2 === 1 && "md:order-2")}>
+            {p.visual === "startup" ? <StartupVisual /> : <Shot img={p.images[0]} />}
+          </div>
+          <div>
+            <p className="eyebrow">{p.eyebrow}</p>
+            <h3 className="mt-4 font-serif text-[clamp(2rem,3.5vw,2.75rem)] leading-none tracking-[-0.015em]">
+              <Em text={p.name} />
+            </h3>
+            <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-muted">{p.text}</p>
+            <p className="mt-5 text-sm text-muted">{p.tech.join(" · ")}</p>
+            {p.links.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-2">
+                {p.links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost px-4 py-2 text-sm"
+                  >
+                    {l.label}
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                  </a>
+                ))}
               </div>
-            </SpotlightCard>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* Up-next teaser cards */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {projects.teasers.map((teaser, i) => {
-          const Icon = TEASER_ICONS[teaser.icon] ?? Rocket;
-          return (
-            <Reveal key={teaser.title} delay={i * 0.08} className="h-full">
-              <SpotlightCard
-                as={Link}
-                href={teaser.href}
-                target="_blank"
-                rel="noreferrer"
-                className="glass glass-hover group flex h-full flex-col justify-between gap-4 rounded-2xl p-6"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-brand">
-                    {teaser.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {teaser.description}
-                  </p>
-                </div>
-              </SpotlightCard>
-            </Reveal>
-          );
-        })}
-      </div>
+            )}
+          </div>
+        </article>
+      ))}
     </Section>
   );
 }

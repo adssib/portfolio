@@ -1,13 +1,38 @@
 {
-  "eyebrow": "01 / About",
-  "title": "A pragmatic builder",
-  "paragraphs": [
-    "Software Engineering student at Concordia, interning at Ericsson. I build distributed systems and the infrastructure around them — load testing, observability, CI/CD — plus the AI tooling that makes teams faster.",
-    "I like problems where the legacy is messier than the spec. Reverse-engineering an undocumented VCS. Merging per-worker histograms because averaged percentiles lie. Reimplementing LoRA from scratch because I wanted to check the paper's numbers myself."
+  "eyebrow": "About",
+  "title": "Not a genius. I just don't leave things *broken.*",
+  "subtitle": "I might not be cracked, but I finish what I start.",
+  "roles": [
+    {
+      "org": "Xsolla",
+      "role": "Agentic AI Intern",
+      "period": "Sep 2026 — now",
+      "logo": "/logos/xsolla.png"
+    },
+    {
+      "org": "Stealth AI startup",
+      "role": "Co-founder",
+      "period": "Aug 2026 — now",
+      "icon": "sparkles"
+    },
+    {
+      "org": "Freelance",
+      "role": "Software Engineer",
+      "period": "Sep 2026 — now",
+      "icon": "briefcase"
+    },
+    {
+      "org": "Ericsson",
+      "role": "Software Engineer in Test (QA)",
+      "period": "Jan — Aug 2026",
+      "logo": "/logos/ericsson.png"
+    },
+    {
+      "org": "Novatek International",
+      "role": "Backend Developer",
+      "period": "Jan 2024 — Aug 2025",
+      "logo": "/logos/novatek.png"
+    }
   ],
-  "stats": [
-    { "value": "130M+", "label": "Users served by IAM platform" },
-    { "value": "700K+", "label": "Commits migrated with full history" },
-    { "value": "20+ yrs", "label": "Of source code rescued" }
-  ]
+  "footnote": "B.Eng. in Software Engineering, graduating April 2027."
 }

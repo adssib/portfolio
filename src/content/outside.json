@@ -1,0 +1,28 @@
+{
+  "eyebrow": "Outside",
+  "title": "Outside of code, I'm usually *outside.*",
+  "photos": [
+    { "src": "/photos/green-valley.webp", "alt": "A forested limestone mountain above a winding valley road" },
+    { "src": "/photos/blue-hills.webp", "alt": "Bright blue sky and clouds over green rolling hills" },
+    { "src": "/photos/golden-sky.webp", "alt": "Clouds lit peach and gold at sunset" }
+  ],
+  "hobbies": [
+    {
+      "name": "Chess",
+      "text": "Bullet player. Peaked at 1957, so close to 2000 it hurts. Puzzles peaked at 2500+.",
+      "link": { "label": "Play me on Lichess", "href": "https://lichess.org/@/AdibAkkari" }
+    },
+    {
+      "name": "Ping pong",
+      "text": "I play with a 6-star racket. Pay-to-win player (joking)."
+    },
+    {
+      "name": "Boxing",
+      "text": "Good for the head, as long as you keep your guard up."
+    },
+    {
+      "name": "Cooking",
+      "text": "Where my creativity goes when it isn't going into code."
+    }
+  ]
+}

@@ -1,110 +1,49 @@
-"use client";
-
-import type { ComponentType, SVGProps } from "react";
-import { useRef, useState } from "react";
-import Link from "next/link";
-import { Mail, ArrowUpRight, Copy, Check } from "lucide-react";
-
-import { Section } from "@/components/section";
-import { SpotlightCard } from "@/components/ui/spotlight-card";
-import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import contact from "@/content/contact.json";
-
-const ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
-  email: Mail,
-  github: GithubIcon,
-  linkedin: LinkedinIcon,
-};
-
-/** Copies `value` without following the card's link; flashes a check + label. */
-function CopyButton({ value }: { value: string }) {
-  const [copied, setCopied] = useState(false);
-  const timer = useRef<number>();
-
-  const copy = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      window.clearTimeout(timer.current);
-      timer.current = window.setTimeout(() => setCopied(false), 1800);
-    } catch {}
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={copy}
-      aria-label={copied ? "Copied" : `Copy ${value}`}
-      className="inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
-    >
-      {copied ? (
-        <>
-          <Check className="h-3.5 w-3.5 text-brand" />
-          <span className="font-mono text-[10px] uppercase tracking-wide text-brand">
-            copied
-          </span>
-        </>
-      ) : (
-        <Copy className="h-3.5 w-3.5" />
-      )}
-    </button>
-  );
-}
+import profile from "@/content/profile.json";
+import { asset } from "@/lib/asset";
+import { Heading } from "@/components/section";
 
 export function Contact() {
   return (
-    <Section id="contact" eyebrow={contact.eyebrow} title="">
-      <div className="flex flex-col items-center text-center">
-        <h2 className="font-display text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-          {contact.headingTop}
-          <br />
-          <span className="gradient-text">{contact.headingAccent}</span>
-        </h2>
-        <p className="mt-6 max-w-xl text-balance text-muted-foreground md:text-lg">
-          {contact.blurb}
-        </p>
-
-        <div className="mt-10 grid w-full max-w-2xl gap-3 sm:grid-cols-3">
-          {contact.links.map((l) => {
-            const Icon = ICONS[l.icon] ?? Mail;
-            return (
-              <SpotlightCard
-                as={Link}
-                key={l.label}
-                href={l.href}
-                target={l.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-                className="glass glass-hover group flex flex-col items-start gap-3 rounded-2xl p-5 text-left"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <Icon className="h-5 w-5 text-foreground" />
-                  <div className="flex items-center gap-1">
-                    {l.icon === "email" && <CopyButton value={l.value} />}
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </div>
-                </div>
-                <div>
-                  <div className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    {l.label}
-                  </div>
-                  <div className="mt-1 break-all text-sm text-foreground">
-                    {l.value}
-                  </div>
-                </div>
-              </SpotlightCard>
-            );
-          })}
+    <footer id="contact">
+      <div className="mx-auto grid max-w-page gap-12 px-5 py-20 md:grid-cols-2 md:gap-16 md:px-8 md:py-28">
+        <div>
+          <Heading eyebrow={contact.eyebrow} title={contact.title} />
+          <p className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-muted">{contact.text}</p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <a href={`mailto:${profile.email}`} className="btn-primary px-7 py-3">
+              {contact.cta}
+            </a>
+            <a href={asset(profile.cv)} target="_blank" rel="noopener noreferrer" className="btn-ghost px-7 py-3">
+              {contact.cv}
+            </a>
+          </div>
         </div>
+
+        <ul className="self-center border-t border-line/10">
+          {contact.rows.map((r) => (
+            <li key={r.label} className="border-b border-line/10">
+              <a
+                href={r.href}
+                target={r.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-4 py-5"
+              >
+                <span className="eyebrow">{r.label}</span>
+                <span className="truncate transition-colors group-hover:text-accent">{r.value}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <footer className="mt-24 flex flex-col items-center gap-2 text-xs text-muted-foreground md:flex-row md:justify-between">
-        <span>
-          © {new Date().getFullYear()} {contact.footerName}
+      <div className="mx-auto flex max-w-page items-center justify-between border-t border-line/10 px-5 py-8 md:px-8">
+        <span className="font-serif text-xl">
+          {profile.short}
+          <span className="text-accent">.</span>
         </span>
-        <span className="font-mono">{contact.footerBuilt}</span>
-      </footer>
-    </Section>
+        <span className="text-sm text-muted">© {new Date().getFullYear()}</span>
+      </div>
+    </footer>
   );
 }

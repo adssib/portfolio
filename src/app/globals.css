@@ -2,6 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Colours are pulled from Adib's own photos: dusk blue, golden-hour amber,
+   and the green of the valleys. Tokens are RGB triplets so Tailwind can apply
+   alpha (e.g. text-ink/70). Light is "afternoon", dark (default) is "dusk". */
+@layer base {
+  :root {
+    --bg: 244 239 230;        /* #f4efe6 warm paper, never pure white */
+    --surface: 251 247 240;   /* #fbf7f0 */
+    --ink: 26 34 51;          /* #1a2233 evening-blue ink */
+    --muted: 88 94 108;       /* #585e6c */
+    --accent: 168 80 15;      /* #a8500f burnt amber */
+    --on-accent: 255 250 243;
+    --green: 63 107 42;       /* #3f6b2a forest */
+    --line: 26 34 51;
+
+    --hero-photo-opacity: 0.8;
+
+    /* Soft light from the sides so the paper never reads as flat white */
+    --glow-amber: rgba(242, 166, 90, 0.32);
+    --glow-sky: rgba(111, 155, 220, 0.34);
+    --glow-green: rgba(143, 179, 106, 0.26);
+  }
+
+  .dark {
+    --bg: 15 21 34;           /* #0f1522 dusk */
+    --surface: 23 32 54;      /* #172036 */
+    --ink: 243 233 220;       /* #f3e9dc cloud cream */
+    --muted: 160 170 192;     /* #a0aac0 */
+    --accent: 242 166 90;     /* #f2a65a sunset amber */
+    --on-accent: 26 18 6;
+    --green: 143 179 106;     /* #8fb36a valley green */
+    --line: 243 233 220;
+
+    --hero-photo-opacity: 0.6;
+
+    --glow-amber: rgba(242, 166, 90, 0.17);
+    --glow-sky: rgba(111, 155, 220, 0.24);
+    --glow-green: rgba(143, 179, 106, 0.13);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Colour glows pinned to the viewport edges: amber sunset on the left,
+     sky blue on the right, a little valley green low down. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    pointer-events: none;
+    background:
+      radial-gradient(55rem 45rem at -12% 18%, var(--glow-amber), transparent 65%),
+      radial-gradient(55rem 50rem at 112% 45%, var(--glow-sky), transparent 65%),
+      radial-gradient(45rem 35rem at 20% 110%, var(--glow-green), transparent 65%);
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[0.95rem] font-medium transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply btn bg-accent text-on-accent hover:bg-accent/90;
+  }
+  .btn-ghost {
+    @apply btn border border-line/20 text-ink hover:border-line/45;
+  }
+  .link {
+    @apply underline decoration-line/25 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
+  }
+}
+
 /* Skip-to-content link, visible on focus only */
 .skip-link {
   position: fixed;
@@ -9,9 +99,8 @@
   left: 8px;
   z-index: 100;
   padding: 10px 16px;
-  background: hsl(var(--foreground));
-  color: hsl(var(--background));
-  border: 1px solid hsl(var(--foreground));
+  background: rgb(var(--ink));
+  color: rgb(var(--bg));
   border-radius: 9999px;
   font-size: 14px;
   transform: translateY(-200%);
@@ -19,8 +108,38 @@
 }
 .skip-link:focus-visible {
   transform: translateY(0);
-  outline: none;
 }
+
+/* Hero: one orchestrated moment. The title rises, then the photo surfaces. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes surface {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: var(--hero-photo-opacity); transform: scale(1); }
+}
+.rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.surface { animation: surface 1.8s ease-out 0.5s both; }
+
+/* The hero photo melts into the page: faded at the top under the title,
+   solid through the middle, and dissolved into the background at the bottom. */
+.hero-photo {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 72%, transparent 100%);
+}
+
+/* Small tracked labels above sections, as on the reference site */
+.eyebrow {
+  @apply text-xs font-medium uppercase tracking-[0.2em] text-muted;
+}
+
+/* Slow credential strip under the hero */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee { animation: marquee 60s linear infinite; }
 
 /* Respect user's reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
@@ -32,252 +151,7 @@
   }
 }
 
-@layer base {
-  /* ── Light monochrome (default) ────────────────────────────────
-     The whole palette is grayscale. Flip to the dark variant by
-     adding `dark` to <html>; every token below has a .dark override. */
-  :root {
-    --background: 40 6% 96%;        /* #f5f5f3 off-white canvas   */
-    --foreground: 0 0% 5%;          /* #0d0d0d near-black ink      */
-    --card: 0 0% 100%;              /* pure white panels           */
-    --card-foreground: 0 0% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 0 0% 7%;            /* solid black actions          */
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 92%;
-    --secondary-foreground: 0 0% 12%;
-    --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 30%;   /* #4d4d4d darker secondary    */
-    --accent: 0 0% 90%;
-    --accent-foreground: 0 0% 12%;
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 0% / 0.1;
-    --input: 0 0% 0% / 0.12;
-    --ring: 0 0% 7%;
-    --radius: 0.75rem;
-    --font-jetbrains-mono: "JetBrains Mono";
-
-    /* Accent: a softer, muted blue in light mode (violet in dark, see .dark). */
-    --brand: 214 52% 54%;          /* #5587c4 calm steel blue     */
-    --brand-foreground: 0 0% 100%; /* text on a solid brand fill  */
-
-    /* Surface helpers consumed by the monochrome utilities below */
-    --line: 0 0% 0%;               /* hairlines / grid             */
-    --line-strength: 0.08;
-    --glass-bg: 0 0% 0% / 0.02;
-    --glass-border: 0 0% 0% / 0.09;
-    --glass-hover-bg: 0 0% 0% / 0.04;
-    --spotlight: 0 0% 0%;          /* cursor glow tint             */
-  }
-
-  .dark {
-    --background: 0 0% 4%;          /* #0a0a0a                     */
-    --foreground: 0 0% 96%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 96%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 7%;
-    --secondary: 0 0% 14%;
-    --secondary-foreground: 0 0% 96%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 62%;
-    --accent: 0 0% 16%;
-    --accent-foreground: 0 0% 96%;
-    --border: 0 0% 100% / 0.1;
-    --input: 0 0% 100% / 0.14;
-    --ring: 0 0% 90%;
-
-    /* Violet accent in dark mode */
-    --brand: 255 100% 72%;         /* #8b7cff violet              */
-    --brand-foreground: 0 0% 100%;
-
-    --line: 0 0% 100%;
-    --line-strength: 0.07;
-    --glass-bg: 0 0% 100% / 0.03;
-    --glass-border: 0 0% 100% / 0.09;
-    --glass-hover-bg: 0 0% 100% / 0.06;
-    --spotlight: 0 0% 100%;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "ss01" 1, "cv01" 1, "calt" 1;
-  }
-
-  ::selection {
-    background: hsl(var(--brand));
-    color: hsl(var(--brand-foreground));
-  }
-
-  /* Visible keyboard focus everywhere */
-  :focus-visible {
-    outline: 2px solid hsl(var(--brand));
-    outline-offset: 2px;
-    border-radius: 6px;
-  }
-
-  /* Slim monochrome scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--foreground) / 0.2);
-    border-radius: 9999px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--foreground) / 0.4);
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .font-display {
-    font-family: var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, monospace;
-    letter-spacing: -0.03em;
-  }
-
-  /* Accent gradient text: brand → softer brand. Theme-aware via --brand. */
-  .gradient-text {
-    background: linear-gradient(
-      120deg,
-      hsl(var(--brand)) 0%,
-      hsl(var(--brand) / 0.7) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Frosted panel, theme-aware via tokens */
-  .glass {
-    background-color: hsl(var(--glass-bg));
-    border: 1px solid hsl(var(--glass-border));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .glass-hover {
-    transition: transform 220ms ease, border-color 220ms ease,
-      background-color 220ms ease, box-shadow 220ms ease;
-  }
-  .glass-hover:hover {
-    transform: translateY(-2px);
-    border-color: hsl(var(--foreground) / 0.28);
-    background-color: hsl(var(--glass-hover-bg));
-    box-shadow: 0 20px 60px -28px hsl(var(--foreground) / 0.35);
-  }
-
-  /* Film grain over everything */
-  .noise {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.04;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='1'/></svg>");
-  }
-  .dark .noise {
-    mix-blend-mode: overlay;
-    opacity: 0.05;
-  }
-
-  .accent-divider {
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--foreground) / 0.18) 50%,
-      transparent 100%
-    );
-  }
-
-  /* ── Aceternity-style: animated "moving border" (rotating conic) ──
-     Wraps a button; a conic-gradient ring sweeps around the edge. */
-  .moving-border-wrap {
-    position: relative;
-    border-radius: 9999px;
-    padding: 1px;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .moving-border-wrap::before {
-    content: "";
-    position: absolute;
-    inset: -150%;
-    z-index: -1;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      hsl(var(--brand) / 0.05) 60deg,
-      hsl(var(--brand)) 110deg,
-      hsl(var(--brand) / 0.05) 160deg,
-      transparent 220deg
-    );
-    animation: border-spin 4s linear infinite;
-  }
-
-  /* Decrypt-text: scrambling glyphs glow in the accent, then lock to ink. */
-  .decrypt-scrambling {
-    color: hsl(var(--brand));
-    opacity: 0.95;
-  }
-
-  /* Card spotlight: radial glow follows the cursor (vars set in JS) */
-  .spotlight-card {
-    position: relative;
-  }
-  .spotlight-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 280ms ease;
-    background: radial-gradient(
-      240px circle at var(--mx, 50%) var(--my, 50%),
-      hsl(var(--brand) / 0.14),
-      transparent 70%
-    );
-  }
-  .spotlight-card:hover::before {
-    opacity: 1;
-  }
-}
-
-@keyframes border-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Theme switch circle wipe: the JS animates a clip-path on the new snapshot
-   (src/lib/theme.ts), so the default cross-fade must not fight it. The new
-   snapshot starts fully clipped (0px circle at the toggle position) so the
-   new theme can't flash fullscreen before the JS animation attaches. */
+/* Theme switch: circle wipe from the toggle (see src/lib/theme.ts) */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -285,29 +159,4 @@
 }
 ::view-transition-new(root) {
   clip-path: circle(0px at var(--wipe-x, 50%) var(--wipe-y, 50%));
-}
-
-/* Terminal block cursor */
-@keyframes term-blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-.term-cursor {
-  animation: term-blink 1.05s step-end infinite;
-}
-
-/* Terminal output line fade-in */
-@keyframes term-line-in {
-  from { opacity: 0; transform: translateY(2px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.term-line-in {
-  animation: term-line-in 160ms ease-out both;
-}
-
-/* Slim terminal scrollbar (theme-aware) */
-.term-scroll::-webkit-scrollbar { width: 8px; }
-.term-scroll::-webkit-scrollbar-thumb {
-  background: hsl(var(--foreground) / 0.18);
-  border-radius: 9999px;
 }

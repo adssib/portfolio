@@ -1,13 +1,13 @@
 {
-  "eyebrow": "06 / Contact",
-  "headingTop": "Let's build something",
-  "headingAccent": "worth building.",
-  "blurb": "I'm always open to interesting conversations: AI infra, full-stack systems, or just an introduction.",
-  "links": [
-    { "label": "Email", "value": "adibakkari@gmail.com", "href": "mailto:adibakkari@gmail.com", "icon": "email" },
-    { "label": "GitHub", "value": "github.com/adssib", "href": "https://github.com/adssib", "icon": "github" },
-    { "label": "LinkedIn", "value": "linkedin.com/in/adib-akkari", "href": "https://linkedin.com/in/adib-akkari", "icon": "linkedin" }
-  ],
-  "footerName": "Adib Akkari. Montréal, QC.",
-  "footerBuilt": "Built with Next.js · Tailwind · Framer Motion"
+  "eyebrow": "Reach me",
+  "title": "Let's build something *together.*",
+  "text": "Open to freelance work, new-grad roles, and a game of bullet. I answer email fast.",
+  "cta": "Email me",
+  "cv": "View CV",
+  "rows": [
+    { "label": "Email", "value": "adibakkari@gmail.com", "href": "mailto:adibakkari@gmail.com" },
+    { "label": "LinkedIn", "value": "adib-akkari", "href": "https://linkedin.com/in/adib-akkari" },
+    { "label": "GitHub", "value": "adssib", "href": "https://github.com/adssib" },
+    { "label": "Lichess", "value": "AdibAkkari", "href": "https://lichess.org/@/AdibAkkari" }
+  ]
 }

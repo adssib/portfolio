@@ -1,10 +1,10 @@
 import { ImageResponse } from "next/og";
 
-export const alt =
-  "Adib Akkari — Software Engineer building reliable systems, from bare metal to AI";
+export const alt = "Adib Akkari, software engineer. Engineer by day, somewhere in nature by weekend.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Mirrors the site hero: a dusk sky fading to the horizon, with ridges below.
 export default function OG() {
   return new ImageResponse(
     (
@@ -14,176 +14,31 @@ export default function OG() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "72px 80px",
-          background: "linear-gradient(135deg, #f5f5f3 0%, #e9e9e6 100%)",
-          color: "#121212",
+          padding: "96px 88px",
+          background:
+            "linear-gradient(180deg, #0c1222 0%, #18244a 32%, #3c4470 55%, #a7677a 76%, #e79a62 92%, #f2b070 100%)",
+          color: "#f3e9dc",
           fontFamily: "sans-serif",
           position: "relative",
         }}
       >
-        {/* Soft monochrome glows */}
-        <div
-          style={{
-            position: "absolute",
-            top: -200,
-            left: -100,
-            width: 700,
-            height: 700,
-            borderRadius: 700,
-            background:
-              "radial-gradient(circle, rgba(0,0,0,0.06), rgba(0,0,0,0) 70%)",
-            display: "flex",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: -250,
-            right: -150,
-            width: 600,
-            height: 600,
-            borderRadius: 600,
-            background:
-              "radial-gradient(circle, rgba(0,0,0,0.05), rgba(0,0,0,0) 70%)",
-            display: "flex",
-          }}
-        />
-
-        {/* Decorative grid dots */}
-        {[
-          [120, 90, 4],
-          [220, 180, 3],
-          [980, 110, 5],
-          [1080, 220, 3],
-          [870, 60, 4],
-          [60, 380, 3],
-          [1120, 480, 4],
-          [180, 540, 3],
-          [950, 560, 3],
-        ].map(([x, y, s], i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              top: y,
-              left: x,
-              width: s,
-              height: s,
-              background: "#121212",
-              borderRadius: s,
-              opacity: 0.22,
-              display: "flex",
-            }}
-          />
-        ))}
-
-        {/* Header row: monogram + status */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
+        <div style={{ fontSize: 128, fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, display: "flex" }}>
+          Adib Akkari
+        </div>
+        <div style={{ marginTop: 28, fontSize: 40, color: "rgba(243,233,220,0.85)", display: "flex" }}>
+          Engineer by day, somewhere in nature by weekend.
+        </div>
+        <svg
+          width="1200"
+          height="200"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ position: "absolute", left: 0, bottom: 0 }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 64,
-              height: 64,
-              borderRadius: 14,
-              background: "#121212",
-              color: "#f5f5f3",
-              fontSize: 24,
-              fontWeight: 800,
-              letterSpacing: "-0.06em",
-            }}
-          >
-            A.A.
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "10px 18px",
-              borderRadius: 999,
-              background: "rgba(0,0,0,0.03)",
-              boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.12)",
-              color: "rgba(0,0,0,0.7)",
-              fontSize: 20,
-            }}
-          >
-            <div
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: 8,
-                background: "#121212",
-                display: "flex",
-              }}
-            />
-            <div style={{ display: "flex" }}>Montréal · Available 2027</div>
-          </div>
-        </div>
-
-        {/* Name + tagline block */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div
-            style={{
-              fontSize: 120,
-              fontWeight: 800,
-              letterSpacing: "-0.045em",
-              lineHeight: 1,
-              display: "flex",
-            }}
-          >
-            Adib Akkari.
-          </div>
-          <div
-            style={{
-              fontSize: 40,
-              lineHeight: 1.25,
-              color: "rgba(0,0,0,0.55)",
-              maxWidth: 1000,
-              display: "flex",
-              flexWrap: "wrap",
-            }}
-          >
-            Software engineer building{" "}
-            <span style={{ color: "#121212", marginLeft: 10, marginRight: 10 }}>
-              reliable systems
-            </span>{" "}
-            — from bare metal to AI.
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            color: "rgba(0,0,0,0.5)",
-            fontSize: 22,
-          }}
-        >
-          <div style={{ display: "flex" }}>adib-akkari.netlify.app</div>
-          <div
-            style={{
-              display: "flex",
-              gap: 18,
-              fontFamily: "monospace",
-              fontSize: 18,
-            }}
-          >
-            <div style={{ display: "flex" }}>github.com/adssib</div>
-            <div style={{ display: "flex" }}>·</div>
-            <div style={{ display: "flex" }}>linkedin.com/in/adib-akkari</div>
-          </div>
-        </div>
+          <path fill="#2a3452" d="M0 190C120 150 220 120 330 140S520 90 640 120 860 60 980 110 1200 150 1300 120 1400 100 1440 110V320H0Z" />
+          <path fill="#1c2540" d="M0 240C140 200 260 215 380 190S600 230 760 200 1000 170 1140 210 1360 200 1440 190V320H0Z" />
+          <path fill="#0f1522" d="M0 290C200 260 380 285 560 270S900 250 1100 275 1340 265 1440 260V320H0Z" />
+        </svg>
       </div>
     ),
     { ...size }
