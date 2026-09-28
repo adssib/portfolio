@@ -18,9 +18,11 @@ const nextConfig = {
   // Required for static export; harmless otherwise (no next/image in use).
   images: { unoptimized: true },
   basePath: basePath || undefined,
+  // Lets components prefix /public asset URLs (see src/lib/asset.ts).
+  env: { NEXT_PUBLIC_BASE_PATH: basePath || "" },
   experimental: {
-    // Tree-shake icon barrels so only the glyphs actually used get bundled.
-    optimizePackageImports: ["react-icons/si", "react-icons/fa6", "lucide-react"],
+    // Tree-shake the icon barrel so only the glyphs actually used get bundled.
+    optimizePackageImports: ["lucide-react"],
   },
 };
 

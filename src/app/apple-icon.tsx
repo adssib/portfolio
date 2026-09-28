@@ -13,8 +13,8 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#121212",
-          color: "#f5f5f3",
+          background: "linear-gradient(180deg, #18244a 0%, #a7677a 70%, #f2a65a 100%)",
+          color: "#f3e9dc",
           fontSize: 72,
           fontWeight: 800,
           letterSpacing: "-0.06em",
@@ -22,7 +22,7 @@ export default function AppleIcon() {
           boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.16)",
         }}
       >
-        A.A.
+        AA
       </div>
     ),
     { ...size }

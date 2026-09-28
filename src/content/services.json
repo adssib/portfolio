@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Freelance",
+  "title": "I also *freelance.*",
+  "intro": "Need something built, fixed, or protected? Talk to me.",
+  "services": [
+    {
+      "name": "AI agents & MCP",
+      "text": "AI wired into your tools and data."
+    },
+    {
+      "name": "RAG & fine-tuning",
+      "text": "Models and Q&A on your own docs."
+    },
+    {
+      "name": "Monitoring & bot protection",
+      "text": "See what hits you, then stop it."
+    },
+    {
+      "name": "Websites & landing pages",
+      "text": "Fast pages that explain what you do."
+    }
+  ],
+  "jobsTitle": "Recent jobs",
+  "jobs": [
+    {
+      "name": "Learning center",
+      "status": "In progress",
+      "text": "Their landing pages. Need one? I can build it."
+    },
+    {
+      "name": "Private billing system",
+      "status": "Done",
+      "text": "Monitoring that exposed bot traffic, then cut it by 95%."
+    },
+    {
+      "name": "Smart grids",
+      "status": "Advising",
+      "text": "Guided an engineer through fine-tuning and cited Q&A."
+    }
+  ]
+}

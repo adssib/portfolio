@@ -1,72 +1,74 @@
-"use client";
+import { Fragment } from "react";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { DecryptText } from "@/components/ui/decrypt-text";
 
-type SectionProps = {
-  id?: string;
-  eyebrow?: string;
-  title?: string;
+/** Shared section frame: consistent width, gutters, and vertical rhythm. */
+export function Section({
+  id,
+  className,
+  children,
+}: {
+  id: string;
   className?: string;
   children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className={cn("mx-auto max-w-page px-5 py-20 md:px-8 md:py-28", className)}>
+      {children}
+    </section>
+  );
+}
+
+/** Renders copy where *wrapped words* become the muted serif italic. */
+export function Em({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\*[^*]+\*)/).map((part, i) =>
+        part.startsWith("*") ? (
+          <em key={i} className="text-muted">
+            {part.slice(1, -1)}
+          </em>
+        ) : (
+          <Fragment key={i}>{part}</Fragment>
+        )
+      )}
+    </>
+  );
+}
+
+export function Heading({
+  eyebrow,
+  title,
+  className,
+}: {
+  eyebrow?: string;
+  title: string;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
+      <h2 className="font-serif text-[clamp(2.5rem,5.5vw,4.25rem)] leading-[1] tracking-[-0.02em]">
+        <Em text={title} />
+      </h2>
+    </div>
+  );
+}
+
+const statusTone: Record<string, string> = {
+  Done: "text-green border-green/40",
 };
 
-export function Section({ id, eyebrow, title, className, children }: SectionProps) {
-  // Gate the heading decode on approach rather than entry: the extended bottom
-  // margin starts the decode while the section is still ~half a viewport below
-  // the fold, so at the slow hero pace the title has settled by the time the
-  // reader actually reaches it.
-  const ref = useRef<HTMLElement>(null);
-  const entered = useInView(ref, { once: true, margin: "0px 0px 50% 0px" });
-
-  // Nav jumps land in under a second — too fast for the slow decode. When this
-  // section is the jump target (see scrollToHash), show the title instantly.
-  const [instant, setInstant] = useState(false);
-  useEffect(() => {
-    const onJump = (e: Event) => {
-      if ((e as CustomEvent<string>).detail === id) setInstant(true);
-    };
-    window.addEventListener("portfolio:jump", onJump);
-    return () => window.removeEventListener("portfolio:jump", onJump);
-  }, [id]);
-
+/** Small status marker. Green means finished; everything else uses the accent. */
+export function Status({ label }: { label: string }) {
   return (
-    <motion.section
-      ref={ref}
-      id={id}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    <span
       className={cn(
-        "relative mx-auto w-full max-w-5xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 md:py-28 lg:py-32",
-        className
+        "inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+        statusTone[label] ?? "border-accent/40 text-accent"
       )}
     >
-      {(eyebrow || title) && (
-        <div className="mb-12 flex flex-col gap-2">
-          {eyebrow && (
-            <span className="font-mono text-xs uppercase tracking-[0.18em] text-brand">
-              {eyebrow}
-            </span>
-          )}
-          {title && (
-            <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
-              <DecryptText
-                text={title}
-                start={entered || instant}
-                instant={instant}
-                glitch={false}
-                className="text-foreground"
-              />
-            </h2>
-          )}
-          <div className="accent-divider mt-4" />
-        </div>
-      )}
-      {children}
-    </motion.section>
+      {label}
+    </span>
   );
 }

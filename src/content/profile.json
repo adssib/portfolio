@@ -1,18 +1,30 @@
 {
-  "name": "Adib Akkari.",
-  "role": "Software Engineer",
-  "headlineSuffix": "building **reliable systems** — from bare metal to AI.",
-  "availability": "Available for new grad SWE / ML roles · January 2027",
-  "summary": "I build distributed systems and the infrastructure around them. Currently interning at **Ericsson** on a cloud-native IAM platform serving **130M+ subscribers** across 150+ integrated systems. Previously rescued 20+ years of source code at Novatek through a custom VCS migration. Lately: a distributed load tester in Go and a self-hosted observability lab.",
-  "location": "Montréal, QC",
-  "education": "B.Eng Software Engineering · Concordia University · 2022–2026",
-  "cv": "/cv.pdf",
-  "cta": { "primary": "View CV", "secondary": "Get in touch" },
+  "name": "Adib Akkari",
+  "short": "adib",
+  "title": "Adib Akkari *Portfolio* Site.",
+  "tagline": "Engineer by day, somewhere in nature by weekend.",
+  "heroPhoto": {
+    "src": "/photos/golden-sky.webp",
+    "alt": "Clouds lit peach and gold over a valley at sunset"
+  },
+  "photo": {
+    "src": "/photos/me.webp",
+    "alt": "Adib smiling in a winter parka",
+    "caption": "Third cup of tea, probably."
+  },
+  "marquee": [
+    "Anthropic · Claude Code",
+    "Anthropic · Agent Skills",
+    "Anthropic · Subagents",
+    "Anthropic · Model Context Protocol",
+    "DeepLearning.AI · Deep Learning Specialization",
+    "Lichess · 1957 bullet peak",
+    "Lichess · 2500+ puzzle peak"
+  ],
+  "cv": "/CV.pdf",
+  "email": "adibakkari@gmail.com",
   "links": {
-    "email": "adibakkari@gmail.com",
-    "github": "github.com/adssib",
-    "githubUrl": "https://github.com/adssib",
-    "linkedin": "linkedin.com/in/adib-akkari",
-    "linkedinUrl": "https://linkedin.com/in/adib-akkari"
+    "github": "https://github.com/adssib",
+    "linkedin": "https://linkedin.com/in/adib-akkari"
   }
 }

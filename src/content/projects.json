@@ -1,104 +1,97 @@
 {
-  "eyebrow": "03 / Projects",
-  "title": "Featured work",
-  "spotlights": [
+  "title": "Projects",
+  "count": "Four projects · 2025 — 2026",
+  "projects": [
     {
-      "date": "Jun 2026",
-      "name": "dlt — Distributed Load Tester",
-      "status": "Building",
-      "tagline": "Distributed HTTP load tester in Go — correct global tail latency",
-      "description": "A coordinator dispatches work to N horizontally-scaled workers over a custom JSON-over-TCP protocol; they hammer a deliberately-breakable target and their results merge into statistically correct global latency percentiles. Documented like production — every non-trivial decision has an ADR.",
-      "bullets": [
-        "Computes correct global p50/p95/p99 by shipping a serialized HDR histogram from each worker and merging distributions — because the mean of percentiles is not a percentile.",
-        "Custom JSON-over-TCP protocol between coordinator and workers: registration, a synchronized start barrier, progress streaming, and result collection.",
-        "Built test-first with the race detector on in CI, plus Prometheus metrics and Grafana dashboards to watch the target degrade under load."
+      "eyebrow": "Co-founder · In stealth",
+      "name": "Stealth AI startup",
+      "text": "Agents that notice when a third-party API changes under you, then draft the pull request that fixes your code. A human still reviews it before it merges.",
+      "tech": [
+        "Agentic AI",
+        "Python",
+        "GitHub"
       ],
-      "tech": ["Go", "Docker", "Distributed Systems", "Prometheus"],
+      "visual": "startup",
+      "images": [],
+      "links": []
+    },
+    {
+      "eyebrow": "RAG · 87-question eval",
+      "name": "InfraChat",
+      "text": "Ask the Kubernetes and Docker docs a question and get an answer with citations, or an honest \"I don't know.\" Every retrieval component had to earn its place with a number.",
+      "tech": [
+        "Python",
+        "Hybrid search",
+        "Reranking",
+        "SQLite"
+      ],
+      "images": [
+        {
+          "src": "/projects/infrachat-metrics.webp",
+          "alt": "Bar chart of retrieval metrics for baseline, reranker, and hybrid search",
+          "fit": "contain"
+        }
+      ],
       "links": [
-        { "type": "github", "label": "View on GitHub", "href": "https://github.com/adssib/dlt" }
+        {
+          "label": "Code on GitHub",
+          "href": "https://github.com/adssib/InfraChat"
+        }
       ]
     },
     {
-      "date": "Jun 2026",
+      "eyebrow": "Live · Runs in the browser",
       "name": "system-design-maker",
-      "status": "Live",
-      "tagline": "Zero-backend system-design tool — custom DSL, live request flow",
-      "description": "Design a system in a small DSL and watch it render as an architecture diagram, then play requests flowing through it in real time — services, queues, and datastores as text, animated end-to-end. Entirely client-side, no backend.",
-      "bullets": [
-        "Custom DSL parsed in the browser into an interactive architecture diagram — define services, queues, and datastores as text and get a live graph.",
-        "Animates requests flowing edge-to-edge through the design in real time, so you see how a system behaves rather than just drawing boxes.",
-        "Zero-backend and fully static — deployed on GitHub Pages, instant to load and share."
+      "text": "Describe a system in a few lines of text, see it drawn as a diagram, then send requests through it and watch them flow.",
+      "tech": [
+        "TypeScript",
+        "React",
+        "Vite"
       ],
-      "tech": ["TypeScript", "React", "Vite"],
+      "images": [
+        {
+          "src": "/projects/sdm-demo.gif",
+          "alt": "Animated demo of requests flowing through a system diagram",
+          "fit": "cover"
+        }
+      ],
       "links": [
-        { "type": "live", "label": "Open the demo", "href": "https://adssib.github.io/system-design-maker/" },
-        { "type": "github", "label": "View on GitHub", "href": "https://github.com/adssib/system-design-maker" }
+        {
+          "label": "Try it live",
+          "href": "https://adssib.github.io/system-design-maker/"
+        },
+        {
+          "label": "Code on GitHub",
+          "href": "https://github.com/adssib/system-design-maker"
+        }
       ]
     },
     {
-      "date": "Jun 2026",
-      "name": "home-lab",
-      "status": "Live",
-      "tagline": "Self-hosted observability stack on a salvaged laptop — akkarilab.xyz",
-      "description": "Infrastructure-as-code for everything running on a home server behind akkarilab.xyz: a Prometheus + Grafana monitoring stack on a salvaged laptop, served publicly through an NGINX reverse proxy. The server pulls straight from the repo — no scattered configs, no copy-paste drift.",
-      "bullets": [
-        "Prometheus + Grafana + node-exporter in Docker Compose, with CPU / memory / disk / network dashboards reachable from anywhere.",
-        "NGINX reverse proxy fronts everything on one domain — static landing page, Grafana, and apps routed under akkarilab.xyz over HTTPS.",
-        "Everything lives in git and deploys by pull — configs, dashboards, and the landing page are versioned infrastructure, provisioned with Ansible."
+      "eyebrow": "Research · Deep learning course",
+      "name": "QLoRA fine-tuning",
+      "text": "Reimplemented LoRA and QLoRA from scratch and fine-tuned GPT-2 and GPT-Neo while training less than 1% of the parameters. Perplexity on Wikitext dropped from 54.3 to 31.6.",
+      "tech": [
+        "PyTorch",
+        "QLoRA",
+        "Hugging Face"
       ],
-      "tech": ["Docker", "Prometheus", "Grafana", "NGINX", "Ansible"],
-      "links": [
-        { "type": "live", "label": "Visit akkarilab.xyz", "href": "https://akkarilab.xyz" },
-        { "type": "github", "label": "View on GitHub", "href": "https://github.com/adssib/home-lab" }
-      ]
-    },
-    {
-      "date": "Nov 2025",
-      "name": "Get equivalently better with less precision",
-      "status": "Research",
-      "tagline": "PEFT methods — LoRA & QLoRA — reproduced from scratch · COMP 433",
-      "description": "Two-person deep-learning research project: instead of trusting the papers' numbers, we reimplemented parameter-efficient fine-tuning methods from scratch and benchmarked them on a single RTX 3090.",
-      "bullets": [
-        "Implemented LoRA adapters by hand — modifying Q/K/V projections in PyTorch — and QLoRA (4-bit NF4) for single-GPU fine-tuning of GPT-Neo and Qwen2.5.",
-        "Benchmarked accuracy, F1, and VRAM across SST-2, SQuAD v1.1, Wikitext-2, and AlpacaEval — rank-8 LoRA cut GPT-2 perplexity from 54.3 to 31.6.",
-        "Full research writeup: proposal, progress report, and final report with training-loss analysis."
+      "images": [
+        {
+          "src": "/projects/qlora-loss.webp",
+          "alt": "Training loss falling from 3.5 to 0.2 over 200 steps",
+          "fit": "contain"
+        }
       ],
-      "tech": ["PyTorch", "Hugging Face PEFT", "bitsandbytes", "QLoRA", "Qwen2.5"],
       "links": [
-        { "type": "github", "label": "View on GitHub", "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision" },
-        { "type": "pdf", "label": "Read the report", "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision/blob/main/FinalReport_QLoRA.pdf" }
+        {
+          "label": "Code on GitHub",
+          "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision"
+        },
+        {
+          "label": "Read the report",
+          "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision/blob/main/FinalReport_QLoRA.pdf"
+        }
       ]
-    },
-    {
-      "date": "2025–2026",
-      "name": "PlayLocal",
-      "status": "Live",
-      "tagline": "Location-based platform for organizing local pickup sports",
-      "description": "Find a game nearby, see who's in, and actually show up. 12-person team capstone that won Best Sports App at Concordia's Capstone Expo — built production-shaped: quality gates, coverage tracking, and a real deploy pipeline. I led the team through the full SDLC and owned backend and release engineering across 108 commits.",
-      "bullets": [
-        "Spring Boot backend: auth profiles, Flyway DB migrations, transactional email (Brevo), and CI test configuration.",
-        "Reviewed and merged feature work from an AI assistant with knowledge-grounded, user-aware answers to weather forecasts for upcoming games.",
-        "Production pipeline: SonarCloud quality gate + Codecov, deployed on Netlify and Render with Neon Postgres."
-      ],
-      "tech": ["Java", "Spring Boot", "Next.js", "TypeScript", "PostgreSQL", "Netlify", "Render"],
-      "links": [
-        { "type": "live", "label": "Visit the live site", "href": "https://playlocal-capstone.netlify.app/" },
-        { "type": "github", "label": "View on GitHub", "href": "https://github.com/TeamCappin/PlayLocal" }
-      ]
-    }
-  ],
-  "teasers": [
-    {
-      "icon": "rocket",
-      "title": "More projects, shipping soon",
-      "description": "Side experiments in eval pipelines, agent tooling, and retrieval. Track them on GitHub.",
-      "href": "https://github.com/adssib"
-    },
-    {
-      "icon": "github",
-      "title": "All repositories",
-      "description": "Browse the full archive of class projects, scripts, and works in progress on github.com/adssib.",
-      "href": "https://github.com/adssib?tab=repositories"
     }
   ]
 }
