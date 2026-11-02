@@ -4,28 +4,140 @@
   "subtitle": "I might not be cracked, but I finish what I start.",
   "roles": [
     {
-      "org": "Xsolla",
-      "role": "Agentic AI Intern",
-      "period": "Sep 2026 — now",
-      "logo": "/logos/xsolla.png"
+      "org": "RocketScience.one",
+      "role": "Applied AI (Contract)",
+      "period": "Nov 2026 — now",
+      "logo": "/logos/rocketscience.png"
     },
     {
-      "org": "Stealth AI startup",
-      "role": "Co-founder",
-      "period": "Aug 2026 — now",
-      "icon": "sparkles"
+      "org": "Xsolla",
+      "role": "Agentic AI Intern",
+      "period": "Sep — Nov 2026",
+      "logo": "/logos/xsolla.png",
+      "details": {
+        "context": "GameFarm: a fleet of phones where AI agents play mobile games to collect competitor monetization data.",
+        "areas": [
+          "Agentic AI",
+          "Cloud infrastructure",
+          "Market intelligence"
+        ],
+        "did": [
+          "Rebuilt the game-playing agent's loop around the OpenAI Decisions API, combining screenshots and past actions into each decision.",
+          "Owned the GCP architecture across international device hubs.",
+          "Built a BigQuery pipeline ranking games by performance and monetization competitor, feeding Salesforce with target leads and mock Xsolla webshops to pitch migration."
+        ],
+        "influence": [
+          {
+            "metric": "5× faster",
+            "label": "agent loop, 10 s → 2 s per move"
+          },
+          {
+            "metric": "800 ms → 100 ms",
+            "label": "cross-continent latency"
+          },
+          {
+            "metric": "784 games",
+            "label": "ranked for the sales pipeline"
+          }
+        ],
+        "exposed": [
+          "AI agents in production",
+          "OpenAI Decisions API",
+          "GCP",
+          "Multi-region infrastructure",
+          "BigQuery",
+          "Salesforce"
+        ]
+      }
     },
     {
       "org": "Ericsson",
-      "role": "Software Engineer in Test (QA)",
+      "role": "Software Developer Intern",
       "period": "Jan — Aug 2026",
-      "logo": "/logos/ericsson.png"
+      "logo": "/logos/ericsson.png",
+      "details": {
+        "context": "Cloud-native IAM platform for a Tier-1 telecom, serving 130M+ subscribers at 36K TPS.",
+        "areas": [
+          "AI tooling",
+          "DevOps",
+          "Test automation",
+          "Performance"
+        ],
+        "did": [
+          "Rebuilt a reporting workflow with Claude Skills, MCP integrations and subagents, keeping engineers in the loop to review critical output.",
+          "Mapped undocumented CI/CD pipelines across 20 microservices.",
+          "Owned pipeline and Kubernetes cluster health for 5 releases, root-causing recurring failures like certificate flakiness and PVC deadlocks with permanent fixes.",
+          "Built a regression pipeline that runs Postman collections every release.",
+          "Replaced Selenium UI scraping with a direct Grafana REST API integration for performance reports.",
+          "Cleared a backlog of 20+ API performance tests across REST and Kafka event pipelines, tracing TPS regressions to their root commits."
+        ],
+        "influence": [
+          {
+            "metric": "2 days → ~4 hours",
+            "label": "reporting workflow"
+          },
+          {
+            "metric": "~6 hours → minutes",
+            "label": "manual regression testing"
+          },
+          {
+            "metric": "60% less time",
+            "label": "generating performance reports"
+          },
+          {
+            "metric": "5 releases",
+            "label": "of pipeline and cluster health owned"
+          }
+        ],
+        "exposed": [
+          "Telecom-scale IAM",
+          "Kubernetes",
+          "CI/CD",
+          "Kafka",
+          "Grafana",
+          "Postman",
+          "Claude Skills",
+          "MCP"
+        ]
+      }
     },
     {
       "org": "Novatek International",
-      "role": "Backend Developer",
+      "role": "Software Developer (Intern + Part-Time)",
       "period": "Jan 2024 — Aug 2025",
-      "logo": "/logos/novatek.png"
+      "logo": "/logos/novatek.png",
+      "details": {
+        "context": "Moving a company's entire code history off a failing legacy version control system.",
+        "areas": [
+          "Migration tooling",
+          "Legacy systems"
+        ],
+        "did": [
+          "Reverse-engineered the proprietary SDK of the legacy version control system.",
+          "Built extraction tooling on top of it that stayed within a 1.5 GB JVM limit.",
+          "Migrated the production code to Git."
+        ],
+        "influence": [
+          {
+            "metric": "20+ years",
+            "label": "of production code moved to Git"
+          },
+          {
+            "metric": "700K+ commits",
+            "label": "migrated"
+          },
+          {
+            "metric": "Zero",
+            "label": "data lost"
+          }
+        ],
+        "exposed": [
+          "Reverse engineering",
+          "Proprietary SDKs",
+          "JVM memory limits",
+          "Git"
+        ]
+      }
     }
   ],
   "footnote": "B.Eng. in Software Engineering, graduating April 2027."
