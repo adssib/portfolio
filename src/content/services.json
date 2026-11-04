@@ -1,41 +1,39 @@
 {
-  "eyebrow": "Freelance",
-  "title": "I also *freelance.*",
-  "intro": "Need something built, fixed, or protected? Talk to me.",
+  "eyebrow": "Consulting",
+  "title": "I help teams *put AI to work.*",
+  "intro": "Want AI in your team's day-to-day, minus the hype? Let's talk.",
+  "cta": "Talk to me",
+  "proofLabel": "Where I've done it",
   "services": [
     {
+      "name": "AI in your workflow",
+      "text": "I find the work AI can take off your team's plate, then set it up with people still reviewing what matters.",
+      "proof": "At Ericsson: a 2-day reporting workflow down to ~4 hours."
+    },
+    {
+      "name": "AI strategy & team training",
+      "text": "Where AI fits in your business, what it will cost, and how to get your team using tools like Claude Code well.",
+      "proof": "Anthropic developer certificates in Claude Code, Agent Skills, Subagents and MCP."
+    },
+    {
       "name": "AI agents & MCP",
-      "text": "AI wired into your tools and data."
+      "text": "Agents that work with your tools and data, with a human approving the steps that matter.",
+      "proof": "At Xsolla: made a game-playing agent 5× faster per move."
     },
     {
-      "name": "RAG & fine-tuning",
-      "text": "Models and Q&A on your own docs."
+      "name": "RAG pipelines",
+      "text": "Q&A over your own documents, with citations, tested on real questions before anyone relies on it.",
+      "proof": "InfraChat: cited answers over the Kubernetes and Docker docs, tested on 87 questions."
     },
     {
-      "name": "Monitoring & bot protection",
-      "text": "See what hits you, then stop it."
+      "name": "Fine-tuning",
+      "text": "Teach an open model your domain with LoRA and QLoRA, without paying to train the whole thing.",
+      "proof": "Advised a smart-grid project on QLoRA fine-tuning and cited Q&A."
     },
     {
-      "name": "Websites & landing pages",
-      "text": "Fast pages that explain what you do."
-    }
-  ],
-  "jobsTitle": "Recent jobs",
-  "jobs": [
-    {
-      "name": "Learning center",
-      "status": "In progress",
-      "text": "Building their landing page, with SEO so people can actually find it."
-    },
-    {
-      "name": "Private billing system",
-      "status": "Done",
-      "text": "Monitoring that exposed bot traffic, then cut it by 95%."
-    },
-    {
-      "name": "Smart grids",
-      "status": "Advising",
-      "text": "Guided an engineer through fine-tuning and cited Q&A."
+      "name": "Landing pages",
+      "text": "Fast pages that explain what you do and show up when people search for it.",
+      "proof": "Building one now for a learning center."
     }
   ]
 }

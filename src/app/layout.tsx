@@ -8,7 +8,7 @@ import "./globals.css";
 
 const SITE_URL = "https://adssib.github.io/portfolio";
 const DESCRIPTION =
-  "Adib Akkari, software engineer. Engineer by day, somewhere in nature by weekend. AI agents, reliable systems, and freelance work.";
+  "Adib Akkari, software engineer. Engineer by day, somewhere in nature by weekend. AI agents, reliable systems, and AI consulting.";
 
 export const metadata: Metadata = {
   // Origin only: Next adds the /portfolio basePath to image URLs itself,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "MCP",
     "RAG",
     "QLoRA",
-    "Freelance",
+    "AI Consulting",
   ],
   authors: [{ name: "Adib Akkari" }],
   creator: "Adib Akkari",

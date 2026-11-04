@@ -54,21 +54,3 @@ export function Heading({
     </div>
   );
 }
-
-const statusTone: Record<string, string> = {
-  Done: "text-green border-green/40",
-};
-
-/** Small status marker. Green means finished; everything else uses the accent. */
-export function Status({ label }: { label: string }) {
-  return (
-    <span
-      className={cn(
-        "inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
-        statusTone[label] ?? "border-accent/40 text-accent"
-      )}
-    >
-      {label}
-    </span>
-  );
-}
