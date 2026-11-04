@@ -11,7 +11,9 @@ const DESCRIPTION =
   "Adib Akkari, software engineer. Engineer by day, somewhere in nature by weekend. AI agents, reliable systems, and freelance work.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  // Origin only: Next adds the /portfolio basePath to image URLs itself,
+  // so including it here doubled it (/portfolio/portfolio/...).
+  metadataBase: new URL(new URL(SITE_URL).origin),
   title: {
     default: "Adib Akkari · Software Engineer",
     template: "%s · Adib Akkari",
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
     description: "Engineer by day, somewhere in nature by weekend.",
   },
   // icons + Open Graph image are auto-wired from
-  //   src/app/icon.tsx, src/app/apple-icon.tsx, src/app/opengraph-image.tsx
+  //   src/app/icon.tsx, src/app/apple-icon.tsx, src/app/opengraph-image.png
 };
 
 export default function RootLayout({
