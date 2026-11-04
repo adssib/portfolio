@@ -2,17 +2,46 @@
   "eyebrow": "About",
   "title": "Not a genius. I just don't leave things *broken.*",
   "subtitle": "I might not be cracked, but I finish what I start.",
+  "building": {
+    "eyebrow": "Building now",
+    "title": "Building *Knolt* and *Patch-it.*",
+    "items": [
+      {
+        "name": "Knolt",
+        "logo": "/logos/knolt.svg",
+        "role": "Founding Engineer",
+        "since": "Since Oct 2026",
+        "tagline": "On-site AI that catches incidents live.",
+        "text": "Knolt turns the cameras a business already owns into a live analyst for security and operations. Incidents get flagged within seconds with the clip that shows them, staff can ask the footage questions in plain language, and everything runs on site, so footage never leaves the building.",
+        "tags": [
+          "Video understanding",
+          "On-site AI",
+          "Live alerts",
+          "Natural-language search"
+        ]
+      },
+      {
+        "name": "Patch-it",
+        "logo": "/logos/patch-it.svg",
+        "role": "Co-founder",
+        "since": "Since Aug 2026",
+        "tagline": "Catches breaking changes in the APIs you depend on.",
+        "text": "Third-party APIs, packages and SDKs change under you. Patch-it spots the breaking change and drafts the fix as a pull request a human reviews. I lead product, owning the vision, the roadmap and the business model.",
+        "tags": [
+          "Agentic AI",
+          "Software architecture",
+          "Product"
+        ]
+      }
+    ]
+  },
+  "experienceLabel": "Experience",
   "roles": [
     {
       "org": "RocketScience.one",
       "role": "Applied AI Developer",
       "period": "Nov 2026 — now",
       "logo": "/logos/rocketscience.png"
-    },
-    {
-      "org": "Knolt",
-      "role": "Founding Engineer",
-      "period": "Oct 2026 — now"
     },
     {
       "org": "Xsolla",
@@ -52,32 +81,6 @@
           "Multi-region infrastructure",
           "BigQuery",
           "Salesforce"
-        ]
-      }
-    },
-    {
-      "org": "Patch-it",
-      "role": "Co-founder",
-      "period": "Aug 2026 — now",
-      "details": {
-        "context": "A developer tool that catches breaking changes in third-party APIs, packages and SDKs, then drafts the fix as a pull request a human reviews.",
-        "areas": [
-          "Agentic AI",
-          "Software architecture",
-          "Product"
-        ],
-        "did": [
-          "Leading product: owning the vision, the roadmap and the business model.",
-          "Building the agentic system that detects breaking changes in third-party APIs, packages and SDKs.",
-          "Designing how it drafts human-reviewed pull requests in customers' repos."
-        ],
-        "influence": [],
-        "exposed": [
-          "Founding a company",
-          "Product strategy",
-          "Business models",
-          "Roadmapping",
-          "Agentic AI"
         ]
       }
     },

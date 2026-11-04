@@ -1,5 +1,6 @@
 import about from "@/content/about.json";
 import profile from "@/content/profile.json";
+import { Building } from "@/components/building";
 import { ExperienceList } from "@/components/experience-list";
 import { Heading, Section } from "@/components/section";
 import { PhotoCard } from "@/components/photo-card";
@@ -19,7 +20,12 @@ export function About() {
         </div>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-20">
+        <Building {...about.building} />
+      </div>
+
+      <div className="mt-20">
+        <p className="eyebrow mb-6">{about.experienceLabel}</p>
         <ExperienceList roles={about.roles} />
       </div>
     </Section>
