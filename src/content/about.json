@@ -5,9 +5,14 @@
   "roles": [
     {
       "org": "RocketScience.one",
-      "role": "Applied AI (Contract)",
+      "role": "Applied AI Developer",
       "period": "Nov 2026 — now",
       "logo": "/logos/rocketscience.png"
+    },
+    {
+      "org": "Knolt",
+      "role": "Founding Engineer",
+      "period": "Oct 2026 — now"
     },
     {
       "org": "Xsolla",
@@ -47,6 +52,32 @@
           "Multi-region infrastructure",
           "BigQuery",
           "Salesforce"
+        ]
+      }
+    },
+    {
+      "org": "Patch-it",
+      "role": "Co-founder",
+      "period": "Aug 2026 — now",
+      "details": {
+        "context": "A developer tool that catches breaking changes in third-party APIs, packages and SDKs, then drafts the fix as a pull request a human reviews.",
+        "areas": [
+          "Agentic AI",
+          "Software architecture",
+          "Product"
+        ],
+        "did": [
+          "Leading product: owning the vision, the roadmap and the business model.",
+          "Building the agentic system that detects breaking changes in third-party APIs, packages and SDKs.",
+          "Designing how it drafts human-reviewed pull requests in customers' repos."
+        ],
+        "influence": [],
+        "exposed": [
+          "Founding a company",
+          "Product strategy",
+          "Business models",
+          "Roadmapping",
+          "Agentic AI"
         ]
       }
     },

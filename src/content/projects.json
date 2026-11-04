@@ -1,20 +1,7 @@
 {
   "title": "Projects",
-  "count": "Four projects · 2025 — 2026",
+  "count": "Three projects · 2025 — 2026",
   "projects": [
-    {
-      "eyebrow": "Co-founder · In stealth",
-      "name": "Stealth AI startup",
-      "text": "Agents that notice when a third-party API changes under you, then draft the pull request that fixes your code. A human still reviews it before it merges.",
-      "tech": [
-        "Agentic AI",
-        "Python",
-        "GitHub"
-      ],
-      "visual": "startup",
-      "images": [],
-      "links": []
-    },
     {
       "eyebrow": "RAG · 87-question eval",
       "name": "InfraChat",

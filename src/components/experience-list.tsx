@@ -18,17 +18,27 @@ export type Role = {
   org: string;
   role: string;
   period: string;
-  logo: string;
+  logo?: string;
   details?: Details;
 };
 
 function RowSummary({ role }: { role: Role }) {
   return (
     <>
-      {/* Logos sit on a light tile so black marks stay visible in dark mode */}
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 ring-1 ring-line/10">
-        <img src={asset(role.logo)} alt={`${role.org} logo`} className="h-full w-full object-contain" />
-      </span>
+      {role.logo ? (
+        // Logos sit on a light tile so black marks stay visible in dark mode
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 ring-1 ring-line/10">
+          <img src={asset(role.logo)} alt={`${role.org} logo`} className="h-full w-full object-contain" />
+        </span>
+      ) : (
+        // No logo yet: the first letter on an accent tile
+        <span
+          aria-hidden
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 font-serif text-xl text-accent ring-1 ring-accent/25"
+        >
+          {role.org[0]}
+        </span>
+      )}
       <span className="min-w-0 flex-1">
         <span className="block font-medium">{role.org}</span>
         <span className="block text-sm text-muted">{role.role}</span>
@@ -52,9 +62,12 @@ function Chips({ items }: { items: string[] }) {
   );
 }
 
-const tabs = [
+type Tab = { label: string; has: (d: Details) => boolean; render: (d: Details) => React.ReactNode };
+
+const allTabs: Tab[] = [
   {
     label: "What I did",
+    has: (d) => d.did.length > 0,
     render: (d: Details) => (
       <ul className="list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed marker:text-accent">
         {d.did.map((item) => (
@@ -65,6 +78,7 @@ const tabs = [
   },
   {
     label: "Influence",
+    has: (d) => d.influence.length > 0,
     render: (d: Details) => (
       <ul className="grid content-start gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
         {d.influence.map((item) => (
@@ -76,13 +90,15 @@ const tabs = [
       </ul>
     ),
   },
-  { label: "Areas", render: (d: Details) => <Chips items={d.areas} /> },
-  { label: "Exposed to", render: (d: Details) => <Chips items={d.exposed} /> },
+  { label: "Areas", has: (d) => d.areas.length > 0, render: (d) => <Chips items={d.areas} /> },
+  { label: "Exposed to", has: (d) => d.exposed.length > 0, render: (d) => <Chips items={d.exposed} /> },
 ];
 
 /** One tab of detail at a time keeps an open row well under a screen tall. */
 function RoleDetails({ details }: { details: Details }) {
   const id = useId();
+  // Tabs with nothing in them yet (say, no numbers for a new role) are skipped
+  const tabs = allTabs.filter((t) => t.has(details));
   const [active, setActive] = useState(0);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
 

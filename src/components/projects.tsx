@@ -28,44 +28,6 @@ function Shot({ img }: { img: Image }) {
   );
 }
 
-/** The startup is in stealth, so instead of a screenshot it gets an illustration
- *  of what the product does: spot the breaking change, then draft the fix. */
-function StartupVisual() {
-  return (
-    <div
-      aria-hidden
-      className="rounded-md bg-surface p-5 font-mono text-xs leading-relaxed ring-1 ring-line/10"
-    >
-      <div className="flex items-center justify-between gap-3">
-        <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.18em] text-accent">
-          Breaking change
-        </p>
-        <p className="text-muted">GET /v2/orders/:id</p>
-      </div>
-      <div className="mt-3 space-y-1">
-        <p className="rounded bg-[#e5534b]/15 px-2 py-0.5 text-[#e5534b]">- &quot;total&quot;: 1999</p>
-        <p className="rounded bg-green/15 px-2 py-0.5 text-green">
-          + &quot;total&quot;: {"{"} &quot;amount&quot;: 1999, &quot;currency&quot;: &quot;usd&quot; {"}"}
-        </p>
-      </div>
-      <div className="mt-4 flex items-center justify-between gap-3 border-t border-line/10 pt-4">
-        <div className="min-w-0">
-          <p className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.18em] text-green">
-            Pull request drafted
-          </p>
-          <p className="mt-1 truncate font-sans text-sm font-medium text-ink">fix: read order total as an object</p>
-          <p className="text-muted">
-            <span className="text-green">+12</span> <span className="text-[#e5534b]">−4</span> · tests pass
-          </p>
-        </div>
-        <p className="shrink-0 rounded-full border border-accent/40 px-2.5 py-0.5 font-sans text-accent">
-          Needs review
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function Projects() {
   return (
     <Section id="work">
@@ -88,7 +50,7 @@ export function Projects() {
           )}
         >
           <div className={cn(i % 2 === 1 && "md:order-2")}>
-            {p.visual === "startup" ? <StartupVisual /> : <Shot img={p.images[0]} />}
+            <Shot img={p.images[0]} />
           </div>
           <div>
             <p className="eyebrow">{p.eyebrow}</p>
