@@ -8,7 +8,7 @@ import "./globals.css";
 
 const SITE_URL = "https://adssib.github.io/portfolio";
 const DESCRIPTION =
-  "Adib Akkari, software engineer. Engineer by day, somewhere in nature by weekend. AI agents, reliable systems, and AI consulting.";
+  "Adib Akkari builds AI systems that work in the real world: agents, model fine-tuning and evaluation, and the infrastructure underneath.";
 
 export const metadata: Metadata = {
   // Origin only: Next adds the /portfolio basePath to image URLs itself,

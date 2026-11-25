@@ -1,77 +1,10 @@
 {
   "eyebrow": "About",
   "title": "Not a genius. I just don't leave things *broken.*",
-  "subtitle": "I might not be cracked, but I finish what I start.",
-  "building": {
-    "eyebrow": "Building now",
-    "title": "Building *Knolt* and *patch-it.*",
-    "items": [
-      {
-        "name": "Knolt",
-        "logo": "/logos/knolt.svg",
-        "role": "Founding AI Engineer",
-        "since": "Since Oct 2026",
-        "tagline": "AI video security for bank branches.",
-        "text": "Knolt's AI watches every camera in a branch and flags a robbery in seconds, with the clip. I fine-tuned an 8B Qwen model into Talos 1.1, our security-camera model, which makes the right incident call 83% of the time on our internal Security-Bench 1.3.",
-        "tags": [
-          "Fine-tuning",
-          "Vision-language models",
-          "Evals",
-          "Video security"
-        ],
-        "link": {
-          "label": "knolt.ca",
-          "href": "https://knolt.ca"
-        }
-      },
-      {
-        "name": "patch-it",
-        "logo": "/logos/patch-it.svg",
-        "role": "Co-founder",
-        "since": "Since Aug 2026",
-        "tagline": "You get the fix, not the alert.",
-        "text": "When a third-party API, package or SDK changes, patch-it finds the code that breaks and drafts the pull request that fixes it, for a person to review. I lead product: the vision, the roadmap and the business model.",
-        "tags": [
-          "Agentic AI",
-          "Developer tools",
-          "Product"
-        ],
-        "link": {
-          "label": "patch-it.dev",
-          "href": "https://patch-it.dev"
-        }
-      }
-    ]
-  },
+  "subtitle": "I like understanding how things work, figuring out why they break, and building systems that make them better.",
+  "footnote": "B.Eng. in Software Engineering, graduating April 2027 · Anthropic developer certificates · Deep Learning Specialization",
   "experienceLabel": "Experience",
   "roles": [
-    {
-      "org": "RocketScience.one",
-      "role": "Applied AI Engineer (Contract)",
-      "period": "Oct 2026 — now",
-      "logo": "/logos/rocketscience.png",
-      "details": {
-        "context": "A self-hosted voice-agent platform built on open-source models.",
-        "areas": [
-          "Voice agents",
-          "Speech",
-          "Fine-tuning"
-        ],
-        "did": [
-          "Built a self-hosted voice-agent platform with a cascaded speech-to-text → LLM → text-to-speech architecture on open-source models.",
-          "Fine-tuned the text-to-speech model with LoRA on the CommissionsQC dataset so it speaks Québec French."
-        ],
-        "influence": [],
-        "exposed": [
-          "Speech-to-text",
-          "Text-to-speech",
-          "LoRA",
-          "Open-source models",
-          "Self-hosting",
-          "Québec French"
-        ]
-      }
-    },
     {
       "org": "Xsolla",
       "role": "AI Developer Intern",
@@ -115,6 +48,33 @@
           "Fast decision models",
           "Mentoring",
           "Demos to leadership"
+        ]
+      }
+    },
+    {
+      "org": "RocketScience.one",
+      "role": "Applied AI Engineer (Contract)",
+      "period": "Oct 2026 — now",
+      "logo": "/logos/rocketscience.png",
+      "details": {
+        "context": "A self-hosted voice-agent platform built on open-source models.",
+        "areas": [
+          "Voice agents",
+          "Speech",
+          "Fine-tuning"
+        ],
+        "did": [
+          "Built a self-hosted voice-agent platform with a cascaded speech-to-text → LLM → text-to-speech architecture on open-source models.",
+          "Fine-tuned the text-to-speech model with LoRA on the CommissionsQC dataset so it speaks Québec French."
+        ],
+        "influence": [],
+        "exposed": [
+          "Speech-to-text",
+          "Text-to-speech",
+          "LoRA",
+          "Open-source models",
+          "Self-hosting",
+          "Québec French"
         ]
       }
     },
@@ -201,6 +161,5 @@
         ]
       }
     }
-  ],
-  "footnote": "B.Eng. in Software Engineering, graduating April 2027."
+  ]
 }

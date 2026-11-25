@@ -22,7 +22,7 @@ const config: Config = {
         sans: ['"Instrument Sans Variable"', "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: {
-        page: "72rem",
+        page: "90rem",
       },
     },
   },

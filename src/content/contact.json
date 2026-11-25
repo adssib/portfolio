@@ -1,13 +1,29 @@
 {
   "eyebrow": "Reach me",
   "title": "Let's build something *together.*",
-  "text": "Open to consulting work, new-grad roles, and a game of bullet. I answer email fast.",
+  "text": "Open to new-grad roles in applied AI and AI systems, the odd consulting project, and a game of bullet. I answer email fast.",
   "cta": "Email me",
   "cv": "View CV",
   "rows": [
-    { "label": "Email", "value": "adibakkari@gmail.com", "href": "mailto:adibakkari@gmail.com" },
-    { "label": "LinkedIn", "value": "adib-akkari", "href": "https://linkedin.com/in/adib-akkari" },
-    { "label": "GitHub", "value": "adssib", "href": "https://github.com/adssib" },
-    { "label": "Lichess", "value": "AdibAkkari", "href": "https://lichess.org/@/AdibAkkari" }
+    {
+      "label": "Email",
+      "value": "adibakkari@gmail.com",
+      "href": "mailto:adibakkari@gmail.com"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "adib-akkari",
+      "href": "https://linkedin.com/in/adib-akkari"
+    },
+    {
+      "label": "GitHub",
+      "value": "adssib",
+      "href": "https://github.com/adssib"
+    },
+    {
+      "label": "Lichess",
+      "value": "AdibAkkari",
+      "href": "https://lichess.org/@/AdibAkkari"
+    }
   ]
 }

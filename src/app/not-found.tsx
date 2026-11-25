@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-start justify-center px-5 md:px-8">
+    <main className="flex min-h-screen flex-col items-start justify-center px-5 md:px-8 xl:px-12">
       <div className="mx-auto w-full max-w-page">
         <h1 className="font-serif text-[clamp(3rem,8vw,5.5rem)] leading-none tracking-[-0.02em]">
           Wrong trail.

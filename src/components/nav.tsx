@@ -2,17 +2,17 @@ import profile from "@/content/profile.json";
 import { asset } from "@/lib/asset";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+// Writing joins this list once the first article is published.
 const links = [
-  { href: "#about", label: "About" },
   { href: "#work", label: "Work" },
-  { href: "#services", label: "Consulting" },
-  { href: "#outside", label: "Outside" },
+  { href: "#experience", label: "Experience" },
+  { href: "#about", label: "About" },
 ];
 
 export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 bg-bg/80 backdrop-blur-md">
-      <nav className="mx-auto flex h-[4.5rem] max-w-page items-center justify-between px-5 md:px-8">
+      <nav className="mx-auto flex h-[4.5rem] max-w-page items-center justify-between px-5 md:px-8 xl:px-12">
         <a href="#top" className="font-serif text-[1.75rem] leading-none tracking-tight">
           {profile.short}
           <span className="text-accent">.</span>

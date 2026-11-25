@@ -1,24 +1,70 @@
 {
-  "title": "Projects",
-  "count": "Three projects · 2025 — 2026",
+  "title": "Selected work",
+  "count": "Four systems I've built",
   "projects": [
     {
-      "eyebrow": "RAG · 87-question eval",
-      "name": "InfraChat",
-      "text": "Ask the Kubernetes and Docker docs a question and get an answer with citations, or an honest \"I don't know.\" Every retrieval component had to earn its place with a number.",
-      "tech": [
-        "Python",
-        "Hybrid search",
-        "Reranking",
-        "SQLite"
-      ],
-      "images": [
+      "eyebrow": "Xsolla · AI Developer Intern · 2026",
+      "name": "GameFarm",
+      "text": "Real Android phones playing mobile games on their own, to collect market and monetization data. I built the gameplay loop and the GCP infrastructure from scratch, then scaled it from one phone to 72 across six countries.",
+      "metrics": [
         {
-          "src": "/projects/infrachat-metrics.webp",
-          "alt": "Bar chart of retrieval metrics for baseline, reranker, and hybrid search",
-          "fit": "contain"
+          "value": "10 s → 2 s",
+          "label": "per move"
+        },
+        {
+          "value": "1 → 72",
+          "label": "devices"
         }
       ],
+      "visual": "devices",
+      "links": []
+    },
+    {
+      "eyebrow": "Knolt · Founding AI Engineer · 2026 – now",
+      "name": "Talos 1.1",
+      "text": "AI video security for bank branches. I fine-tuned an 8B Qwen vision-language model into Talos 1.1, the model that decides whether what a camera sees is an incident.",
+      "metrics": [],
+      "visual": "knolt",
+      "links": [
+        {
+          "label": "knolt.ca",
+          "href": "https://knolt.ca"
+        }
+      ]
+    },
+    {
+      "eyebrow": "patch-it · Co-founder · 2026 – now",
+      "name": "patch-it",
+      "text": "When a third-party API, package or SDK changes, patch-it finds the code that breaks and drafts the pull request that fixes it, for a person to review. I lead product: the vision, the roadmap and the business model.",
+      "metrics": [],
+      "visual": "patch",
+      "links": [
+        {
+          "label": "patch-it.dev",
+          "href": "https://patch-it.dev"
+        }
+      ]
+    },
+    {
+      "eyebrow": "Personal project · 2026",
+      "name": "InfraChat",
+      "text": "Cited Q&A over the Kubernetes and Docker docs, tested on 87 questions, including trap questions it should refuse to answer.",
+      "metrics": [
+        {
+          "value": "0.795 → 0.858",
+          "label": "MRR with hybrid search"
+        },
+        {
+          "value": "+6 ms",
+          "label": "latency cost"
+        }
+      ],
+      "visual": "image",
+      "image": {
+        "src": "/projects/infrachat-metrics.webp",
+        "alt": "Bar chart of retrieval metrics for baseline, reranker, and hybrid search",
+        "fit": "contain"
+      },
       "links": [
         {
           "label": "Try the demo",
@@ -29,23 +75,13 @@
           "href": "https://github.com/adssib/InfraChat"
         }
       ]
-    },
+    }
+  ],
+  "moreTitle": "More projects",
+  "more": [
     {
-      "eyebrow": "Live · Runs in the browser",
       "name": "system-design-maker",
-      "text": "Describe a system in a few lines of text, see it drawn as a diagram, then send requests through it and watch them flow.",
-      "tech": [
-        "TypeScript",
-        "React",
-        "Vite"
-      ],
-      "images": [
-        {
-          "src": "/projects/sdm-screenshot.webp",
-          "alt": "system-design-maker editor: a microservices system written as text on the left, drawn as a diagram on the right",
-          "fit": "cover"
-        }
-      ],
+      "text": "Describe a system in text, see it drawn, then watch requests flow through it. Live in the browser.",
       "links": [
         {
           "label": "Try it live",
@@ -58,21 +94,8 @@
       ]
     },
     {
-      "eyebrow": "Research · Deep learning course",
       "name": "QLoRA fine-tuning",
-      "text": "Reimplemented LoRA and QLoRA from scratch and fine-tuned GPT-2 and GPT-Neo while training less than 1% of the parameters. Perplexity on Wikitext dropped from 54.3 to 31.6.",
-      "tech": [
-        "PyTorch",
-        "QLoRA",
-        "Hugging Face"
-      ],
-      "images": [
-        {
-          "src": "/projects/qlora-loss.webp",
-          "alt": "Training loss falling from 3.5 to 0.2 over 200 steps",
-          "fit": "contain"
-        }
-      ],
+      "text": "LoRA and QLoRA from scratch on GPT-2 and GPT-Neo, training under 1% of the parameters. Perplexity on Wikitext dropped from 54.3 to 31.6.",
       "links": [
         {
           "label": "Code on GitHub",

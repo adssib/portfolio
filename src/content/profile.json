@@ -1,8 +1,14 @@
 {
   "name": "Adib Akkari",
   "short": "adib",
-  "title": "Adib Akkari *Portfolio* Site.",
-  "tagline": "Engineer by day, somewhere in nature by weekend.",
+  "title": "Adib Akkari.",
+  "tagline": "I build AI systems that work in the real world.",
+  "sub": "Applied AI · Agents · The infrastructure underneath",
+  "ctas": {
+    "work": "See selected work",
+    "cv": "Résumé",
+    "email": "Email me"
+  },
   "heroPhoto": {
     "src": "/photos/golden-sky.webp",
     "alt": "Clouds lit peach and gold over a valley at sunset"
@@ -13,13 +19,13 @@
     "caption": "Third cup of tea, probably."
   },
   "marquee": [
-    "Anthropic · Claude Code",
-    "Anthropic · Agent Skills",
-    "Anthropic · Subagents",
-    "Anthropic · Model Context Protocol",
-    "DeepLearning.AI · Deep Learning Specialization",
-    "Lichess · 1957 bullet peak",
-    "Lichess · 2500+ puzzle peak"
+    "5× faster agent decision loop",
+    "72 Android devices · 6 countries",
+    "Fine-tuned 8B vision-language model",
+    "Québec French voice agent",
+    "Kubernetes & CI at telecom scale",
+    "RAG evals · MRR 0.795 → 0.858",
+    "20+ years of code moved to Git"
   ],
   "cv": "/CV.pdf",
   "email": "adibakkari@gmail.com",
