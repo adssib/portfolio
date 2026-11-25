@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Knolt">
-<title>Knolt</title>
-<rect width="64" height="64" rx="14" fill="#0B1B33"/><g transform="translate(13.6 13.6) scale(0.575)"><path d="M16 6v52" fill="none" stroke="#E6ECF4" stroke-width="6" stroke-linecap="square"/><path d="M50 22H30v16" fill="none" stroke="#2F6BFF" stroke-width="6" stroke-linecap="square"/><path d="M33 40l17 18" fill="none" stroke="#E6ECF4" stroke-width="6" stroke-linecap="square"/></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Knolt"><title>Knolt</title><rect width="64" height="64" rx="14" fill="#0B1B33"/><g transform="translate(5.5 5.8) scale(0.84)"><path d="M14 10h9v44h-9z" fill="#FFFFFF"/><path d="M23 28L35 16h17v9H39L23 41z" fill="#2F6BFF"/><path d="M23 41l7-7 20 20H36z" fill="#FFFFFF"/></g></svg>

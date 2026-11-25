@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+
 import { asset } from "@/lib/asset";
 import { Em } from "@/components/section";
 
@@ -9,6 +11,7 @@ type Venture = {
   tagline: string;
   text: string;
   tags: string[];
+  link?: { label: string; href: string };
 };
 
 /** The startups get their own block, ahead of the jobs list. */
@@ -43,6 +46,17 @@ export function Building({
             </div>
             <p className="mt-5 font-serif text-xl italic leading-snug text-accent">{v.tagline}</p>
             <p className="mt-3 leading-relaxed text-muted">{v.text}</p>
+            {v.link && (
+              <a
+                href={v.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link mt-4 inline-flex w-fit items-center gap-1 text-sm font-medium"
+              >
+                {v.link.label}
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+              </a>
+            )}
             <ul className="mt-auto flex flex-wrap gap-2 pt-6">
               {v.tags.map((t) => (
                 <li key={t} className="rounded-full border border-line/15 px-3 py-1 text-sm text-muted">

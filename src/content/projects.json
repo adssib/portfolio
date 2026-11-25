@@ -21,6 +21,10 @@
       ],
       "links": [
         {
+          "label": "Try the demo",
+          "href": "https://adssib.github.io/InfraChat/"
+        },
+        {
           "label": "Code on GitHub",
           "href": "https://github.com/adssib/InfraChat"
         }
