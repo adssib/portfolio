@@ -5,10 +5,15 @@ import { Contact } from "@/components/contact";
 import { PostList } from "@/components/post-list";
 import { Em, Section } from "@/components/section";
 import { getPosts } from "@/lib/writing";
+import { SITE_URL, shareImage } from "@/lib/share";
+
+const description = "Engineering notes from Adib Akkari: real problems, measurements, and what I learned.";
 
 export const metadata: Metadata = {
   title: "Writing",
-  description: "Engineering notes from Adib Akkari: real problems, measurements, and what I learned.",
+  description,
+  openGraph: { type: "website", url: `${SITE_URL}/writing/`, title: "Writing · Adib Akkari", description, images: [shareImage] },
+  twitter: { card: "summary_large_image", title: "Writing · Adib Akkari", description, images: [shareImage] },
 };
 
 export default function WritingIndex() {

@@ -8,6 +8,7 @@ import { Contact } from "@/components/contact";
 import { Mdx } from "@/components/mdx";
 import { Tags } from "@/components/tags";
 import { formatDate, getPost, getPosts } from "@/lib/writing";
+import { SITE_URL, shareImage } from "@/lib/share";
 
 // Only the posts that exist at build time get pages (required for the static export).
 export const dynamicParams = false;
@@ -22,7 +23,15 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: post.title,
     description: post.summary,
-    openGraph: { type: "article", title: post.title, description: post.summary, publishedTime: post.date },
+    openGraph: {
+      type: "article",
+      url: `${SITE_URL}/writing/${post.slug}/`,
+      title: post.title,
+      description: post.summary,
+      publishedTime: post.date,
+      images: [shareImage],
+    },
+    twitter: { card: "summary_large_image", title: post.title, description: post.summary, images: [shareImage] },
   };
 }
 

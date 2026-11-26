@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   // so including it here doubled it (/portfolio/portfolio/...).
   metadataBase: new URL(new URL(SITE_URL).origin),
   title: {
-    default: "Adib Akkari · Software Engineer",
+    default: "Adib Akkari · AI Developer",
     template: "%s · Adib Akkari",
   },
   description: DESCRIPTION,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "MCP",
     "RAG",
     "QLoRA",
-    "AI Consulting",
+    "Applied AI",
   ],
   authors: [{ name: "Adib Akkari" }],
   creator: "Adib Akkari",
@@ -35,16 +35,16 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Adib Akkari",
-    title: "Adib Akkari · Software Engineer",
-    description: "Engineer by day, somewhere in nature by weekend.",
+    title: "Adib Akkari · AI Developer",
+    description: "I build AI systems that work in the real world.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adib Akkari · Software Engineer",
-    description: "Engineer by day, somewhere in nature by weekend.",
+    title: "Adib Akkari · AI Developer",
+    description: "I build AI systems that work in the real world.",
   },
   // icons + Open Graph image are auto-wired from
-  //   src/app/icon.tsx, src/app/apple-icon.tsx, src/app/opengraph-image.png
+  //   src/app/icon.tsx, src/app/apple-icon.tsx, src/app/opengraph-image.jpg
 };
 
 export default function RootLayout({
