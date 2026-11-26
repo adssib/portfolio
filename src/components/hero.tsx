@@ -1,5 +1,3 @@
-import { ArrowDown } from "lucide-react";
-
 import profile from "@/content/profile.json";
 import { asset } from "@/lib/asset";
 import { Em } from "@/components/section";
@@ -14,7 +12,7 @@ export function Hero() {
           alt=""
           aria-hidden
           fetchPriority="high"
-          className="surface hero-photo absolute inset-x-0 bottom-0 -z-10 h-[78%] w-full object-cover object-[center_60%]"
+          className="surface hero-photo absolute inset-0 -z-10 h-full w-full object-cover object-[center_45%]"
         />
 
         <div className="mx-auto w-full max-w-page px-5 pt-36 text-center md:px-8 xl:px-12 md:pt-44">
@@ -30,18 +28,6 @@ export function Hero() {
           <p className="rise mt-4 text-muted" style={{ animationDelay: "0.3s" }}>
             {profile.sub}
           </p>
-          <div className="rise mt-8 flex flex-wrap justify-center gap-3" style={{ animationDelay: "0.45s" }}>
-            <a href="#work" className="btn-primary px-6 py-3">
-              {profile.ctas.work}
-              <ArrowDown className="h-4 w-4" aria-hidden />
-            </a>
-            <a href={asset(profile.cv)} target="_blank" rel="noopener noreferrer" className="btn-ghost px-6 py-3">
-              {profile.ctas.cv}
-            </a>
-            <a href={`mailto:${profile.email}`} className="btn-ghost px-6 py-3">
-              {profile.ctas.email}
-            </a>
-          </div>
         </div>
       </section>
 

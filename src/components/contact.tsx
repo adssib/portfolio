@@ -5,7 +5,7 @@ import { Heading } from "@/components/section";
 
 export function Contact() {
   return (
-    <footer id="contact">
+    <footer id="contact" className="-scroll-mt-14 md:-scroll-mt-[5.5rem]">
       <div className="mx-auto grid max-w-page gap-12 px-5 py-20 md:grid-cols-2 md:gap-16 md:px-8 xl:px-12 md:py-28">
         <div>
           <Heading eyebrow={contact.eyebrow} title={contact.title} />

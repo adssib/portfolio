@@ -2,18 +2,30 @@ import { Fragment } from "react";
 
 import { cn } from "@/lib/utils";
 
-/** Shared section frame: consistent width, gutters, and vertical rhythm. */
+/** Shared section frame: consistent width, gutters, and vertical rhythm.
+ *  `flush` drops the top padding for a section that follows straight on from
+ *  the one above. Scroll margins cancel the top padding so every nav jump lands
+ *  with its heading the same short distance under the fixed nav. */
 export function Section({
   id,
   className,
+  flush = false,
   children,
 }: {
   id: string;
   className?: string;
+  flush?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className={cn("mx-auto max-w-page px-5 py-20 md:px-8 xl:px-12 md:py-28", className)}>
+    <section
+      id={id}
+      className={cn(
+        "mx-auto max-w-page px-5 pb-20 md:px-8 md:pb-28 xl:px-12",
+        flush ? "scroll-mt-6" : "-scroll-mt-14 pt-20 md:-scroll-mt-[5.5rem] md:pt-28",
+        className
+      )}
+    >
       {children}
     </section>
   );

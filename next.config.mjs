@@ -18,6 +18,9 @@ const nextConfig = {
   // Required for static export; harmless otherwise (no next/image in use).
   images: { unoptimized: true },
   basePath: basePath || undefined,
+  // Pages serves folder/index.html reliably; writing.html next to a writing/
+  // folder can 404. Only the static export needs this.
+  trailingSlash: isStatic,
   // Lets components prefix /public asset URLs (see src/lib/asset.ts).
   env: { NEXT_PUBLIC_BASE_PATH: basePath || "" },
   experimental: {

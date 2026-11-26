@@ -7,7 +7,7 @@ import { Heading, Section } from "@/components/section";
 /** What I work on: each area links to the work that proves it. */
 export function Services() {
   return (
-    <Section id="services" className="pt-0 md:pt-0">
+    <Section id="services" flush>
       <Heading eyebrow={services.eyebrow} title={services.title} />
 
       <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

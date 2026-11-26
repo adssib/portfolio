@@ -53,14 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <body className="font-sans antialiased">
-        {/* Dusk is the default; switch to light before paint if chosen. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');}catch(e){}})();`,
-          }}
-        />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

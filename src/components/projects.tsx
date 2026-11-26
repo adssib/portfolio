@@ -21,25 +21,30 @@ function Links({ links }: { links: Link[] }) {
   );
 }
 
-/** GameFarm's fleet: 72 phones, a few busy at any moment. Seeded so it never changes between builds. */
+/** GameFarm: an example phone farm, with the fleet's real numbers beside it. */
 function DevicesVisual() {
-  let seed = 7;
-  const cells = Array.from({ length: 72 }, () => {
-    seed = (seed * 16807) % 2147483647;
-    const r = seed / 2147483647;
-    return r < 0.28 ? "bg-accent" : r < 0.4 ? "bg-green" : "bg-ink/15";
-  });
   return (
-    <div aria-hidden className="rounded-md bg-surface ring-1 ring-line/10">
-      <div className="grid grid-cols-12 gap-1.5 p-5 lg:grid-cols-[repeat(18,minmax(0,1fr))]">
-        {cells.map((c, i) => (
-          <span key={i} className={cn("aspect-[9/16] rounded-[3px]", c)} />
+    <div className="flex items-stretch gap-6 rounded-md bg-surface p-4 ring-1 ring-line/10 sm:p-5">
+      <img
+        src={asset("/projects/gamefarm-rig.webp")}
+        alt="A phone farm: two dozen smartphones standing in a rack, each wired to a controller board"
+        loading="lazy"
+        className="aspect-[6/5] w-[58%] max-w-[420px] shrink-0 rounded-sm object-cover"
+      />
+      <dl className="flex flex-col justify-center gap-5">
+        {[
+          ["72", "Android devices"],
+          ["6", "countries"],
+          ["1", "agent loop per device"],
+        ].map(([value, label]) => (
+          <div key={label}>
+            <dt className="sr-only">{label}</dt>
+            <dd className="font-serif text-4xl leading-none text-green">{value}</dd>
+            <dd className="mt-1 text-sm text-muted">{label}</dd>
+          </div>
         ))}
-      </div>
-      <div className="flex flex-wrap justify-between gap-2 px-5 pb-4 text-sm text-muted">
-        <span>72 devices · 6 countries</span>
-        <span>one loop per device</span>
-      </div>
+        <dd className="text-xs text-muted/80">An example phone farm, like the ones GameFarm ran on.</dd>
+      </dl>
     </div>
   );
 }
@@ -162,7 +167,7 @@ export function Projects() {
 
 export function MoreProjects() {
   return (
-    <Section id="more" className="pt-0 md:pt-0">
+    <Section id="more" flush>
       <p className="eyebrow mb-6">{work.moreTitle}</p>
       <div className="grid gap-10 md:grid-cols-2 md:gap-16">
         {work.more.map((p) => (
