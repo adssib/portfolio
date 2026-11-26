@@ -99,11 +99,11 @@
       "links": [
         {
           "label": "Code on GitHub",
-          "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision"
+          "href": "https://github.com/adssib/PEFT-LoRA"
         },
         {
           "label": "Read the report",
-          "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision/blob/main/FinalReport_QLoRA.pdf"
+          "href": "https://github.com/adssib/PEFT-LoRA/blob/main/FinalReport_QLoRA.pdf"
         }
       ]
     }

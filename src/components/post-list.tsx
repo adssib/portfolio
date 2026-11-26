@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Tags } from "@/components/tags";
 import { formatDate, type PostMeta } from "@/lib/writing";
 
 /** One row per post: title and summary on the left, date and reading time on the right. */
@@ -22,7 +23,7 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
                 )}
               </h3>
               <p className="mt-2 max-w-3xl leading-relaxed text-muted">{p.summary}</p>
-              {p.tags.length > 0 && <p className="mt-3 text-sm text-muted">{p.tags.join(" · ")}</p>}
+              <Tags tags={p.tags} className="mt-4" />
             </div>
             <p className="text-sm text-muted md:text-right">
               <time dateTime={p.date}>{formatDate(p.date)}</time>

@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Contact } from "@/components/contact";
 import { Mdx } from "@/components/mdx";
+import { Tags } from "@/components/tags";
 import { formatDate, getPost, getPosts } from "@/lib/writing";
 
 // Only the posts that exist at build time get pages (required for the static export).
@@ -33,7 +34,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     <>
       <Nav />
       <main id="main" className="px-5 pb-24 pt-32 md:px-8 md:pt-40">
-        <article className="mx-auto max-w-3xl">
+        <article className="mx-auto max-w-4xl">
           <Link href="/writing" className="link inline-flex items-center gap-1.5 text-sm text-muted">
             <ArrowLeft className="h-4 w-4" aria-hidden />
             All writing
@@ -46,7 +47,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
             <h1 className="mt-5 font-serif text-[clamp(2.4rem,5.5vw,4rem)] leading-[1.02] tracking-[-0.02em]">
               {post.title}
             </h1>
-            {post.tags.length > 0 && <p className="mt-6 text-sm text-muted">{post.tags.join(" · ")}</p>}
+            <Tags tags={post.tags} className="mt-6" />
           </header>
 
           <div className="prose prose-site mt-10 max-w-none">

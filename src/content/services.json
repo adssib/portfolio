@@ -30,7 +30,7 @@
         },
         {
           "label": "QLoRA",
-          "href": "https://github.com/Omare04/get-equivalently-better-with-less-precision"
+          "href": "https://github.com/adssib/PEFT-LoRA"
         },
         {
           "label": "InfraChat evals",

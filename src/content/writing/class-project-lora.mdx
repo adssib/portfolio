@@ -1,0 +1,59 @@
+---
+title: "The Class Project That Changed My Career"
+date: "2026-11-26"
+summary: "Implementing LoRA from scratch for a deep learning course: 41.7% lower perplexity while training under 0.5% of the parameters, on one consumer GPU."
+tags: ["Fine-tuning", "LoRA", "PyTorch"]
+---
+
+Every so often a course gives you room to do something you actually care about. For me, that was COMP 433 (Introduction to Deep Learning) at Concordia, taught by Professor Arash Azarfar.
+
+## The opportunity
+
+Most course projects tell you exactly what to build. Professor Azarfar told us we could reimplement any paper from the last two years presented at the major conferences, or train our own deep learning model.
+
+That freedom is rare, and it's what made this project mine.
+
+## How it started
+
+My teammate Omar had just bought a new PC, and we wanted to put it to work. The question we kept coming back to: how do you teach a model something new without retraining the whole thing?
+
+Full fine-tuning updates every parameter, which needs far more GPU memory than we had. That led us to LoRA, which freezes the model and trains only a tiny set of added parameters. The big pretrained weights stay frozen. Two small matrices sit next to them, and only those get trained.
+
+![LoRA: the input goes through the frozen weight matrix and, in parallel, through two small trainable matrices A and B; the two results are added to give the output](/writing/lora/lora-diagram.webp "How LoRA works: frozen weights plus two small trainable matrices.")
+
+Our team of three (Omar, Tanim and me) decided to implement it ourselves.
+
+## What we set out to do
+
+- Implement LoRA from scratch, to understand it instead of treating it as a library call
+- Fine-tune open-source models on a single consumer GPU
+- Test it on language modeling and sentiment tasks
+- Keep trainable parameters under 1% of the model
+
+## What happened
+
+Our first plan was a 4B-parameter model. It took over 45 minutes just to load and still didn't fit in memory. So we adjusted: we wrote LoRA by hand on GPT-Neo-125M to make sure we understood it, then ran it on GPT-2 with Hugging Face's PEFT library.
+
+![Bar chart of Wikitext-2 perplexity: base GPT-2 54.26, LoRA with a short schedule 31.90, LoRA with an improved schedule 31.64](/writing/lora/perplexity.webp "Wikitext-2 perplexity before and after LoRA. Lower is better.")
+
+- **41.7% lower perplexity** on Wikitext-2, from 54.26 to 31.64
+- **Only 0.24% to 0.47%** of the parameters trained, depending on the model
+- **One consumer GPU,** under 12 GB of VRAM
+
+Training was stable: the loss dropped fast in the first few hundred steps, then flattened out, with healthy gradients throughout.
+
+Not everything worked, and we wrote that down too. An aggressive training schedule was unstable, one advanced initialization method (CorDA) didn't converge on models this small, and question answering stayed weak. Writing down what failed taught us as much as what worked.
+
+## Why it mattered
+
+This was the first time I felt I was doing real machine learning work, not just following instructions. I understood every part of it, because we built it.
+
+It also changed what came next. In my interviews for AI roles, this was the project interviewers asked about, and they were genuinely interested. I was always happy to talk about it because I knew it so well. It helped me land the AI roles I've had since, and it pushed my career toward machine learning.
+
+## Thank you
+
+Professor Azarfar, if you're reading this: thank you for giving students that choice. I could have taken the easy route and trained a model from scratch, and it would have been forgettable. You gave us the chance to do something outside the norm, and I haven't seen that in any other course. Every time someone asked about this project, I was glad I'd taken the harder path.
+
+And thank you to Omar and Tanim, who were great teammates.
+
+**Code and report:** [github.com/adssib/PEFT-LoRA](https://github.com/adssib/PEFT-LoRA)
