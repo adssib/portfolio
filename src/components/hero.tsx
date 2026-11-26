@@ -25,9 +25,6 @@ export function Hero() {
           >
             {profile.tagline}
           </p>
-          <p className="rise mt-4 text-muted" style={{ animationDelay: "0.3s" }}>
-            {profile.sub}
-          </p>
         </div>
       </section>
 
