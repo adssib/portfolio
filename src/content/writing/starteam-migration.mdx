@@ -54,13 +54,13 @@ The key finding: the SDK could read the full history of every item, without touc
 
 ## Why external merge sort
 
-StarTeam stores history per file. Git and SVN need one ordered stream of changes. And the SDK's `history()` call returned each file's revisions out of chronological order, so replaying them as-is would have produced the wrong history.
+StarTeam stores history per file. Git and SVN need one ordered stream of changes. So every change became a record: an addition, edit or deletion of a file or folder, or a tag, each with its author, message and time. And the SDK's `history()` call returned each file's revisions out of chronological order, so replaying them as-is would have produced the wrong history.
 
 So I converted every record's date and timezone into a single Unix timestamp, including tags, and sorted everything on it. For the large repositories those records didn't fit in 1.5 GB, so the sort had to work in batches:
 
 ```mermaid
 flowchart LR
-    A[Records] --> B[Read a batch<br/>that fits in memory]
+    A["Records<br/>adds, edits, deletes<br/>of files + folders,<br/>plus tags"] --> B[Read a batch<br/>that fits in memory]
     B --> C[Sort it]
     C --> D[Write sorted run<br/>to disk]
     D -->|more input| B
